@@ -30,7 +30,7 @@ export default function Home() {
 
         <ul>
         {Datas.menus.map(item => {
-          return <li className="font-[family-name:var(--font-geist-mono)]"><Link href={{ pathname:item.title}}>{item.title}</Link></li>;
+          return <li className="font-[family-name:var(--font-geist-mono)]" key={item}><Link href={{ pathname:item.title}}>{item.title}</Link></li>;
         })}
       </ul>
 
