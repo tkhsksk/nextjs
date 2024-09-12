@@ -2,10 +2,7 @@ import Link  from 'next/link'
 import Image from "next/image";
 import Datas from "../../../data.json"
 
-export const metadata: Metadata = {
-  title: "ksk page",
-  description: "kskのポートレート",
-};
+
 
 export default function Home() {
   return (
