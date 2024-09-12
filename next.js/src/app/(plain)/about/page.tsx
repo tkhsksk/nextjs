@@ -2,7 +2,10 @@ import Image from "next/image";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { hybrid } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-
+export const metadata: Metadata = {
+  title: "About page",
+  description: "について",
+};
 
 export default function Home() {
 
