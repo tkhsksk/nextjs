@@ -1,9 +1,6 @@
 import Image from "next/image";
 
-export const metadata: Metadata = {
-  title: "About page",
-  description: "について",
-};
+
 
 export default function Home() {
   return (
