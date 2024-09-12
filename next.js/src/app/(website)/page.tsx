@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link  from 'next/link'
 import Image from "next/image";
 import Datas from "../../../data.json"
@@ -30,7 +31,7 @@ export default function Home() {
 
         <ul>
         {Datas.menus.map(item => {
-          return <li className="font-[family-name:var(--font-geist-mono)]" key={item}><Link href={{ pathname:item.title}}>{item.title}</Link></li>;
+          return <li className="font-[family-name:var(--font-geist-mono)]" key={item.id}><Link href={{ pathname:item.title}}>{item.title}</Link></li>;
         })}
       </ul>
 

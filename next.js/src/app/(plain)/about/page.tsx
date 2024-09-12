@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { hybrid } from "react-syntax-highlighter/dist/cjs/styles/hljs";
