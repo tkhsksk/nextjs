@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+// import Image from "next/image";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { gml } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import type { Metadata } from "next";
-import Test from '@/app/common';
+// import Test from '@/app/common';
 import phpFunction from "@/../../php/helloworld.php";
 
 export const metadata: Metadata = {

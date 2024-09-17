@@ -1,3 +1,3 @@
-function Hoge() {
-  return ("hoge");
-}
+// function Hoge() {
+//  return ("hoge");
+// }
