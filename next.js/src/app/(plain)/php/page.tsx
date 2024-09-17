@@ -11,11 +11,11 @@ export const metadata: Metadata = {
   description: "について",
 };
 
-export function Syntax(lang, code) {
+function Syntax(lang, code) {
    return <SyntaxHighlighter language={lang} style={gml} className="my-3">{code}</SyntaxHighlighter>;
 }
 
-export function WrapCode(txt) {
+function WrapCode(txt) {
    return <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">{txt}</code>;
 }
 
