@@ -1,21 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { gml } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 export const metadata: Metadata = {
-  title: 'about｜'+process.env.SITE_TITLE,
+  title: 'python｜'+process.env.SITE_TITLE,
   description: "について",
 };
 
 export default function Home() {
-
-   const codeString = [
-     '<link rel="shortcut icon" sizes="16x16" href="">',
-     '</link>',
-   ].join('\n');
-   
-   return (
+  return (
     <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full">
       <div className="columns-3 w-full">
@@ -44,10 +36,6 @@ export default function Home() {
           priority
         />
       </div>
-
-      <SyntaxHighlighter language="htmlbars" style={gml}>
-         {codeString}
-      </SyntaxHighlighter>
 
       <div className="w-full">
          <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">

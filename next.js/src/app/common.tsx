@@ -1,0 +1,3 @@
+function Hoge() {
+  return ("hoge");
+}

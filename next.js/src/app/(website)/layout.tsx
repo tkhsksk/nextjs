@@ -1,3 +1,5 @@
+'use client';
+
 import localFont from "next/font/local";
 import "@/app/globals.css";
 
@@ -15,11 +17,9 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout(
+  {children,}: Readonly<{children: React.ReactNode;}>
+  ) {
   return (
     <html lang="ja">
       <body
