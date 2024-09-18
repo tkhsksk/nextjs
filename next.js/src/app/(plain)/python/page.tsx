@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 // import Test from '@/app/common';
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { gml } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import phpFunction from "@/../../php/helloworld.php";
 import fs from 'fs'
 
 export const metadata: Metadata = {

@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 // import Test from '@/app/common';
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { gml } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import phpFunction from "@/../../php/helloworld.php";
 import fs from 'fs'
 
 export const metadata: Metadata = {
@@ -272,7 +271,7 @@ export default function Home() {
 
          <div className="p-5 border-l-2">
             <p className="font-semibold mb-3">CRUDを始める前に</p>
-            <p className="leading-7 mb-3">前提としてmysqlにdatabase名'php'を作成、user'guest'を作成し、guestに対してphpへのすべての権限を付与しています<br />
+            <p className="leading-7 mb-3">前提としてmysqlにdatabase名(php)を作成、user(guest)を作成し、guestに対してphpへのすべての権限を付与しています<br />
             データベースphpにはtoyというテーブルを作成し、id,nameをカラムとして登録しました</p>
             {Syntax('sh', getFile("/sh/db.sh"))}
 
