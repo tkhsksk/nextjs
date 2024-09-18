@@ -180,6 +180,7 @@ export default function Home() {
             繰り返しの処理に向いている、foreachの方が分かりやすく且つ作りやすい構造です<br /><br />
             繰り返しの処理で言うと、例えばすべてのデータに🐶をつける場合も</p>
             {Syntax('php',getFilePhp("foreach_dogs"))}
+            {Syntax('sh', getFile("/sh/delete_result.sh"))}
             <p>で可能です<br />
             phpを深く学ぶまで配列の利点はわかりにくいものですが、<br />
             実務で利用するにあたり、検索や繰り返しの処理で重要な役割を果たしていることに気づきました</p>
