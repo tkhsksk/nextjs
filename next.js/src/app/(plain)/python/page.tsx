@@ -15,7 +15,7 @@ function Syntax(lang: string, code: string) {
 }
 
 function SyntaxCode(lang: string, code: string) {
-   const text  = fs.readFileSync("../"+lang+"/"+code+"."+lang+"", 'utf8')
+   const text  = fs.readFileSync("codes/"+lang+"/"+code+"."+lang+"", 'utf8')
    const lines = text.toString().split('¥n')
    return <div className="grid"><SyntaxHighlighter language={lang} style={gml} className="my-3">{lines}</SyntaxHighlighter></div>;
 }
