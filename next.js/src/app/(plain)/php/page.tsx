@@ -11,14 +11,14 @@ export const metadata: Metadata = {
 };
 
 function getFilePhp(file: string) {
-   var text  = fs.readFileSync("../php/"+file+".php", 'utf8')
-   var lines = text.toString().split('¥n')
+   const text  = fs.readFileSync("../php/"+file+".php", 'utf8')
+   const lines = text.toString().split('¥n')
    return lines
 }
 
 function getFile(file: string) {
-   var text  = fs.readFileSync(".."+file+"", 'utf8')
-   var lines = text.toString().split('¥n')
+   const text  = fs.readFileSync(".."+file+"", 'utf8')
+   const lines = text.toString().split('¥n')
    return lines
 }
 
