@@ -139,52 +139,52 @@ export default function Home() {
             {SyntaxCode('php','class')}
             <p className="leading-7 mb-3">基本的な説明は、コード内にコメントアウトで表記していますが、functionのアクセス修飾子については以下に詳細を表記します</p>
 
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-4">
-                <table class="w-full text-left rtl:text-right text-gray-800 dark:text-gray-400">
-                    <thead class="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-4">
+                <table className="w-full text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" className="px-6 py-3">
                                 修飾子名
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" className="px-6 py-3">
                                 class外で取得できるか
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" className="px-6 py-3">
                                 class外で取得する方法
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                 public
                             </th>
-                            <td class="px-6 py-4">
+                            <td className="px-6 py-4">
                                 できる
                             </td>
-                            <td class="px-6 py-4">
+                            <td className="px-6 py-4">
                                 
                             </td>
                         </tr>
-                        <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                 protected
                             </th>
-                            <td class="px-6 py-4">
+                            <td className="px-6 py-4">
                                 できない
                             </td>
-                            <td class="px-6 py-4">
+                            <td className="px-6 py-4">
                                 classを継承する
                             </td>
                         </tr>
-                        <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                 private
                             </th>
-                            <td class="px-6 py-4">
+                            <td className="px-6 py-4">
                                 できない
                             </td>
-                            <td class="px-6 py-4">
+                            <td className="px-6 py-4">
                                 なし
                             </td>
                         </tr>
