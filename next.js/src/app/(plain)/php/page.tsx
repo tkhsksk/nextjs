@@ -303,7 +303,7 @@ export default function Home() {
 
             <p className="font-semibold mb-3">Update</p>
             <p>dbに登録したデータを変更したい場合もあるかと思います、その場合は{WrapCode('update')}を使ってデータを更新します<br />
-            先ほど{WrapCode('insert')}したデータをbear->robotに{WrapCode('update')}してみましょう</p>
+            先ほど{WrapCode('insert')}したデータをbear→robotに{WrapCode('update')}してみましょう</p>
             {Syntax('php',getFilePhp("update"))}
             <p>実際に更新されたことを確認しましょう</p>
             {Syntax('sh', getFile("/sh/update_result.sh"))}

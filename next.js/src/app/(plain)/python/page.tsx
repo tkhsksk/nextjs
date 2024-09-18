@@ -130,6 +130,65 @@ export default function Home() {
 
       </section>
 
+      <section>
+         <h2 className="text-2xl font-semibold mb-3">配列、for、foreach</h2>
+         <p className="leading-7 mb-3">配列の作り方と各種回し方について</p>
+
+         <div className="p-5 border-l-2">
+            <h3 className="text-lg font-semibold mb-3">配列</h3>
+            <p className="leading-7 mb-3">この配列について、phpの学習上でつまづきました<br />そもそもなぜ配列が必要なのか？について的確に解説をしているサイトも参考書もなかったからです<br />自分が学習上で学び、配列の有効性について独自解釈しましたのでそれを以下に記載します</p>
+            <h3 className="text-lg font-semibold mb-3">配列は一覧表示、データの検索、繰り返しに便利</h3>
+            <p className="leading-7 mb-3">まず、1000ほどもあるデータを変数に代入するとします<br />その場合、変数も1000準備しなければなりません<br />特にデータは1000どころか10000、ときには100000になる場合もあります<br />これを解消できるのが配列です</p>
+            <div className="w-full mb-3">
+               <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+                  <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
+                     <div className="items-center justify-center dark:bg-gray-800">
+                     <p><span className="font-semibold">変数</span>で表現する場合</p>
+                        {Syntax('php',getFilePhp("array01"))}
+                     </div>
+                     <div className="items-center justify-center dark:bg-gray-800">
+                     <p><span className="font-semibold">配列</span>で表現する場合</p>
+                        {Syntax('php',getFilePhp("array02"))}
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <p className="leading-7 mb-3">上記どちらの場合でも、データを格納しそれを表示させることができますが、<br />
+            配列の方が圧倒的に合理的です<br />
+            また、配列は一覧表示にも有効です<br />
+            forもしくはforeachで回せますが、回数や順番で制限したい場合はfor、全てを表示させたい場合はforeachで表示させるのが一般的です<br />
+            とはいえ、実際にどのような違いがあるのか分かりにくいので、稼働させて確認するのが一番分かりやすいでしょう</p>
+            <p className="font-semibold">forで配列を回す</p>
+            {Syntax('php',getFilePhp("for"))}
+            <p className="leading-7 mb-3">上記構文をざっくりした解説はコメントアウトにて説明されていますが、<br />
+            $xの配列の0番目、1番目...と続き、3番目までをechoする構文です<br />
+            もちろんfor文で配列を表示させることは可能ですし、具体的にx番目からx番目まで表示、などの場合は有効なのですが<br />
+            例えば配列が何番目まで存在しているかが不明なケースは存在していない配列を指定するとエラーが発生するため、issetもしくはemptyなどを必要とします<br />
+            数に関わらず、配列が全て表示され切るまで表示させる場合はforeachが有効でしょう</p>
+            <p className="font-semibold">foreachで配列を回す</p>
+            {Syntax('php',getFilePhp("foreach"))}
+            <p className="leading-7 mb-3">数の指定などをしなくても、すべての配列が表示されます<br />
+            forとforeachは似ているようで異なっているため、用途に基づいて利用しましょう</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold">データの検索</p>
+            <p className="leading-7 mb-3">配列から配列を作成することで、簡易的なデータ検索が可能です<br />
+            配列を回して、その中で該当となるデータのみ格納する配列を新規に作成すると、検索済みデータの配列を作成できます</p>
+            <p>実際のコードは以下です</p>
+            {Syntax('php',getFilePhp("foreach_search"))}
+            <p>新規に検索データの配列を作成する場合はforよりも、<br />
+            繰り返しの処理に向いている、foreachの方が分かりやすく且つ作りやすい構造です<br /><br />
+            繰り返しの処理で言うと、例えばすべてのデータに🐶をつける場合も</p>
+            {Syntax('php',getFilePhp("foreach_dogs"))}
+            <p>で可能です<br />
+            phpを深く学ぶまで配列の利点はわかりにくいものですが、<br />
+            実務で利用するにあたり、検索や繰り返しの処理で重要な役割を果たしていることに気づきました</p>
+
+         </div>
+
+      </section>
+
       </main>
     </div>
   );
