@@ -10,10 +10,6 @@ export const metadata: Metadata = {
    description: "について",
 };
 
-function Syntax(lang: string, code: string) {
-   return <div className="grid"><SyntaxHighlighter language={lang} style={gml} className="my-3">{code}</SyntaxHighlighter></div>;
-}
-
 function SyntaxCode(lang: string, file: string) {
    const text  = fs.readFileSync("../"+lang+"/"+file+"", 'utf8')
    const lines = text.toString().split('¥n')
@@ -104,8 +100,8 @@ export default function Home() {
             <p className="leading-7 mb-3">引き算、掛け算、割り算も以下の符号で計算可能です</p>
             <p className="font-semibold">実行内容</p>
             {SyntaxCode('python','calc02.py')}
-            <p className="mb-3">phpと同じ符号で計算できますが、pythonでは/(スラッシュ)で割り算をすると、整数の答えが出力されないようです<br />
-            //というふうにスラッシュを連続で打つと整数の答えが出力されるようです<br />
+            <p className="mb-3">phpと同じ符号で計算できますが、pythonでは／(スラッシュ)で割り算をすると、整数の答えが出力されないようです<br />
+            ／／というふうにスラッシュを連続で打つと整数の答えが出力されるようです<br />
             次の変数に代入した上での計算で、実行してみましょう</p>
             <p className="font-semibold">実行内容</p>
             {SyntaxCode('python','calc03.py')}
@@ -122,7 +118,7 @@ export default function Home() {
             <hr className="my-5" />
 
             <h3 className="text-lg font-semibold mb-3">型宣言</h3>
-            <p className="leading-7">ここまでの計算記述でわかりますが、strを宣言する場合は"(ダブルクォーテーション)で囲み<br />
+            <p className="leading-7">ここまでの計算記述でわかりますが、strを宣言する場合は〝(ダブルクォーテーション)で囲み<br />
             intの場合は囲まずにそのまま代入する、という理解ができます<br />
             またpythonは前述の通り型の宣言に厳しいです<br />
             各種結合を一覧で表示します</p>
