@@ -14,8 +14,8 @@ function Syntax(lang: string, code: string) {
    return <div className="grid"><SyntaxHighlighter language={lang} style={gml} className="my-3">{code}</SyntaxHighlighter></div>;
 }
 
-function SyntaxCode(lang: string, code: string) {
-   const text  = fs.readFileSync("../"+lang+"/"+code+"."+lang+"", 'utf8')
+function SyntaxCode(lang: string, file: string) {
+   const text  = fs.readFileSync("../"+lang+"/"+file+"", 'utf8')
    const lines = text.toString().split('¥n')
    return <div className="grid"><SyntaxHighlighter language={lang} style={gml} className="my-3">{lines}</SyntaxHighlighter></div>;
 }
@@ -55,31 +55,37 @@ export default function Home() {
 
          <div className="p-5 border-l-2">
             <h3 className="text-lg font-semibold mb-3">Hello World.</h3>
-            <p className="leading-7">phpで文字列を表示する場合は、以下の表記で実行できます</p>
-            {SyntaxCode('php','helloWorld')}
-            <p className="leading-7 mb-3">Hello World.以外の文字列を表記する場合は、上記コードのHello World.部分をそれ以外の文字列に置き換えるだけです<br />次にphpの文字列を改行したい場合があります、htmlでは単純に{WrapCode('br')}タグのみで改行できましたがphpで実行した場合以下の出力になります
+            <p className="leading-7">pythonで文字列を表示する場合は、以下の表記で実行できます</p>
+            {SyntaxCode('python','helloWorld.py')}
+            <p className="leading-7 mb-3">Hello World.以外の文字列を表記する場合は、上記コードのHello World.部分をそれ以外の文字列に置き換えるだけです<br />
+            次にpythonの文字列を改行したい場合があります<br />
+            htmlでは単純に{WrapCode('br')}タグのみで改行できますがpythonでは、phpと同じく{WrapCode('\\n')}で改行します
             </p>
             <p className="font-semibold">実行内容</p>
-            {SyntaxCode('php','helloWorld_br')}
-            <p className="font-semibold">実行結果</p>
-            {Syntax('shell','Hello World.<br />Bye world.')}
-            <p className="mb-3">htmlタグをphpの文中挟むとそのまま表示されてしまいます。<br />php中の改行には\nを用います。</p>
-            <p className="font-semibold">実行結果</p>
-            {Syntax('shell','Hello World.\nBye world.')}
+            {SyntaxCode('python','helloWorld_br.py')}
 
             <hr className="my-5" />
 
-            <h3 className="text-lg font-semibold mb-3">変数</h3>
-            <p className="leading-7">文字列にテキストや数値を格納しておくことも可能です<br />中学生の数学で学習したx=1,y=2と同じ要領です</p>
+            <h3 className="text-lg font-semibold mb-3">変数と結合</h3>
+            <p className="leading-7 mb-3">文字列にテキストや数値を格納しておくことも可能です<br />
+            中学生の数学で学習したx=1,y=2と同じ要領です<br />
+            変数nameに名前、変数oldに年齢を格納し、文章を作成してみます</p>
             <p className="font-semibold">実行内容</p>
-            {SyntaxCode('php','var')}
-            <p className="font-semibold">実行結果</p>
-            {Syntax('shell','test')}
-            <p className="mb-3">{WrapCode('x="test";')}でxにtestを格納し、それをechoで呼び出します<br />文字を結合する場合にはx,yにそれぞれの文字列を格納して.(ドット)で結合することができます</p>
+            {SyntaxCode('python','var.py')}
+            <p className="mb-3">それぞれに数字と文字を格納して、結合するとエラーが発生しました<br />
+            {WrapCode('TypeError: can only concatenate str (not "int") to str')}を確認すると<br />
+            str(文字列)にはstr(文字列)しか結合できません、とのことです<br />
+            phpでは曖昧になっていた文字列と数字の定義が、pythonではかなり厳格になっていることがわかります<br />
+            これを解消するためには2通りの方法があります</p>
+            <ol className="mb-3">
+               <li>①数字をstr型に変更する</li>
+               <li>②print内で(カンマ)結合し引数{WrapCode("sep=''")}を用いてスペースを排除する</li>
+               <li>③初期の宣言をstr型にする</li>
+            </ol>
             <p className="font-semibold">実行内容</p>
-            {SyntaxCode('php','join')}
-            <p className="font-semibold">実行結果</p>
-            {Syntax('shell','testhoge')}
+            {SyntaxCode('python','join.py')}
+            <p>どちらでも可能ですが、変数の再利用や分かりやすさを加味すると前者の方法を採用した方が良いと思います<br />
+            よって以降は前者の方法でプログラムを記述していきます</p>
          </div>
 
       </section>
@@ -91,93 +97,183 @@ export default function Home() {
          <div className="p-5 border-l-2">
             <h3 className="text-lg font-semibold mb-3">計算</h3>
             <p className="leading-7">単純にプラスの符号を用いて、足し算をします</p>
-            {SyntaxCode('php','calc01')}
-            <p className="font-semibold">実行結果</p>
-            {Syntax('shell','6')}
+            {SyntaxCode('python','calc01.py')}
+            <p className="mb-3">これも型の宣言が重要で、<br />
+            1番上はint型同士の足し算、2番目はstr型の結合、3番目はintとstrを結合しようとするためエラーが発生します<br />
+            計算時はnum01、num02のようにint宣言した方が良いでしょう</p>
             <p className="leading-7 mb-3">引き算、掛け算、割り算も以下の符号で計算可能です</p>
             <p className="font-semibold">実行内容</p>
-            {SyntaxCode('php','calc02')}
-            <p className="font-semibold">実行結果</p>
-            {Syntax('shell','4\n6\n3')}
-            <p className="mb-3">次に変数に数字を代入して計算をしてみます、数字の場合はダブルクォーテーションで囲む必要はありません</p>
+            {SyntaxCode('python','calc02.py')}
+            <p className="mb-3">phpと同じ符号で計算できますが、pythonでは/(スラッシュ)で割り算をすると、整数の答えが出力されないようです<br />
+            //というふうにスラッシュを連続で打つと整数の答えが出力されるようです<br />
+            次の変数に代入した上での計算で、実行してみましょう</p>
             <p className="font-semibold">実行内容</p>
-            {SyntaxCode('php','calc03')}
-            <p className="font-semibold">実行結果</p>
-            {Syntax('shell','5')}
-            <p>phpではこれでも全く問題はないのですが、本来は型を宣言する必要があります<br />次の章で解説します</p>
+            {SyntaxCode('python','calc03.py')}
+            <p>ここで気になるのが、割り切れない数で整数割り算した場合、小数点以下がある数を計算した場合です</p>
+            {SyntaxCode('python','calc04.py')}
+            <p>元の数が少数であれば、割り算で//を利用しても非整数の答えが出て<br />
+            掛け算も少数以下まで計算されています<br />
+            ところが一番上の計算だけ本来は15.1となるところが、15.100000000000001となります<br />
+            これはコンピュータ上で2進数の表現の限界があるため、ずれが生じます<br /><br />
+            正確に計算するためには{WrapCode("decimal")}モジュールを利用する必要があるようです<br />
+            数字をダブルクォーテーションで囲んだ上で、{WrapCode("Decimal")}で囲んで計算します</p>
+            {SyntaxCode('python','calc05.py')}
 
             <hr className="my-5" />
 
             <h3 className="text-lg font-semibold mb-3">型宣言</h3>
-            <p className="leading-7">本来、変数に値を代入する場合は、型の宣言が必要です<br />phpの場合、そこが非常に曖昧になっているため宣言せずとも計算が可能ですが<br />宣言した上での計算をしましょう</p>
-            <p className="leading-7 mb-3">例えば7という文字があった場合、文字としての7とも捉えられるし、数字としての7とも捉えられます<br />この7は数字としての7
-            だよ、と宣言するのが型宣言です</p>
-            {SyntaxCode('php','type_int')}
-            <p className="leading-7 mb-3">代入する値を入力する前に(int)をつけるだけで、「数字の7」と宣言することができます<br />では、以下の場合どうなるでしょうか</p>
-            {SyntaxCode('php','type_str')}
-            <p className="mb-3">文字列としての7と8を宣言して、それを足しています</p>
-            <p className="font-semibold">実行結果</p>
-            {Syntax('shell','15')}
-            <p className="mb-3">文字列と宣言しても、足し算が可能です<br />型を宣言せずに足し算や結合ができる言語は極めて特殊です</p>
+            <p className="leading-7">ここまでの計算記述でわかりますが、strを宣言する場合は"(ダブルクォーテーション)で囲み<br />
+            intの場合は囲まずにそのまま代入する、という理解ができます<br />
+            またpythonは前述の通り型の宣言に厳しいです<br />
+            各種結合を一覧で表示します</p>
+            {SyntaxCode('python','type_int.py')}
          </div>
 
       </section>
 
       <section>
-         <h2 className="text-2xl font-semibold mb-3">配列、for、foreach</h2>
+         <h2 className="text-2xl font-semibold mb-3">関数、Class</h2>
+         <p className="leading-7 mb-3">関数の宣言、public private protectedについて</p>
+
+         <div className="p-5 border-l-2">
+            <h3 className="text-lg font-semibold mb-3">関数</h3>
+            <p className="leading-7">プログラム中に何度も出現する数値を変数に代入することで、再利用が可能ですが<br />
+            計算式や定まった結合などを行う場合は関数を用います<br />
+            以下は2つの数字を足してから1を引く、という計算を何度も使う場合です</p>
+            {SyntaxCode('python','def.py')}
+            <p>x,yという変数を設定し、それぞれを足した上で1を引き、それをreturnで返り値にしています<br />
+            この関数をprintで表示することによって計算後の結果を表示させます<br />
+            よって5+4-1が計算され実行結果となります</p>
+
+            <hr className="my-5" />
+
+            <h3 className="text-lg font-semibold mb-3">Class</h3>
+            <p className="leading-7 mb-3">また関数を使う場合、その関数をさらに囲うためにClassというものがというものが定義できます<br />
+            利点としては、1つのサイト内でdefの数は何十にも及ぶ可能性があるため、それらをclassでまとめる際に有効です<br />このClassの設定、またClass内の関数を利用する場合の例を以下に示します<br />
+            phpではpublicやprivateなどで明示的にしていましたが、pythonの場合少し違います</p>
+            {SyntaxCode('python','class.py')}
+            <p className="mb-3">class内で各種宣言をするには{WrapCode("__init__")}で関数を作成し、<br />
+            その関数内でpublic、protected、privateを宣言します<br />
+            特にprotectedの定義は外部で取得できたりで曖昧ですが、原則使わないようにします</p>
+
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-4">
+                <table className="w-full text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                修飾子名
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                class外で取得できるか
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                class外で取得する方法
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                public
+                            </th>
+                            <td className="px-6 py-4">
+                                できる
+                            </td>
+                            <td className="px-6 py-4">
+                                
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                protected
+                            </th>
+                            <td className="px-6 py-4">
+                                できない(外部では取得できるが、原則しない)
+                            </td>
+                            <td className="px-6 py-4">
+                                classを継承する
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                private
+                            </th>
+                            <td className="px-6 py-4">
+                                できない
+                            </td>
+                            <td className="px-6 py-4">
+                                なし
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+         </div>
+      </section>
+
+      <section>
+         <h2 className="text-2xl font-semibold mb-3">配列、for</h2>
          <p className="leading-7 mb-3">配列の作り方と各種回し方について</p>
 
          <div className="p-5 border-l-2">
             <h3 className="text-lg font-semibold mb-3">配列</h3>
-            <p className="leading-7 mb-3">この配列について、phpの学習上でつまづきました<br />そもそもなぜ配列が必要なのか？について的確に解説をしているサイトも参考書もなかったからです<br />自分が学習上で学び、配列の有効性について独自解釈しましたのでそれを以下に記載します</p>
-            <h3 className="text-lg font-semibold mb-3">配列は一覧表示、データの検索、繰り返しに便利</h3>
-            <p className="leading-7 mb-3">まず、1000ほどもあるデータを変数に代入するとします<br />その場合、変数も1000準備しなければなりません<br />特にデータは1000どころか10000、ときには100000になる場合もあります<br />これを解消できるのが配列です</p>
-            <div className="w-full mb-3">
-               <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-                  <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
-                     <div className="items-center justify-center dark:bg-gray-800">
-                     <p><span className="font-semibold">変数</span>で表現する場合</p>
-                        {SyntaxCode('php','array01')}
-                     </div>
-                     <div className="items-center justify-center dark:bg-gray-800">
-                     <p><span className="font-semibold">配列</span>で表現する場合</p>
-                        {SyntaxCode('php','array02')}
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <p className="leading-7 mb-3">上記どちらの場合でも、データを格納しそれを表示させることができますが、<br />
-            配列の方が圧倒的に合理的です<br />
-            また、配列は一覧表示にも有効です<br />
-            forもしくはforeachで回せますが、回数や順番で制限したい場合はfor、全てを表示させたい場合はforeachで表示させるのが一般的です<br />
-            とはいえ、実際にどのような違いがあるのか分かりにくいので、稼働させて確認するのが一番分かりやすいでしょう</p>
+            <p className="leading-7 mb-3">また、配列は一覧表示に有効です<br />
+            pythonには{WrapCode("foreach")}がなく、{WrapCode("for")}のみです<br />
+            具体的には以下のように回します</p>
             <p className="font-semibold">forで配列を回す</p>
-            {SyntaxCode('php','for')}
-            <p className="leading-7 mb-3">上記構文をざっくりした解説はコメントアウトにて説明されていますが、<br />
-            $xの配列の0番目、1番目...と続き、3番目までをechoする構文です<br />
-            もちろんfor文で配列を表示させることは可能ですし、具体的にx番目からx番目まで表示、などの場合は有効なのですが<br />
-            例えば配列が何番目まで存在しているかが不明なケースは存在していない配列を指定するとエラーが発生するため、issetもしくはemptyなどを必要とします<br />
-            数に関わらず、配列が全て表示され切るまで表示させる場合はforeachが有効でしょう</p>
-            <p className="font-semibold">foreachで配列を回す</p>
-            {SyntaxCode('php','foreach')}
-            <p className="leading-7 mb-3">数の指定などをしなくても、すべての配列が表示されます<br />
-            forとforeachは似ているようで異なっているため、用途に基づいて利用しましょう</p>
+            {SyntaxCode('python','for.py')}
+            <p className="leading-7 mb-3">forがforeachと同じ機能を果たしていることが分かります<br />
+            ではphpでは取得できたインデックスや、phpでのfor文のように回数で制限する場合はどうすれば良いでしょうか<br />
+            以下のように表現できます</p>
+            <p className="font-semibold">forでインデックスを取得</p>
+            <p className="leading-7">インデックスを取得するには{WrapCode("range")}を指定する必要がある</p>
+            {SyntaxCode('python','foreach01.py')}
+            <p className="font-semibold">forのような表現</p>
+            {SyntaxCode('python','foreach02.py')}
+            <p className="leading-7 mb-3">pythonでは{WrapCode("for")}のみで{WrapCode("foreach")}と同じ役割を果たします</p>
 
             <hr className="my-5" />
 
             <p className="font-semibold">データの検索</p>
-            <p className="leading-7 mb-3">配列から配列を作成することで、簡易的なデータ検索が可能です<br />
-            配列を回して、その中で該当となるデータのみ格納する配列を新規に作成すると、検索済みデータの配列を作成できます</p>
-            <p>実際のコードは以下です</p>
-            {SyntaxCode('php','foreach_search')}
-            <p>新規に検索データの配列を作成する場合はforよりも、<br />
-            繰り返しの処理に向いている、foreachの方が分かりやすく且つ作りやすい構造です<br /><br />
+            <p className="leading-7 mb-3">phpでは配列から配列を作成することで、データ検索をするのはもちろんのこと<br />
+            pythonでは配列を回す際に条件をつけることができます<br />
+            例えば、配列のデータに「e」が含まれる場合のみ取得する場合です</p>
+            <p className="font-semibold">配列を条件つきで{WrapCode("print")}する</p>
+            {SyntaxCode('python','foreach_cond.py')}
+            <p className="font-semibold">配列を条件つきで回して配列作成</p>
+            {SyntaxCode('python','foreach_search.py')}
+            <p>pythonの{WrapCode("for")}はインデントをつけるだけで、括る必要もないので、楽ですね<br /><br />
             繰り返しの処理で言うと、例えばすべてのデータに🐶をつける場合も</p>
-            {SyntaxCode('php','foreach_dogs')}
-            {SyntaxCode('sh','delete_result')}
+            {SyntaxCode('python','foreach_dogs.py')}
             <p>で可能です<br />
-            phpを深く学ぶまで配列の利点はわかりにくいものですが、<br />
-            実務で利用するにあたり、検索や繰り返しの処理で重要な役割を果たしていることに気づきました</p>
+            pythonでも{WrapCode("for")}は、phpと同等の機能を持っていて、なおかつforのみで全て賄えるのでシンプルですね</p>
+
+         </div>
+
+      </section>
+
+      <section>
+         <h2 className="text-2xl font-semibold mb-3">CRUD</h2>
+         <p className="leading-7 mb-3">dbにおける作成（Create）、読み出し（Read）、更新（Update）、削除（Delete）を一挙解説</p>
+
+         <div className="p-5 border-l-2">
+            <p className="font-semibold mb-3">CRUDを始める前に</p>
+            <p className="leading-7 mb-3">前提としてmysqlにdatabase名(python)を作成、user(guest)を作成し、guestに対してpythonへのすべての権限を付与しています<br />
+            データベースpythonにはtoyというテーブルを作成し、id,nameをカラムとして登録しました</p>
+            {SyntaxCode('sh','db_python.sh')}
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">Create</p>
+            <p className="leading-7">早速crudのc、create(作成)から開始します<br />
+            create(dbの追加)するケースもありますが、ほとんどの場合{WrapCode('insert')}(データの追加)が多いです<br />
+            よってcreateよりも先に{WrapCode('insert')}について記載します</p>
+            {SyntaxCode('php','create.php')}
+            <p>実際に登録されたかどうかを確認するために<br />
+            データを読み込む、readするphpを作成する前に、shell上でコマンドを利用し中身を見てみましょう</p>
+            {SyntaxCode('sh','create_result.sh')}
+
+            <hr className="my-5" />
 
          </div>
 
