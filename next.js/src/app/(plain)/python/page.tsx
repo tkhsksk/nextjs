@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 // import Test from '@/app/common';
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { gml } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import Link  from 'next/link'
 import fs from 'fs'
 
 export const metadata: Metadata = {
@@ -13,7 +14,10 @@ export const metadata: Metadata = {
 function SyntaxCode(lang: string, file: string) {
    const text  = fs.readFileSync("../"+lang+"/"+file+"", 'utf8')
    const lines = text.toString().split('¥n')
-   return <div className="grid"><SyntaxHighlighter language={lang} style={gml} className="my-3">{lines}</SyntaxHighlighter></div>;
+   return <div className="grid">
+   <p className="absolute text-base px-2 bg-slate-500 text-white">{file}</p>
+   <SyntaxHighlighter language={lang} style={gml} className="mb-3 mt-6">{lines}</SyntaxHighlighter>
+   </div>;
 }
 
 function WrapCode(txt: string) {
@@ -253,10 +257,16 @@ export default function Home() {
          <p className="leading-7 mb-3">dbにおける作成（Create）、読み出し（Read）、更新（Update）、削除（Delete）を一挙解説</p>
 
          <div className="p-5 border-l-2">
-            <p className="font-semibold mb-3">CRUDを始める前に</p>
+            <p className="font-semibold mb-3">CRUDを始める前に①</p>
             <p className="leading-7 mb-3">前提としてmysqlにdatabase名(python)を作成、user(guest)を作成し、guestに対してpythonへのすべての権限を付与しています<br />
             データベースpythonにはtoyというテーブルを作成し、id,nameをカラムとして登録しました</p>
             {SyntaxCode('sh','db_python.sh')}
+            <p className="font-semibold mb-3">CRUDを始める前に②</p>
+            <p className="mb-3">pythonでdbを操作するためのモジュール、{WrapCode('import MySQLdb')}を使うにあたって、<br />
+            pythonの仮装環境を作成しなければいけません</p>
+            {SyntaxCode('sh','dev_python.sh')}
+            <p className="mb-3">ルートディレクトリに仮装環境{WrapCode('python_env')}を作成し、<br />
+            {WrapCode('import MySQLdb')}モジュールを扱うために、{WrapCode('mysqlclient')}を{WrapCode('pip')}でインストールしました</p>
 
             <hr className="my-5" />
 
@@ -264,13 +274,92 @@ export default function Home() {
             <p className="leading-7">早速crudのc、create(作成)から開始します<br />
             create(dbの追加)するケースもありますが、ほとんどの場合{WrapCode('insert')}(データの追加)が多いです<br />
             よってcreateよりも先に{WrapCode('insert')}について記載します</p>
-            {SyntaxCode('php','create.php')}
-            <p>実際に登録されたかどうかを確認するために<br />
-            データを読み込む、readするphpを作成する前に、shell上でコマンドを利用し中身を見てみましょう</p>
-            {SyntaxCode('sh','create_result.sh')}
+            <p className="mb-3">その上で、以下の{WrapCode('insert')}するプログラムを{WrapCode('python ~/git/ksk318.me/python/create.py')}で実行します<br />
+            以下create.pyの内容です</p>
+            {SyntaxCode('python','create.py')}
+            <p className="mb-3">実際に登録されたかどうかを確認するために<br />
+            データを読み込む、readするpyを作成する前に、shell上でコマンドを利用し中身を見てみましょう</p>
+            {SyntaxCode('sh','create_result_python.sh')}
+            データベースpythonの{WrapCode('toy')}テーブルにデータが登録されていることが確認できました
 
             <hr className="my-5" />
 
+            <p className="font-semibold mb-3">Read</p>
+            <p className="leading-7 mb-3">shell上ではデータが登録されていることが分かりましたが、<br />
+            python上でdbに接続して、配列として読み込みたいケースもあります<br />
+            再度仮想環境に接続して、以下を実行してみましょう</p>
+            {SyntaxCode('python','read.py')}
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">Update</p>
+            <p className="leading-7 mb-3">先ほどcreateしたデータを更新してみましょう</p>
+            <div className="p-6 py-3 border border-gray-200 rounded-lg shadow bg-slate-200 w-full grid my-3">
+                <p className="font-semibold">実行内容</p>
+                <p>id:1、name:<span className="font-semibold">bear</span>をid:1、name:<span className="font-semibold">robot</span>に更新(update)する</p>
+            </div>
+            <p className="leading-7 mb-3">セキュリティ上、更新データの内容をbindしています<br />
+            bindする場合はsqlを実行するexecuteの第二引数に指定をします</p>
+            {SyntaxCode('python','update.py')}
+            <p className="mb-3">実際にupdate(更新)されたかどうかを確認するために<br />
+            read.pyを実行して、テーブルの中身を確認してみます</p>
+            {SyntaxCode('sh','update_result_python.sh')}
+            <p>更新されていることが確認できましたね</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">Delete</p>
+            <p className="leading-7 mb-3">最後にデータを削除してみましょう<br />
+            ただし、phpで記したとおり、業務上deleteはあまり使いません</p>
+            {SyntaxCode('python','delete.py')}
+            <p className="mb-3">実際にupdate(更新)されたかどうかを確認するために<br />
+            read.pyを実行して、テーブルの中身を確認してみます</p>
+            {SyntaxCode('sh','delete_result_python.sh')}
+            <p>データを削除したので、テーブルtoyから取得したデータが空になっていることが確認できます</p>
+
+         </div>
+
+      </section>
+
+      <section>
+         <h2 className="text-2xl font-semibold mb-3">フォームからの送信、クエリパラメータの取得</h2>
+         <p className="leading-7 mb-3">phpにおけるPOSTとGETと同等の機能について、pythonでの実行方法を記す</p>
+
+         <div className="p-5 border-l-2">
+            <p className="font-semibold mb-3">postするformのhtml</p>
+            <p className="leading-7 mb-3">データを{WrapCode('post')}するためのhtmlが必要である<br />
+            これに関してはphpと同様</p>
+            {SyntaxCode('html','python_form.html')}
+            <p className="mb-3">postした先の{WrapCode('../python/post.py')}には、以下の内容が記述されている</p>
+            {SyntaxCode('python','post.py')}
+            <p className="mb-3">{WrapCode('print(text)')}によって{WrapCode('post')}されたデータが取得できると思います</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">クエリパラメータの取得</p>
+            <p className="mb-3">urlを指定して、クエリパラメータの取得が可能である<br />
+            {WrapCode('https://example.com')}に仮のパラメータを指定し、取得してみます</p>
+            {SyntaxCode('python','get.py')}
+            <p className="mb-3">もしクエリに応じた結果を表示させたい場合は、ページ表示実行と同時にget.pyを実行することで、<br />
+            実行と取得が可能でしょう</p>
+         </div>
+
+      </section>
+
+      <section>
+         <h2 className="text-2xl font-semibold mb-3">Django</h2>
+         <p className="leading-7 mb-3">phpにおけるPOSTとGETと同等の機能について、pythonでの実行方法を記す</p>
+
+         <div className="p-5 border-l-2">
+            <p className="font-semibold mb-3">postするformのhtml</p>
+            <p className="leading-7 mb-3">データを{WrapCode('post')}するためのhtmlが必要である<br />
+            これに関してはphpと同様</p>
+            {SyntaxCode('sh','install_django.sh')}
+            <p className="leading-7 mb-3">ポート8000で表示確認するために<br />
+            ec2のセキュリティグループでインバウンドルールの8000番を許可します<br />
+            ipと8000ポート指定URLで表示が確認できます<br />
+            <Link href="http://34.197.33.76:8000/" target="_blank">http://34.197.33.76:8000/</Link>
+            </p>
          </div>
 
       </section>

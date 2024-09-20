@@ -11,13 +11,18 @@ export const metadata: Metadata = {
 };
 
 function Syntax(lang: string, code: string) {
-   return <div className="grid"><SyntaxHighlighter language={lang} style={gml} className="my-3">{code}</SyntaxHighlighter></div>;
+   return <div className="grid">
+   <SyntaxHighlighter language={lang} style={gml} className="my-3">{code}</SyntaxHighlighter>
+   </div>;
 }
 
 function SyntaxCode(lang: string, code: string) {
    const text  = fs.readFileSync("../"+lang+"/"+code+"."+lang+"", 'utf8')
    const lines = text.toString().split('¥n')
-   return <div className="grid"><SyntaxHighlighter language={lang} style={gml} className="my-3">{lines}</SyntaxHighlighter></div>;
+   return <div className="grid">
+   <p className="absolute text-base px-2 bg-slate-500 text-white">{code}.{lang}</p>
+   <SyntaxHighlighter language={lang} style={gml} className="mb-3 mt-6">{lines}</SyntaxHighlighter>
+   </div>;
 }
 
 function WrapCode(txt: string) {
