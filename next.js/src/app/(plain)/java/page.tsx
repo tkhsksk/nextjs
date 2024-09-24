@@ -64,7 +64,7 @@ export default function Home() {
             ファイルをコンパイルする必要がある<br />
             その手順を含めてHello World.を出力する方法を記載します<br />
             {WrapCode('java')}で文字列を表示する場合は、以下の表記で実行できます</p>
-            {SyntaxCode('java','helloworld')}
+            {SyntaxCode('java','Helloworld')}
             <p className="leading-7 mb-3">{WrapCode('java')}の構文は{WrapCode('class')}および{WrapCode('public static void main(String[] args)')}が必要です<br />
             基本的にこの体系がないとコンパイルの時点でエラーが発生するのでエラーメッセージを元に確認しましょう<br />
             この.javaファイルに対して以下のコマンドを実行しコンパイルします</p>
