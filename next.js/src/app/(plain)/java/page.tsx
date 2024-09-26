@@ -254,52 +254,58 @@ export default function Home() {
 
          <div className="p-5 border-l-2">
             <p className="font-semibold mb-3">CRUDを始める前に</p>
-            <p className="leading-7 mb-3">前提としてmysqlにdatabase名(php)を作成、user(guest)を作成し、guestに対してphpへのすべての権限を付与しています<br />
-            データベースphpにはtoyというテーブルを作成し、id,nameをカラムとして登録しました</p>
-            {SyntaxCode('sh','db')}
+            <p className="leading-7 mb-3">前提としてmysqlにdatabase名{WrapCode('java')}を作成、user(guest)を作成し、guestに対して{WrapCode('java')}へのすべての権限を付与しています<br />
+            データベース{WrapCode('java')}には{WrapCode('toy')}というテーブルを作成し、id,nameをカラムとして登録しました</p>
+            {SyntaxCode('sh','db_java')}
+            <p className="leading-7 mb-3">また、db操作するためには{WrapCode('jdbcコネクタ')}が別途必要となるため、{WrapCode('mysql-connector-j-9.0.0.jar')}をダウンロードし<br />
+            {WrapCode('lib')}フォルダに移動させてクラスパスを通す必要があります</p>
+            {SyntaxCode('sh','use_jdbc')}
+            <p className="leading-7 mb-3">ここまででようやく{WrapCode('CRUD')}の操作が可能となります</p>
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">Create</p>
             <p className="leading-7">早速crudのc、create(作成)から開始します<br />
-            php上でcreate(dbの追加)するケースもありますが、ほとんどの場合{WrapCode('insert')}(データの追加)が多いです<br />
+            java上でcreate(dbの追加)するケースもありますが、ほとんどの場合{WrapCode('insert')}(データの追加)が多いです<br />
             よってcreateよりも先に{WrapCode('insert')}について記載します<br />
             {WrapCode('insert')}には各種方法がありますが、mysqliにて{WrapCode('insert')}する例を示します<br />
-            データベース{WrapCode('php')}、テーブル{WrapCode('toy')}に{WrapCode('id:1、name:bear')}をinsertするphpが以下です</p>
-            {SyntaxCode('php','create')}
+            これまでhostは{WrapCode('localhost')}などになっていましたが、javaの場合は{WrapCode('jdbc')}を利用するため{WrapCode('jdbc:mysql://localhost/java')}と指定します、ここだけ多言語とは違う部分です<br />
+            データベース{WrapCode('java')}、テーブル{WrapCode('toy')}に{WrapCode('id:1、name:bear')}をinsertするjavaが以下です</p>
+            {SyntaxCode('java','insert')}
             <p>実際に登録されたかどうかを確認するために<br />
-            データを読み込む、readするphpを作成する前に、shell上でコマンドを利用し中身を見てみましょう</p>
-            {SyntaxCode('sh','create_result')}
+            データを読み込む、readするjavaを作成する前に、shell上でコマンドを利用し中身を見てみましょう</p>
+            {SyntaxCode('sh','insert_result_java')}
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">Read</p>
-            <p>dbを直に覗くとデータが追加されていることが確認できました<br />
+            <p className="mb-3">dbを直に覗くとデータが追加されていることが確認できました<br />
             insertを応用すれば、ecサイトの会員登録、商品登録、カテゴリー登録など、または情報サイトへの情報登録、ブログサイトへの日記登録などに活用できます<br />
             ですが実際に各種サイトデータを利用する場合は、登録後にread(読み込み)し出力させなければなりません</p>
-            <p>それではphpから{WrapCode('select')}を使って出力してみます</p>
-            {SyntaxCode('php','read')}
-            <p>var_dumpで出力することができました</p>
+            <p className="mb-3">それではjavaから{WrapCode('select')}を使って出力してみます<br />
+            そのままdbのデータを表示させることも可能ですが、今回はdbのデータを配列に格納し、その配列を回して表示させるパターンも記載します</p>
+            {SyntaxCode('java','read')}
+            <p>配列に格納しておくと、別コントローラにデータを渡したり、検索結果を表示させるときに有効です</p>
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">Update</p>
-            <p>dbに登録したデータを変更したい場合もあるかと思います、その場合は{WrapCode('update')}を使ってデータを更新します<br />
+            <p className="mb-3">dbに登録したデータを変更したい場合もあるかと思います、その場合は{WrapCode('update')}を使ってデータを更新します<br />
             先ほど{WrapCode('insert')}したデータをbear→robotに{WrapCode('update')}してみましょう</p>
-            {SyntaxCode('php','update')}
+            {SyntaxCode('java','update')}
             <p>実際に更新されたことを確認しましょう</p>
-            {SyntaxCode('sh','update_result')}
+            {SyntaxCode('sh','update_result_java')}
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">Delete</p>
-            <p>実際にはdbからデータを削除することはほぼなくデータベースを設計する際にvisibleなどの項目を設け、<br />
+            <p className="mb-3">実際にはdbからデータを削除することはほぼなくデータベースを設計する際にvisibleなどの項目を設け、<br />
             そこに公開非公開をフラッグとすることが多いです<br />
             特にdbからデータを削除してしまうと二度とデータを閲覧できなくなってしまいます<br />
             そのため、deleteするケースは少ないですが、deleteする場合は{WrapCode('delete')}を使ってデータを更新します</p>
-            {SyntaxCode('php','delete')}
+            {SyntaxCode('java','delete')}
             <p>実際に削除されたことを確認しましょう</p>
-            {SyntaxCode('sh','delete_result')}
+            {SyntaxCode('sh','delete_result_java')}
          </div>
 
       </section>
@@ -309,13 +315,21 @@ export default function Home() {
          <p className="leading-7 mb-3">別のページにデータを送る{WrapCode('POST')}、クエリパラメータを取得する{WrapCode('GET')}</p>
 
          <div className="p-5 border-l-2">
-            <p className="font-semibold mb-3">htmlページに密接に関わる</p>
-            <p className="leading-7">{WrapCode('POST')}は「登録する」ボタンなどをクリックした際に別ページやコントローラなどにデータを受け渡し、処理する際に利用します<br />
+            <p className="font-semibold mb-3">POST</p>
+            <p className="leading-7 mb-3">{WrapCode('POST')}は「登録する」ボタンなどをクリックした際に別ページやコントローラなどにデータを受け渡し、処理する際に利用します<br />
             また、getは主にクエリパラメータを取得しています<br />
             ページロード時に消えてしまう{WrapCode('POST')}に対して、{WrapCode('GET')}はurl上のパラメータを取得するため、反恒久的にデータを保持することが可能です<br />
-            {WrapCode('POST,GET')}も実行できるphpを作成する予定でしたが<br />
-            htmlも関わってくるため、実行できるはずのプログラムを以下に示します</p>
-            {SyntaxCode('php','post_get')}
+            {WrapCode('POST,GET')}も実行できるjavaを作成する予定でしたが<br />
+            htmlやTomcatも関わってくるため、実行できるはずのプログラムを以下に示します</p>
+            {SyntaxCode('html','java_form')}
+            {SyntaxCode('java','post')}
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">GET</p>
+            <p className="leading-7 mb-3">クエリパラメータを取得する場合です<br />
+            urlの／以降が{WrapCode('?name=hoge')}の場合、{WrapCode('hoge')}という実行結果が表示されるかと思います</p>
+            {SyntaxCode('java','get')}
          </div>
 
       </section>

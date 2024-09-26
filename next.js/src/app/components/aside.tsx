@@ -18,8 +18,8 @@ export default function Aside() {
       <Link href="/">
         <Image
           className="dark:invert mb-3"
-          src="/test.png"
-          alt="Next.js logo"
+          src={pathname+'.png'}
+          alt="Next.js logo {'/'+pathname+'.png'}"
           width={180}
           height={38}
           priority

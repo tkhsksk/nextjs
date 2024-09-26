@@ -10,7 +10,7 @@
 	// 文字コードをセット
 	mysqli_set_charset($mysqli, 'utf8');
 
-	$stmt = $mysqli->prepare('UPDATE toy SET name = ? WHERE ?');// toyにbindしたデータでupdate
+	$stmt = $mysqli->prepare('UPDATE toy SET name = ? WHERE id = ?');// toyにbindしたデータでupdate
 	$stmt->bind_param('si', $name, $id);// この値をbindする、siはそれぞれの型を指定、str,int
 
 	$name = 'robot';// bindする実際の値

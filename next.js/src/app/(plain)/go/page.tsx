@@ -60,29 +60,33 @@ export default function Home() {
 
          <div className="p-5 border-l-2">
             <h3 className="text-lg font-semibold mb-3">Hello World.</h3>
-            <p className="leading-7">phpで文字列を表示する場合は、以下の表記で実行できます</p>
-            {SyntaxCode('php','helloWorld')}
-            <p className="leading-7 mb-3">Hello World.以外の文字列を表記する場合は、上記コードのHello World.部分をそれ以外の文字列に置き換えるだけです<br />次にphpの文字列を改行したい場合があります、htmlでは単純に{WrapCode('br')}タグのみで改行できましたがphpで実行した場合以下の出力になります
+            <p className="leading-7">goで文字列を表示する場合は、以下のファイルを{WrapCode('go run ファイル名')}実行できます</p>
+            {SyntaxCode('go','helloWorld')}
+            <p className="leading-7 mb-3">Hello World!以外の文字列を表記する場合は、上記コードのHello World!部分をそれ以外の文字列に置き換えるだけです<br />
+            次にgoの文字列を改行したい場合があります、htmlでは単純に{WrapCode('br')}タグのみで改行できましたが{WrapCode('go')}で実行した場合以下の出力になります
             </p>
             <p className="font-semibold">実行内容</p>
-            {SyntaxCode('php','helloWorld_br')}
-            <p className="mb-3">htmlタグをphpの文中挟むとそのまま表示されてしまいます。<br />php中の改行には\nを用います。</p>
+            {SyntaxCode('go','helloWorld_br')}
+            <p className="mb-3">htmlタグを{WrapCode('go')}の文中挟むとそのまま表示されてしまいます。<br />go中の改行には末尾の半角スペース対策と同じく\nを用います。</p>
             <p className="font-semibold">実行結果</p>
             {Syntax('shell','Hello World.\nBye world.')}
 
-               <hr className="my-5" />
+            <hr className="my-5" />
 
             <h3 className="text-lg font-semibold mb-3">変数</h3>
-            <p className="leading-7">文字列にテキストや数値を格納しておくことも可能です<br />中学生の数学で学習したx=1,y=2と同じ要領です</p>
+            <p className="leading-7 mb-3">文字列にテキストや数値を格納しておくことも可能です<br />中学生の数学で学習したx=1,y=2と同じ要領です</p>
             <p className="font-semibold">実行内容</p>
-            {SyntaxCode('php','var')}
+            {SyntaxCode('go','var')}
             <p className="font-semibold">実行結果</p>
             {Syntax('shell','test')}
-            <p className="mb-3">{WrapCode('x="test";')}でxにtestを格納し、それをechoで呼び出します<br />文字を結合する場合にはx,yにそれぞれの文字列を格納して.(ドット)で結合することができます</p>
+            <p className="mb-3">{WrapCode('x := "test"')}でxにtestを格納し、それを{WrapCode('fmt.Println()')}で呼び出します<br />文字を結合する場合にはx,yにそれぞれの文字列を格納して+(プラス)で結合することができます</p>
             <p className="font-semibold">実行内容</p>
-            {SyntaxCode('php','join')}
+            {SyntaxCode('go','join')}
             <p className="font-semibold">実行結果</p>
             {Syntax('shell','testhoge')}
+            <p>ここまでで分かりましたが、pythonやjavaで厳格にされていた変数の型が、phpくらい簡略化されているようです<br />
+            なので{WrapCode('var s string := "test"')}といったように厳格に型を宣言することも可能ですが<br />
+            {WrapCode('s := "test"')}、{WrapCode('v := 11')}といったようにタブルクォーテーションのあるなしでstrとintを区別できます</p>
          </div>
 
       </section>
@@ -94,34 +98,35 @@ export default function Home() {
          <div className="p-5 border-l-2">
             <h3 className="text-lg font-semibold mb-3">計算</h3>
             <p className="leading-7">単純にプラスの符号を用いて、足し算をします</p>
-            {SyntaxCode('php','calc01')}
+            {SyntaxCode('go','calc01')}
             <p className="font-semibold">実行結果</p>
             {Syntax('shell','6')}
             <p className="leading-7 mb-3">引き算、掛け算、割り算も以下の符号で計算可能です</p>
             <p className="font-semibold">実行内容</p>
-            {SyntaxCode('php','calc02')}
+            {SyntaxCode('go','calc02')}
             <p className="font-semibold">実行結果</p>
             {Syntax('shell','4\n6\n3')}
             <p className="mb-3">次に変数に数字を代入して計算をしてみます、数字の場合はダブルクォーテーションで囲む必要はありません</p>
             <p className="font-semibold">実行内容</p>
-            {SyntaxCode('php','calc03')}
+            {SyntaxCode('go','calc03')}
             <p className="font-semibold">実行結果</p>
             {Syntax('shell','5')}
-            <p>phpではこれでも全く問題はないのですが、本来は型を宣言する必要があります<br />次の章で解説します</p>
 
             <hr className="my-5" />
 
             <h3 className="text-lg font-semibold mb-3">型宣言</h3>
-            <p className="leading-7">本来、変数に値を代入する場合は、型の宣言が必要です<br />phpの場合、そこが非常に曖昧になっているため宣言せずとも計算が可能ですが<br />宣言した上での計算をしましょう</p>
-            <p className="leading-7 mb-3">例えば7という文字があった場合、文字としての7とも捉えられるし、数字としての7とも捉えられます<br />この7は数字としての7
-            だよ、と宣言するのが型宣言です</p>
-            {SyntaxCode('php','type_int')}
+            <p className="leading-7">本来、変数に値を代入する場合は、型の宣言が必要です<br />
+            goの場合、そこが非常に曖昧になっているため宣言せずとも計算が可能ですが<br />宣言した上での計算をしましょう</p>
+            <p className="leading-7 mb-3">例えば7という文字があった場合、文字としての7とも捉えられるし、数字としての7とも捉えられます<br />
+            この7は数字としての7だよ、と宣言するのが型宣言です<br />
+            この宣言をしないと計算ができなかったり、文字列の結合ができなかったりします</p>
+            {SyntaxCode('go','type_int')}
             <p className="leading-7 mb-3">代入する値を入力する前に(int)をつけるだけで、「数字の7」と宣言することができます<br />では、以下の場合どうなるでしょうか</p>
-            {SyntaxCode('php','type_str')}
+            {SyntaxCode('go','type_str')}
             <p className="mb-3">文字列としての7と8を宣言して、それを足しています</p>
             <p className="font-semibold">実行結果</p>
-            {Syntax('shell','15')}
-            <p className="mb-3">文字列と宣言しても、足し算が可能です<br />型を宣言せずに足し算や結合ができる言語は極めて特殊です</p>
+            {SyntaxCode('sh','type_str_result')}
+            <p className="mb-3">数字を文字列と宣言した場合、エラーが発生します<br />型を宣言した場合はそれに見合った操作をしなければエラーになるようです</p>
          </div>
 
       </section>
