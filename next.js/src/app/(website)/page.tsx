@@ -22,10 +22,10 @@ export default function Home() {
         />
 
         <ul>
-        {Datas.menus.map(item => {
-          return <li className="font-[family-name:var(--font-geist-mono)]" key={item.id}><Link href={{ pathname:item.title}}>{item.title}</Link></li>;
-        })}
-      </ul>
+          {Datas.menus.map(item => {
+            return <li className="font-[family-name:var(--font-geist-mono)]" key={item.id}><Link href={{ pathname:item.title}}>{item.title}</Link></li>;
+          })}
+        </ul>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a

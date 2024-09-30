@@ -2,6 +2,7 @@
 
 import localFont from "next/font/local";
 import "@/app/globals.css";
+import "@/../public/css/customize.css";
 
 import Header from '@components/header';
 import Aside  from '@components/aside';

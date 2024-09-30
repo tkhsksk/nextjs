@@ -54,7 +54,7 @@ export default function Home() {
          </table>
       </div>
 
-      <section>
+      <section id="helloWorld">
          <h2 className="text-2xl font-semibold mb-3">Hello World、変数</h2>
          <p className="leading-7 mb-3">文字列としてHello Worldの出力、変数への代入について記述します</p>
 
@@ -91,7 +91,7 @@ export default function Home() {
 
       </section>
 
-      <section>
+      <section id="calc">
          <h2 className="text-2xl font-semibold mb-3">計算と型</h2>
          <p className="leading-7 mb-3">数字での計算（足し算、引き算、掛け算、割り算）と型について</p>
 
@@ -131,120 +131,83 @@ export default function Home() {
 
       </section>
 
-      <section>
-         <h2 className="text-2xl font-semibold mb-3">関数、Class</h2>
+      <section id="func,struct">
+         <h2 className="text-2xl font-semibold mb-3">関数、struct</h2>
          <p className="leading-7 mb-3">関数の宣言、public private protectedについて</p>
 
          <div className="p-5 border-l-2">
             <h3 className="text-lg font-semibold mb-3">関数</h3>
             <p className="leading-7">プログラム中に何度も出現する数値を変数に代入することで、再利用が可能ですが<br />計算式や定まった結合などを行う場合は関数を用います<br />以下は2つの数字を足してから1を引く、という計算を何度も使う場合です</p>
-            {SyntaxCode('php','function')}
+            {SyntaxCode('go','function')}
             <p className="mb-3">x,yという変数を設定し、それぞれを足した上で1を引き、それをreturnで返り値にしています<br />この関数をechoで表示することによって計算後の結果を表示させます<br />よって2+3-1が計算され以下が結果となります</p>
-            {Syntax('shell','4')}
+            {Syntax('shell','2\n15 return!')}
 
             <hr className="my-5" />
 
-            <h3 className="text-lg font-semibold mb-3">Class</h3>
-            <p className="leading-7 mb-3">また関数を使う場合、その関数をさらに囲うためにClassというものがというものが定義できます<br />利点としては、1つのサイト内でfunctionの数は何十にも及ぶ可能性があるため、それらをclassでまとめる際に有効です<br />このClassの設定、またClass内の関数を利用する場合の例を以下に示します</p>
-            {SyntaxCode('php','class')}
-            <p className="leading-7 mb-3">基本的な説明は、コード内にコメントアウトで表記していますが、functionのアクセス修飾子については以下に詳細を表記します</p>
+            <h3 className="text-lg font-semibold mb-3">struct</h3>
+            <p className="font-semibold">・goにClassはない</p>
+            <p className="leading-7 mb-3">また関数を使う場合、その関数をさらに囲うためにこれまではClassというものがというものが定義できましたが<br />
+            goではclassという概念がないです、そのためclassで関数をまとめたりアクセス制限などができません<br />
+            代わりにgoでは{WrapCode('struct')}という概念があり、これがclassの役割を果たします<br /><br />
+            まず、この{WrapCode('struct')}を活用して商品の合計金額を出力してみます</p>
+            {SyntaxCode('go','struct')}
+            <p className="leading-7 mb-3">次に内部パッケージを自作して、{WrapCode('import')}する方法です<br />
+            これにはgoの{WrapCode('モジュールモード')}を利用する必要があり、ディレクトリ構成を考えた上で、コマンドを実行する必要があります<br />
+            以下実行手順です、まずディレクトリ構成は以下とします</p>
 
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-4">
-                <table className="w-full text-left rtl:text-right text-gray-800 dark:text-gray-400">
-                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" className="px-6 py-3">
-                                修飾子名
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                class外で取得できるか
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                class外で取得する方法
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                public
-                            </th>
-                            <td className="px-6 py-4">
-                                できる
-                            </td>
-                            <td className="px-6 py-4">
-                                
-                            </td>
-                        </tr>
-                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                protected
-                            </th>
-                            <td className="px-6 py-4">
-                                できない
-                            </td>
-                            <td className="px-6 py-4">
-                                classを継承する
-                            </td>
-                        </tr>
-                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                private
-                            </th>
-                            <td className="px-6 py-4">
-                                できない
-                            </td>
-                            <td className="px-6 py-4">
-                                なし
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div className="block max-w-sm p-6 border border-gray-200 rounded-lg shadow bg-slate-200 mb-3">
+               <p className="font-semibold mb-3 text-cyan-950">前提となるディレクトリ構成</p>
+               {SyntaxCode('sh','go_dir')}
             </div>
 
-            <p className="leading-7 mb-3">アクセス修飾子にルールは特にないですが、そのclass内のみで利用する場合はなるべくprivate、<br />各所で利用するfunctionの場合はpublicにするなど、セキュリティ対策として有効です</p>
+            <p className="leading-7 mb-3">{WrapCode('モジュールモード')}の実行にはルートとなるディレクトリを作成して、その配下に取得するパッケージを登録します<br />
+            取得元はmain.go、取得先はprice.goとしています<br />
+            price.goで実行する内容を見てみましょう</p>
+
+            {SyntaxCode('go','struct/pkg/price')}
+
+            <p className="leading-7 mb-3">Productメソッドを公開状態にし、main.goで取得できるようにしています<br />
+            このパッケージをmainで取得できるようにするには、main側でimportして読み込めるようにしなければなりません<br />
+            そのためには{WrapCode('モジュールモード')}を利用します<br />
+            以下コマンドです</p>
+
+            {SyntaxCode('sh','go_dir_init')}
+
+            <p className="leading-7 mb-3">{WrapCode('go mod init struct')}を実行すると、実行階層にgo.modが生成されます<br />
+            この位置がstructのルート位置となり、ルート/ディレクトリ(struct/pkg)でimportが可能となります<br />
+            main側で実行するプログラムです</p>
+
+            {SyntaxCode('go','struct/main')}
+
+            これを実行します
+
+            {SyntaxCode('sh','go_dir_run')}
+
+            <p className="leading-7 mb-3">classと同様に、外部で使う場合とpackage内部で使う場合で、公開非公開を使い分けましょう<br />
+            セキュリティには欠かせないstructです</p>
 
          </div>
 
       </section>
 
-      <section>
+      <section id="array">
          <h2 className="text-2xl font-semibold mb-3">配列、for、foreach</h2>
          <p className="leading-7 mb-3">配列の作り方と各種回し方について</p>
 
          <div className="p-5 border-l-2">
             <h3 className="text-lg font-semibold mb-3">配列</h3>
-            <p className="leading-7 mb-3">この配列について、phpの学習上でつまづきました<br />そもそもなぜ配列が必要なのか？について的確に解説をしているサイトも参考書もなかったからです<br />自分が学習上で学び、配列の有効性について独自解釈しましたのでそれを以下に記載します</p>
-            <h3 className="text-lg font-semibold mb-3">配列は一覧表示、データの検索、繰り返しに便利</h3>
-            <p className="leading-7 mb-3">まず、1000ほどもあるデータを変数に代入するとします<br />その場合、変数も1000準備しなければなりません<br />特にデータは1000どころか10000、ときには100000になる場合もあります<br />これを解消できるのが配列です</p>
-            <div className="w-full mb-3">
-               <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-                  <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
-                     <div className="items-center justify-center dark:bg-gray-800">
-                     <p><span className="font-semibold">変数</span>で表現する場合</p>
-                        {SyntaxCode('php','array01')}
-                     </div>
-                     <div className="items-center justify-center dark:bg-gray-800">
-                     <p><span className="font-semibold">配列</span>で表現する場合</p>
-                        {SyntaxCode('php','array02')}
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <p className="leading-7 mb-3">上記どちらの場合でも、データを格納しそれを表示させることができますが、<br />
-            配列の方が圧倒的に合理的です<br />
-            また、配列は一覧表示にも有効です<br />
-            forもしくはforeachで回せますが、回数や順番で制限したい場合はfor、全てを表示させたい場合はforeachで表示させるのが一般的です<br />
-            とはいえ、実際にどのような違いがあるのか分かりにくいので、稼働させて確認するのが一番分かりやすいでしょう</p>
+            <p className="leading-7 mb-3">この配列について、phpの学習上でつまづきました<br />
+            そもそもなぜ配列が必要なのか？について的確に解説をしているサイトも参考書もなかったからです<br />
+            自分が学習上で学び、配列の有効性について独自解釈しましたのでそれを以下に記載します</p>
             <p className="font-semibold">forで配列を回す</p>
-            {SyntaxCode('php','for')}
+            {SyntaxCode('go','for')}
             <p className="leading-7 mb-3">上記構文をざっくりした解説はコメントアウトにて説明されていますが、<br />
             $xの配列の0番目、1番目...と続き、3番目までをechoする構文です<br />
             もちろんfor文で配列を表示させることは可能ですし、具体的にx番目からx番目まで表示、などの場合は有効なのですが<br />
             例えば配列が何番目まで存在しているかが不明なケースは存在していない配列を指定するとエラーが発生するため、issetもしくはemptyなどを必要とします<br />
             数に関わらず、配列が全て表示され切るまで表示させる場合はforeachが有効でしょう</p>
             <p className="font-semibold">foreachで配列を回す</p>
-            {SyntaxCode('php','foreach')}
+            {SyntaxCode('go','forEach')}
             <p className="leading-7 mb-3">数の指定などをしなくても、すべての配列が表示されます<br />
             forとforeachは似ているようで異なっているため、用途に基づいて利用しましょう</p>
 
@@ -254,11 +217,11 @@ export default function Home() {
             <p className="leading-7 mb-3">配列から配列を作成することで、簡易的なデータ検索が可能です<br />
             配列を回して、その中で該当となるデータのみ格納する配列を新規に作成すると、検索済みデータの配列を作成できます</p>
             <p>実際のコードは以下です</p>
-            {SyntaxCode('php','foreach_search')}
+            {SyntaxCode('go','forEach_search')}
             <p>新規に検索データの配列を作成する場合はforよりも、<br />
             繰り返しの処理に向いている、foreachの方が分かりやすく且つ作りやすい構造です<br /><br />
             繰り返しの処理で言うと、例えばすべてのデータに🐶をつける場合も</p>
-            {SyntaxCode('php','foreach_dogs')}
+            {SyntaxCode('go','dog')}
             <p>で可能です<br />
             phpを深く学ぶまで配列の利点はわかりにくいものですが、<br />
             実務で利用するにあたり、検索や繰り返しの処理で重要な役割を果たしていることに気づきました</p>
@@ -267,47 +230,55 @@ export default function Home() {
 
       </section>
 
-      <section>
+      <section id="crud">
          <h2 className="text-2xl font-semibold mb-3">CRUD</h2>
          <p className="leading-7 mb-3">dbにおける作成（Create）、読み出し（Read）、更新（Update）、削除（Delete）を一挙解説</p>
 
          <div className="p-5 border-l-2">
             <p className="font-semibold mb-3">CRUDを始める前に</p>
-            <p className="leading-7 mb-3">前提としてmysqlにdatabase名(php)を作成、user(guest)を作成し、guestに対してphpへのすべての権限を付与しています<br />
-            データベースphpにはtoyというテーブルを作成し、id,nameをカラムとして登録しました</p>
-            {SyntaxCode('sh','db')}
+            <p className="leading-7 mb-3">前提としてmysqlにdatabase名(go)を作成、user(guest)を作成し、guestに対してgoへのすべての権限を付与しています<br />
+            データベースにはtoyというテーブルを作成し、id,nameをカラムとして登録しました</p>
+            {SyntaxCode('sh','db_go')}
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">Create</p>
             <p className="leading-7">早速crudのc、create(作成)から開始します<br />
-            php上でcreate(dbの追加)するケースもありますが、ほとんどの場合{WrapCode('insert')}(データの追加)が多いです<br />
-            よってcreateよりも先に{WrapCode('insert')}について記載します<br />
-            {WrapCode('insert')}には各種方法がありますが、mysqliにて{WrapCode('insert')}する例を示します<br />
-            データベース{WrapCode('php')}、テーブル{WrapCode('toy')}に{WrapCode('id:1、name:bear')}をinsertするphpが以下です</p>
-            {SyntaxCode('php','create')}
-            <p>実際に登録されたかどうかを確認するために<br />
-            データを読み込む、readするphpを作成する前に、shell上でコマンドを利用し中身を見てみましょう</p>
-            {SyntaxCode('sh','create_result')}
+            ユーザ名:パスワード@IPアドレス/データベース名の順で記述がgoの基本です<br />
+            create(dbの追加)するケースもありますが、ほとんどの場合{WrapCode('insert')}(データの追加)が多いため<br />
+            createではなく{WrapCode('insert')}について記載します<br />
+            データベース{WrapCode('go')}のテーブル{WrapCode('toy')}に{WrapCode('id:1、name:bear')}をinsertするgoが以下です</p>
+            {SyntaxCode('go','insert')}
+            <p className="leading-7 mb-3">実行すると{WrapCode('github.com/go-sql-driver/mysql')}がない旨のエラーが表示されます<br />
+            エラーの指示に従ってコマンドを実行します</p>
+            {SyntaxCode('sh','db_go_step')}
+            <p className="mb-3">実際に登録されたかどうかを確認するために<br />
+            shell上でコマンドを利用し中身を見てみましょう</p>
+            {SyntaxCode('sh','create_result_go')}
+            <p>dbにデータが登録されていることが確認できました<br />
+            insertは商品登録、会員登録など、新規のデータを追加する際に利用します</p>
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">Read</p>
-            <p>dbを直に覗くとデータが追加されていることが確認できました<br />
-            insertを応用すれば、ecサイトの会員登録、商品登録、カテゴリー登録など、または情報サイトへの情報登録、ブログサイトへの日記登録などに活用できます<br />
-            ですが実際に各種サイトデータを利用する場合は、登録後にread(読み込み)し出力させなければなりません</p>
-            <p>それではphpから{WrapCode('select')}を使って出力してみます</p>
-            {SyntaxCode('php','read')}
-            <p>var_dumpで出力することができました</p>
+            <p className="mb-3">コマンドでdbに接続し表示させるだけでなく、golangでdbを読み取り、配列として表示させる文を考えてみます<br />
+            {WrapCode('struct')}の項目で学習した、構造体を活かして、データを格納するための構造体をmain外で宣言し、そこに格納するようにしてみます<br />
+            構造としては、db上のデータと同じidとnameのみの構造とします</p>
+            <p className="mb-3">それではgoから{WrapCode('select')}を使って出力してみます</p>
+            {SyntaxCode('go','read')}
+            <p>{WrapCode('for range')}で出力できました<br />
+            ここで気づいたことですが、{WrapCode('for range')}でiを宣言し、文中でiを使わないとエラーが発生してしまう部分<br />
+            iの部分を_にすれば利用しなくてもエラーが発生しないようです</p>
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">Update</p>
-            <p>dbに登録したデータを変更したい場合もあるかと思います、その場合は{WrapCode('update')}を使ってデータを更新します<br />
-            先ほど{WrapCode('insert')}したデータをbear→robotに{WrapCode('update')}してみましょう</p>
-            {SyntaxCode('php','update')}
+            <p className="mb-3">dbに登録したデータを変更したい場合もあるかと思います、その場合は{WrapCode('update')}を使ってデータを更新します<br />
+            先ほど{WrapCode('insert')}したデータをbear→robotに{WrapCode('update')}してみましょう<br />
+            これまでと同様、insertで利用したものを再利用してみましょう</p>
+            {SyntaxCode('go','update')}
             <p>実際に更新されたことを確認しましょう</p>
-            {SyntaxCode('sh','update_result')}
+            {SyntaxCode('sh','update_result_go')}
 
             <hr className="my-5" />
 
@@ -315,15 +286,15 @@ export default function Home() {
             <p>実際にはdbからデータを削除することはほぼなくデータベースを設計する際にvisibleなどの項目を設け、<br />
             そこに公開非公開をフラッグとすることが多いです<br />
             特にdbからデータを削除してしまうと二度とデータを閲覧できなくなってしまいます<br />
-            そのため、deleteするケースは少ないですが、deleteする場合は{WrapCode('delete')}を使ってデータを更新します</p>
-            {SyntaxCode('php','delete')}
+            そのため、deleteするケースは少ないですが、{WrapCode('delete')}する場合は{WrapCode('delete')}を使ってデータを更新します</p>
+            {SyntaxCode('go','delete')}
             <p>実際に削除されたことを確認しましょう</p>
-            {SyntaxCode('sh','delete_result')}
+            {SyntaxCode('sh','delete_result_go')}
          </div>
 
       </section>
 
-      <section>
+      <section id="post,get">
          <h2 className="text-2xl font-semibold mb-3">POST、GET</h2>
          <p className="leading-7 mb-3">別のページにデータを送る{WrapCode('POST')}、クエリパラメータを取得する{WrapCode('GET')}</p>
 
@@ -332,9 +303,18 @@ export default function Home() {
             <p className="leading-7">{WrapCode('POST')}は「登録する」ボタンなどをクリックした際に別ページやコントローラなどにデータを受け渡し、処理する際に利用します<br />
             また、getは主にクエリパラメータを取得しています<br />
             ページロード時に消えてしまう{WrapCode('POST')}に対して、{WrapCode('GET')}はurl上のパラメータを取得するため、反恒久的にデータを保持することが可能です<br />
-            {WrapCode('POST,GET')}も実行できるphpを作成する予定でしたが<br />
-            htmlも関わってくるため、実行できるはずのプログラムを以下に示します</p>
-            {SyntaxCode('php','post_get')}
+            htmlも関わってくるため、実行できるはずのプログラムを以下に示します<br />
+            name,fileを別ページに{WrapCode('/post_confirm')}ページにpostするgolangです</p>
+            {SyntaxCode('html','go_form')}
+            {SyntaxCode('go','post')}
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">GET</p>
+            <p className="mb-3">クエリパラメータを取得するgolangです<br />
+            {WrapCode('/get_query?id=')}を取得する前提で作ってみます<br />
+            {WrapCode('/get_query?id=test')}の場合、printlnで{WrapCode('test')}が出力されるはずです</p>
+            {SyntaxCode('go','get')}
          </div>
 
       </section>
