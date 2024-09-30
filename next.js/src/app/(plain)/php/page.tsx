@@ -32,7 +32,7 @@ function WrapCode(txt: string) {
 export default function Home() {
 
    return (
-    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)]">
+    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90">
       <main className="flex flex-col gap-8 row-start-2 items-start w-full">
       <h1 className="flex items-end"><span className="font-semibold text-3xl mr-2">php</span><span className="text-md">について</span></h1>
       <p>本項目ではphpの書き方について、基本から応用までを学習し、<br />最終はフレームワーク{WrapCode('laravel')}にて基本動作の作成まで進めます</p>
@@ -54,7 +54,7 @@ export default function Home() {
          </table>
       </div>
 
-      <section>
+      <section id="helloWorld">
          <h2 className="text-2xl font-semibold mb-3">Hello World、変数</h2>
          <p className="leading-7 mb-3">文字列としてHello Worldの出力、変数への代入について記述します</p>
 
@@ -87,7 +87,7 @@ export default function Home() {
 
       </section>
 
-      <section>
+      <section id="calc">
          <h2 className="text-2xl font-semibold mb-3">計算と型</h2>
          <p className="leading-7 mb-3">数字での計算（足し算、引き算、掛け算、割り算）と型について</p>
 
@@ -126,7 +126,7 @@ export default function Home() {
 
       </section>
 
-      <section>
+      <section id="function">
          <h2 className="text-2xl font-semibold mb-3">関数、Class</h2>
          <p className="leading-7 mb-3">関数の宣言、public private protectedについて</p>
 
@@ -144,8 +144,8 @@ export default function Home() {
             {SyntaxCode('php','class')}
             <p className="leading-7 mb-3">基本的な説明は、コード内にコメントアウトで表記していますが、functionのアクセス修飾子については以下に詳細を表記します</p>
 
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-4">
-                <table className="w-full text-left rtl:text-right text-gray-800 dark:text-gray-400">
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
                     <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" className="px-6 py-3">
@@ -203,7 +203,7 @@ export default function Home() {
 
       </section>
 
-      <section>
+      <section id="array">
          <h2 className="text-2xl font-semibold mb-3">配列、for、foreach</h2>
          <p className="leading-7 mb-3">配列の作り方と各種回し方について</p>
 
@@ -262,7 +262,7 @@ export default function Home() {
 
       </section>
 
-      <section>
+      <section id="crud">
          <h2 className="text-2xl font-semibold mb-3">CRUD</h2>
          <p className="leading-7 mb-3">dbにおける作成（Create）、読み出し（Read）、更新（Update）、削除（Delete）を一挙解説</p>
 
@@ -318,7 +318,7 @@ export default function Home() {
 
       </section>
 
-      <section>
+      <section id="post,get">
          <h2 className="text-2xl font-semibold mb-3">POST、GET</h2>
          <p className="leading-7 mb-3">別のページにデータを送る{WrapCode('POST')}、クエリパラメータを取得する{WrapCode('GET')}</p>
 

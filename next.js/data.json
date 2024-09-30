@@ -4,25 +4,25 @@
             "id": 1,
             "title": "about",
             "name": "Leo Dover",
-            "subs": []
+            "subs": ["biography","history"]
         },
         {
             "id": 2,
             "title": "php",
             "name": "Leo Dover",
-            "subs": ["Hello World","type"]
+            "subs": ["helloWorld","calc","function","array","crud","post,get"]
         },
         {
             "id": 3,
             "title": "python",
             "name": "Morris Hurley",
-            "subs": ["aaa","bbb"]
+            "subs": ["helloWorld","calc","def","array","crud","post,get"]
         },
         {
             "id": 4,
             "title": "java",
             "name": "James Kissack",
-            "subs": ["aaa","bbb"]
+            "subs": ["helloWorld","calc","function","array","crud","post,get"]
         },
         {
             "id": 5,

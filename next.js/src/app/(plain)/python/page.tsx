@@ -27,7 +27,7 @@ function WrapCode(txt: string) {
 export default function Home() {
 
    return (
-    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)]">
+    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90">
       <main className="flex flex-col gap-8 row-start-2 items-start w-full">
       <h1 className="flex items-end"><span className="font-semibold text-3xl mr-2">python</span><span className="text-md">について</span></h1>
       <p>本項目ではpythonの書き方について、基本から応用までを学習し、<br />最終はフレームワーク{WrapCode('django')}にて基本動作の作成まで進めます</p>
@@ -49,7 +49,7 @@ export default function Home() {
          </table>
       </div>
 
-      <section>
+      <section id="helloWorld">
          <h2 className="text-2xl font-semibold mb-3">Hello World、変数</h2>
          <p className="leading-7 mb-3">文字列としてHello Worldの出力、変数への代入について記述します</p>
 
@@ -90,7 +90,7 @@ export default function Home() {
 
       </section>
 
-      <section>
+      <section id="calc">
          <h2 className="text-2xl font-semibold mb-3">計算と型</h2>
          <p className="leading-7 mb-3">数字での計算（足し算、引き算、掛け算、割り算）と型について</p>
 
@@ -131,17 +131,17 @@ export default function Home() {
 
       </section>
 
-      <section>
+      <section id="def">
          <h2 className="text-2xl font-semibold mb-3">関数、Class</h2>
          <p className="leading-7 mb-3">関数の宣言、public private protectedについて</p>
 
          <div className="p-5 border-l-2">
             <h3 className="text-lg font-semibold mb-3">関数</h3>
-            <p className="leading-7">プログラム中に何度も出現する数値を変数に代入することで、再利用が可能ですが<br />
+            <p className="leading-7 mb-3">プログラム中に何度も出現する数値を変数に代入することで、再利用が可能ですが<br />
             計算式や定まった結合などを行う場合は関数を用います<br />
             以下は2つの数字を足してから1を引く、という計算を何度も使う場合です</p>
             {SyntaxCode('python','def.py')}
-            <p>x,yという変数を設定し、それぞれを足した上で1を引き、それをreturnで返り値にしています<br />
+            <p className="leading-7">x,yという変数を設定し、それぞれを足した上で1を引き、それをreturnで返り値にしています<br />
             この関数をprintで表示することによって計算後の結果を表示させます<br />
             よって5+4-1が計算され実行結果となります</p>
 
@@ -149,15 +149,15 @@ export default function Home() {
 
             <h3 className="text-lg font-semibold mb-3">Class</h3>
             <p className="leading-7 mb-3">また関数を使う場合、その関数をさらに囲うためにClassというものがというものが定義できます<br />
-            利点としては、1つのサイト内でdefの数は何十にも及ぶ可能性があるため、それらをclassでまとめる際に有効です<br />このClassの設定、またClass内の関数を利用する場合の例を以下に示します<br />
-            phpではpublicやprivateなどで明示的にしていましたが、pythonの場合少し違います</p>
+            利点としては、1つのサイト内で{WrapCode('def')}の数は何十にも及ぶ可能性があるため、それらをclassでまとめる際に有効です<br />このClassの設定、またClass内の関数を利用する場合の例を以下に示します<br />
+            {WrapCode('php')}では{WrapCode('public')}や{WrapCode('private')}などで明示的にしていましたが、{WrapCode('python')}の場合少し違います</p>
             {SyntaxCode('python','class.py')}
-            <p className="mb-3">class内で各種宣言をするには{WrapCode("__init__")}で関数を作成し、<br />
+            <p className="leading-7 mb-3">class内で各種宣言をするには{WrapCode("__init__")}で関数を作成し、<br />
             その関数内でpublic、protected、privateを宣言します<br />
             特にprotectedの定義は外部で取得できたりで曖昧ですが、原則使わないようにします</p>
 
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-4">
-                <table className="w-full text-left rtl:text-right text-gray-800 dark:text-gray-400">
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
                     <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" className="px-6 py-3">
@@ -211,7 +211,7 @@ export default function Home() {
          </div>
       </section>
 
-      <section>
+      <section id="array">
          <h2 className="text-2xl font-semibold mb-3">配列、for</h2>
          <p className="leading-7 mb-3">配列の作り方と各種回し方について</p>
 
@@ -234,7 +234,7 @@ export default function Home() {
 
             <hr className="my-5" />
 
-            <p className="font-semibold">データの検索</p>
+            <p className="font-semibold mb-3">データの検索</p>
             <p className="leading-7 mb-3">phpでは配列から配列を作成することで、データ検索をするのはもちろんのこと<br />
             pythonでは配列を回す際に条件をつけることができます<br />
             例えば、配列のデータに「e」が含まれる場合のみ取得する場合です</p>
@@ -252,7 +252,7 @@ export default function Home() {
 
       </section>
 
-      <section>
+      <section id="crud">
          <h2 className="text-2xl font-semibold mb-3">CRUD</h2>
          <p className="leading-7 mb-3">dbにおける作成（Create）、読み出し（Read）、更新（Update）、削除（Delete）を一挙解説</p>
 
@@ -321,7 +321,7 @@ export default function Home() {
 
       </section>
 
-      <section>
+      <section id="post,get">
          <h2 className="text-2xl font-semibold mb-3">フォームからの送信、クエリパラメータの取得</h2>
          <p className="leading-7 mb-3">phpにおけるPOSTとGETと同等の機能について、pythonでの実行方法を記す</p>
 

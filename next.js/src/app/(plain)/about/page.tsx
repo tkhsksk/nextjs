@@ -16,8 +16,31 @@ export default function Home() {
    ].join('\n');
    
    return (
-    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)]">
+    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full">
+      <h1 className="flex items-end"><span className="font-semibold text-3xl mr-2">About me</span><span className="text-md">私について</span></h1>
+      <section id="helloWorld">
+         <h2 className="text-2xl font-semibold mb-3">biography</h2>
+         <p className="leading-7 mb-3">文字列としてHello Worldの出力、変数への代入について記述します</p>
+
+         <div className="p-5 border-l-2">
+            <h3 className="text-lg font-semibold mb-3">Hello World.</h3>
+            <p className="leading-7">pythonで文字列を表示する場合は、以下の表記で実行できます</p>
+         </div>
+
+      </section>
+
+      <section id="helloWorld">
+         <h2 className="text-2xl font-semibold mb-3">history</h2>
+         <p className="leading-7 mb-3">文字列としてHello Worldの出力、変数への代入について記述します</p>
+
+         <div className="p-5 border-l-2">
+            <h3 className="text-lg font-semibold mb-3">Hello World.</h3>
+            <p className="leading-7">pythonで文字列を表示する場合は、以下の表記で実行できます</p>
+         </div>
+
+      </section>
+
       <div className="columns-3 w-full">
         <Image
           className="dark:invert"

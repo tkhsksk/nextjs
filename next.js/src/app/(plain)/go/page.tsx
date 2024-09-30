@@ -32,7 +32,7 @@ function WrapCode(txt: string) {
 export default function Home() {
 
    return (
-    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)]">
+    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90">
       <main className="flex flex-col gap-8 row-start-2 items-start w-full">
       <h1 className="flex items-end"><span className="font-semibold text-3xl mr-2">go</span><span className="text-md">について</span></h1>
       <p>本項目ではphpの書き方について、基本から応用までを学習し、<br />最終はフレームワーク{WrapCode('gin')}にて基本動作の作成まで進めます</p>

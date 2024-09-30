@@ -26,7 +26,7 @@ function WrapCode(txt: string) {
 export default function Home() {
 
    return (
-    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)]">
+    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90">
       <main className="flex flex-col gap-8 row-start-2 items-start w-full">
       <h1 className="flex items-end"><span className="font-semibold text-3xl mr-2">JavaScript</span><span className="text-md">について</span></h1>
       <p>本項目ではJavaScriptの書き方について、基本のみを学習し、<br />
@@ -113,8 +113,13 @@ export default function Home() {
             <hr className="my-5" />
 
             <h3 className="text-lg font-semibold mb-3">コードファイルの読み込み</h3>
-            <p className="leading-7 mb-3">next.js直下にdata.jsonを作成し、ページ内容をjson形式で共通で表示させます<br />
-            {WrapCode('import Datas from "../../../data.json"')}</p>
+            <p className="leading-7 mb-3">各所にコードブロックを標示させる場合に、<br />
+            next.jsのページファイル自体に書き込んでしまうと、ページファイル自体のテキスト量が膨大になってしまいます<br />
+            また、コード自体は一度実行結果を確認したいため、コードファイル自体はコードファイルとして、保存しておきたいです<br />
+            そのためにまず、next.jsが存在するディレクトリの構成を以下のようにしています</p>
+            {SyntaxCode('sh','nextjs/tree_root')}
+            <p className="leading-7 mb-3">next.js以外のディレクトリには各プログラミング言語の実行ファイルを格納し<br />
+            実行ファイルをテキストで読み込み、シンタックスハイライターで表示させる関数をページファイル上で実行しています</p>
             {SyntaxCode('sh','nextjs/code')}
          </div>
 
