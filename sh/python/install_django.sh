@@ -1,6 +1,12 @@
+#!/bin/bash
+
 sudo yum install -y libffi-devel
+cd <ドメインルート>
+
+# 本体のインストール
 pip3 install django
 python3 -m django --version
+
 # 出力結果
 # 4.2.16
 django-admin startproject demo

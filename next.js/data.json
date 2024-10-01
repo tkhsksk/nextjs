@@ -10,13 +10,13 @@
             "id": 2,
             "title": "php",
             "name": "Leo Dover",
-            "subs": ["helloWorld","calc","function","array","crud","post,get"]
+            "subs": ["helloWorld","calc","function","array","crud","post,get","laravel"]
         },
         {
             "id": 3,
             "title": "python",
             "name": "Morris Hurley",
-            "subs": ["helloWorld","calc","def","array","crud","post,get"]
+            "subs": ["helloWorld","calc","def","array","crud","post,get","django"]
         },
         {
             "id": 4,

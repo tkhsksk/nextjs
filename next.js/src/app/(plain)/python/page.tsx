@@ -40,7 +40,7 @@ export default function Home() {
                <th className="pr-4">python</th><td>v3.12.5</td>
             </tr>
             <tr>
-               <th className="pr-4">laravel</th><td>v10.41.0</td>
+               <th className="pr-4">django</th><td>v4.2.16</td>
             </tr>
             <tr>
                <th className="pr-4">mysql</th><td>v11.5.2-MariaDB</td>
@@ -156,7 +156,7 @@ export default function Home() {
             その関数内でpublic、protected、privateを宣言します<br />
             特にprotectedの定義は外部で取得できたりで曖昧ですが、原則使わないようにします</p>
 
-            <div className="relative shadow-md sm:rounded-lg mb-4 grid">
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
                 <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
                     <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -260,11 +260,11 @@ export default function Home() {
             <p className="font-semibold mb-3">CRUDを始める前に①</p>
             <p className="leading-7 mb-3">前提としてmysqlにdatabase名(python)を作成、user(guest)を作成し、guestに対してpythonへのすべての権限を付与しています<br />
             データベースpythonにはtoyというテーブルを作成し、id,nameをカラムとして登録しました</p>
-            {SyntaxCode('sh','db_python.sh')}
+            {SyntaxCode('sh','python/db.sh')}
             <p className="font-semibold mb-3">CRUDを始める前に②</p>
             <p className="mb-3">pythonでdbを操作するためのモジュール、{WrapCode('import MySQLdb')}を使うにあたって、<br />
             pythonの仮装環境を作成しなければいけません</p>
-            {SyntaxCode('sh','dev_python.sh')}
+            {SyntaxCode('sh','python/dev.sh')}
             <p className="mb-3">ルートディレクトリに仮装環境{WrapCode('python_env')}を作成し、<br />
             {WrapCode('import MySQLdb')}モジュールを扱うために、{WrapCode('mysqlclient')}を{WrapCode('pip')}でインストールしました</p>
 
@@ -279,7 +279,7 @@ export default function Home() {
             {SyntaxCode('python','create.py')}
             <p className="mb-3">実際に登録されたかどうかを確認するために<br />
             データを読み込む、readするpyを作成する前に、shell上でコマンドを利用し中身を見てみましょう</p>
-            {SyntaxCode('sh','create_result_python.sh')}
+            {SyntaxCode('sh','python/create_result.sh')}
             データベースpythonの{WrapCode('toy')}テーブルにデータが登録されていることが確認できました
 
             <hr className="my-5" />
@@ -303,7 +303,7 @@ export default function Home() {
             {SyntaxCode('python','update.py')}
             <p className="mb-3">実際にupdate(更新)されたかどうかを確認するために<br />
             read.pyを実行して、テーブルの中身を確認してみます</p>
-            {SyntaxCode('sh','update_result_python.sh')}
+            {SyntaxCode('sh','python/update_result.sh')}
             <p>更新されていることが確認できましたね</p>
 
             <hr className="my-5" />
@@ -346,20 +346,32 @@ export default function Home() {
 
       </section>
 
-      <section>
+      <section id="django">
          <h2 className="text-2xl font-semibold mb-3">Django</h2>
-         <p className="leading-7 mb-3">phpにおけるPOSTとGETと同等の機能について、pythonでの実行方法を記す</p>
+         <p className="leading-7 mb-3">pythonの代表的なフレームワークの{WrapCode('django')}にて簡易的なサイトを作成して<br />
+         ログイン、dbへのデータ登録、データ編集、表示、検索、ページャーなどを学習します</p>
 
          <div className="p-5 border-l-2">
-            <p className="font-semibold mb-3">postするformのhtml</p>
-            <p className="leading-7 mb-3">データを{WrapCode('post')}するためのhtmlが必要である<br />
-            これに関してはphpと同様</p>
-            {SyntaxCode('sh','install_django.sh')}
+            <p className="font-semibold mb-3">サーバー側でdjangoをインストール</p>
+            <p className="leading-7 mb-3">まずはインストールが必要です<br />
+            ec2にログインし、django実行時に必要なlibffi-develをyumでインストール<br />
+            ドメインルートに移動し、pip3 install djangoで本体をインストールします</p>
+            {SyntaxCode('sh','python/install_django.sh')}
             <p className="leading-7 mb-3">ポート8000で表示確認するために<br />
-            ec2のセキュリティグループでインバウンドルールの8000番を許可します<br />
+            ec2のセキュリティグループでインバウンドルールの8000番を許可します<br /><br />
             ipと8000ポート指定URLで表示が確認できます<br />
-            <Link href="http://34.197.33.76:8000/" target="_blank">http://34.197.33.76:8000/</Link>
-            </p>
+            <Link href="http://34.197.33.76:8000/" target="_blank">http://34.197.33.76:8000/</Link><br />
+            これをドメインで確認できるように、apacheの設定、cerbotの設定、basic認証の設定を済ませます<br />
+            <Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link><br />
+            ksk<br />
+            7FYESXW6DUBEJFGT3RKS</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">ローカル側でdbを作成</p>
+            <p className="leading-7 mb-3">ローカルで開発を進めるために、gitをcloneしてから各種設定をします<br />
+            まず、dbの作成ですデータベース名{WrapCode('django')}でデータベースを作成します</p>
+            {SyntaxCode('sh','python/db_django.sh')}
          </div>
 
       </section>

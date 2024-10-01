@@ -132,7 +132,7 @@ export default function Home() {
             {SyntaxCode('java','class_sub')}
             <p className="leading-7 mb-3">基本的な説明は、コード内にコメントアウトで表記していますが、{WrapCode('function')}のアクセス修飾子については以下に詳細を表記します</p>
 
-            <div className="relative shadow-md sm:rounded-lg mb-4 grid">
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
                 <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
                     <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
