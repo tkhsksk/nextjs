@@ -15,27 +15,27 @@ function SyntaxCode(lang: string, file: string) {
    const text  = fs.readFileSync("../"+lang+"/"+file+"", 'utf8')
    const lines = text.toString().split('¥n')
    return <div className="grid">
-   <p className="absolute text-base px-2 bg-slate-500 text-white">{file}</p>
-   <SyntaxHighlighter language={lang} style={gml} className="mb-3 mt-6">{lines}</SyntaxHighlighter>
+   <div className="grid overflow-hidden w-fit mt-6"><p className="whitespace-nowrap overflow-x-auto text-base w-fill px-2 bg-slate-500 text-white">{file}</p></div>
+   <SyntaxHighlighter language={lang} style={gml} className="mb-3">{lines}</SyntaxHighlighter>
    </div>;
 }
 
 function WrapCode(txt: string) {
-   return <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">{txt}</code>;
+   return <code className="break-all bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">{txt}</code>;
 }
 
 export default function Home() {
 
    return (
-    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90">
+    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90 dark:bg-opacity-90 dark:bg-slate-800">
       <main className="flex flex-col gap-8 row-start-2 items-start w-full">
       <h1 className="flex items-end"><span className="font-semibold text-3xl mr-2">python</span><span className="text-md">について</span></h1>
       <p>本項目ではpythonの書き方について、基本から応用までを学習し、<br />最終はフレームワーク{WrapCode('django')}にて基本動作の作成まで進めます</p>
       
-      <div className="block max-w-sm p-6 border border-gray-200 rounded-lg shadow bg-slate-200">
-         <p className="font-semibold mb-3 text-cyan-950">前提となる開発条件</p>
-         <table className="text-left">
-         <tbody>
+      <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+        <p className="font-semibold mb-3 text-cyan-950">前提となる開発条件</p>
+         <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+         <tbody className="dark:text-gray-600">
             <tr>
                <th className="pr-4">python</th><td>v3.12.5</td>
             </tr>
@@ -295,8 +295,8 @@ export default function Home() {
             <p className="font-semibold mb-3">Update</p>
             <p className="leading-7 mb-3">先ほどcreateしたデータを更新してみましょう</p>
             <div className="p-6 py-3 border border-gray-200 rounded-lg shadow bg-slate-200 w-full grid my-3">
-                <p className="font-semibold">実行内容</p>
-                <p>id:1、name:<span className="font-semibold">bear</span>をid:1、name:<span className="font-semibold">robot</span>に更新(update)する</p>
+                <p className="font-semibold dark:bg-slate-800">実行内容</p>
+                <p className="dark:text-gray-600">id:1、name:<span className="font-semibold">bear</span>をid:1、name:<span className="font-semibold">robot</span>に更新(update)する</p>
             </div>
             <p className="leading-7 mb-3">セキュリティ上、更新データの内容をbindしています<br />
             bindする場合はsqlを実行するexecuteの第二引数に指定をします</p>
@@ -349,7 +349,7 @@ export default function Home() {
       <section id="django">
          <h2 className="text-2xl font-semibold mb-3">Django</h2>
          <p className="leading-7 mb-3">pythonの代表的なフレームワークの{WrapCode('django')}にて簡易的なサイトを作成して<br />
-         ログイン、dbへのデータ登録、データ編集、表示、検索、ページャーなどを学習します</p>
+         ページ追加、ログイン、dbへのデータ登録、データ編集、表示、検索、ページャーなどを学習します</p>
 
          <div className="p-5 border-l-2">
             <p className="font-semibold mb-3">サーバー側でdjangoをインストール</p>
@@ -361,17 +361,68 @@ export default function Home() {
             ec2のセキュリティグループでインバウンドルールの8000番を許可します<br /><br />
             ipと8000ポート指定URLで表示が確認できます<br />
             <Link href="http://34.197.33.76:8000/" target="_blank">http://34.197.33.76:8000/</Link><br />
-            これをドメインで確認できるように、apacheの設定、cerbotの設定、basic認証の設定を済ませます<br />
-            <Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link><br />
-            ksk<br />
-            7FYESXW6DUBEJFGT3RKS</p>
+            これをドメインで確認できるように、apacheの設定、cerbotの設定、basic認証の設定を済ませます</p>
+
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">実際に作成したdjango環境</p>
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                <tbody className="dark:text-gray-600">
+                <tr>
+                   <th className="pr-4">url</th><td><Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link></td>
+                </tr>
+                <tr>
+                   <th className="pr-4">basic user</th><td>ksk</td>
+                </tr>
+                <tr>
+                   <th className="pr-4">basic pass</th><td>7FYESXW6DUBEJFGT3RKS</td>
+                </tr>
+                </tbody>
+                </table>
+            </div>
 
             <hr className="my-5" />
 
-            <p className="font-semibold mb-3">ローカル側でdbを作成</p>
+            <p className="font-semibold mb-3">ローカル上でdbを作成、接続</p>
             <p className="leading-7 mb-3">ローカルで開発を進めるために、gitをcloneしてから各種設定をします<br />
             まず、dbの作成ですデータベース名{WrapCode('django')}でデータベースを作成します</p>
             {SyntaxCode('sh','python/db_django.sh')}
+            <p className="leading-7 mb-3">djangoの中身は初期状態では以下のようになっています</p>
+            {SyntaxCode('python','django/macOS/tree.sh')}
+            <p className="leading-7 mb-3">localとサーバー上の設定を分けるために、以下のように構成し直します</p>
+            {SyntaxCode('python','django/macOS/tree_for_db.sh')}
+            {WrapCode('settings_common.py')}は共通の設定、{WrapCode('settings.py')}はサーバー上の設定、{WrapCode('settings_dev.py')}はローカルの設定と、<br />
+            <p className="leading-7 mb-3">それぞれの設定にします<br />
+            とりあえずdbの設定のみ分けるので、{WrapCode('settings_common.py')}からDATABASESの記述を削除し<br />
+            settings.pyとsettings_dev.pyにそれぞれのdb情報を記述します<br /><br />
+            すべての設定ファイルを読み込むために、{WrapCode('__init__.py')}をsettingsディレクトリに作成し、各設定ファイルを読み込む記述をします<br />
+            settings_dev.pyの内容は以下です</p>
+            {SyntaxCode('python','django/setting_dev.py')}
+            <p className="leading-7 mb-3">setting.pyにも同じく、ec上に作成したmariaDBの設定を記述しましょう<br />
+            プロジェクトの中に、アプリを作成します<br />
+            pythonの仮装環境にログインして、アプリを作成します</p>
+            {SyntaxCode('python','django/macOS/cmd_app.sh')}
+            <p className="leading-7 mb-3">myappというディレクトリが生成されます<br />
+            このアプリ内でテーブルを作成するためのモデルを作成します<br />
+            myapp/modals.pyに以下のように記述します</p>
+            {SyntaxCode('python','django/model.py')}
+            <p className="leading-7 mb-3">こちらはmodelファイルです<br />
+            userテーブルに、Char型でnameという名前のカラムをmaxsize20で作成します<br />
+            このmodelファイルを元にmigrationファイルを生成し、さらにそれを元にmigrateします<br />
+            ※テーブルはアプリ名+テーブル名なので、実際にできるテーブル名はmyapp_userになります<br /><br />
+            migrateする前に、myappのmodelをdjangoに認識させなければならないので、<br />
+            setting_common.pyに追記します</p>
+            {SyntaxCode('python','django/setting_common.py')}
+            <p className="leading-7 mb-3">これでmigrationする準備が整いました<br />
+            以下コマンドでmigrationを実行します</p>
+            {SyntaxCode('python','django/macOS/cmd_migrate_user.sh')}
+            <p className="leading-7 mb-3">この時点でdbは以下のような構成になります</p>
+            {SyntaxCode('python','django/macOS/show_table.sh')}
+            <p className="text-gray-500 break-all">参考文献:https://www.sejuku.net/blog/27387</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">ページ追加</p>
+            
          </div>
 
       </section>

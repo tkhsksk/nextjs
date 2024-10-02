@@ -17,7 +17,7 @@ export default function Aside() {
       <div className="fixed top-0 left-0 p-4">
       <Link href="/">
         <Image
-          className="dark:invert mb-3"
+          className="mb-3"
           src={pathname+'.png'}
           alt="Next.js logo {'/'+pathname+'.png'}"
           width={180}

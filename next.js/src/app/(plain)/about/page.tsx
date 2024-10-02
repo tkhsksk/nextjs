@@ -16,7 +16,7 @@ export default function Home() {
    ].join('\n');
    
    return (
-    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90">
+    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90 dark:bg-opacity-90 dark:bg-slate-800">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full">
       <h1 className="flex items-end"><span className="font-semibold text-3xl mr-2">About me</span><span className="text-md">私について</span></h1>
       <section id="helloWorld">

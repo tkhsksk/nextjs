@@ -20,19 +20,21 @@ function SyntaxCode(lang: string, code: string) {
    const text  = fs.readFileSync("../"+lang+"/"+code+"."+lang+"", 'utf8')
    const lines = text.toString().split('¥n')
    return <div className="grid">
-   <p className="absolute text-base px-2 bg-slate-500 text-white">{code}.{lang}</p>
-   <SyntaxHighlighter language={lang} style={gml} className="mb-3 mt-6">{lines}</SyntaxHighlighter>
+   <div className="grid overflow-hidden w-fit mt-6">
+   <p className="whitespace-nowrap overflow-x-auto text-base w-fill px-2 bg-slate-500 text-white">{code}.{lang}</p>
+   </div>
+   <SyntaxHighlighter language={lang} style={gml} className="mb-3">{lines}</SyntaxHighlighter>
    </div>;
 }
 
 function WrapCode(txt: string) {
-   return <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">{txt}</code>;
+   return <code className="break-all bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">{txt}</code>;
 }
 
 export default function Home() {
 
    return (
-    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90">
+    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90 dark:bg-opacity-90 dark:bg-slate-800">
       <main className="flex flex-col gap-8 row-start-2 items-start w-full">
       <h1 className="flex items-end"><span className="font-semibold text-3xl mr-2">php</span><span className="text-md">について</span></h1>
       <p>本項目ではphpの書き方について、基本から応用までを学習し、<br />最終はフレームワーク{WrapCode('laravel')}にて基本動作の作成まで進めます</p>
@@ -40,7 +42,7 @@ export default function Home() {
       <div className="block max-w-sm p-6 border border-gray-200 rounded-lg shadow bg-slate-200">
          <p className="font-semibold mb-3 text-cyan-950">前提となる開発条件</p>
          <table className="text-left">
-         <tbody>
+         <tbody className="dark:text-gray-600">
             <tr>
                <th className="pr-4">php</th><td>v8.3.7</td>
             </tr>
