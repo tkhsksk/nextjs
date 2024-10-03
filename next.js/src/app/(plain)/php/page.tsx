@@ -34,7 +34,7 @@ function WrapCode(txt: string) {
 export default function Home() {
 
    return (
-    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90 dark:bg-opacity-90 dark:bg-slate-800">
+    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-3 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90 dark:bg-opacity-90 dark:bg-slate-800">
       <main className="flex flex-col gap-8 row-start-2 items-start w-full">
       <h1 className="flex items-end"><span className="font-semibold text-3xl mr-2">php</span><span className="text-md">について</span></h1>
       <p>本項目ではphpの書き方について、基本から応用までを学習し、<br />最終はフレームワーク{WrapCode('laravel')}にて基本動作の作成まで進めます</p>
@@ -60,7 +60,7 @@ export default function Home() {
          <h2 className="text-2xl font-semibold mb-3">Hello World、変数</h2>
          <p className="leading-7 mb-3">文字列としてHello Worldの出力、変数への代入について記述します</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <h3 className="text-lg font-semibold mb-3">Hello World.</h3>
             <p className="leading-7">phpで文字列を表示する場合は、以下の表記で実行できます</p>
             {SyntaxCode('php','helloWorld')}
@@ -93,7 +93,7 @@ export default function Home() {
          <h2 className="text-2xl font-semibold mb-3">計算と型</h2>
          <p className="leading-7 mb-3">数字での計算（足し算、引き算、掛け算、割り算）と型について</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <h3 className="text-lg font-semibold mb-3">計算</h3>
             <p className="leading-7">単純にプラスの符号を用いて、足し算をします</p>
             {SyntaxCode('php','calc01')}
@@ -132,7 +132,7 @@ export default function Home() {
          <h2 className="text-2xl font-semibold mb-3">関数、Class</h2>
          <p className="leading-7 mb-3">関数の宣言、public private protectedについて</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <h3 className="text-lg font-semibold mb-3">関数</h3>
             <p className="leading-7">プログラム中に何度も出現する数値を変数に代入することで、再利用が可能ですが<br />計算式や定まった結合などを行う場合は関数を用います<br />以下は2つの数字を足してから1を引く、という計算を何度も使う場合です</p>
             {SyntaxCode('php','function')}
@@ -209,7 +209,7 @@ export default function Home() {
          <h2 className="text-2xl font-semibold mb-3">配列、for、foreach</h2>
          <p className="leading-7 mb-3">配列の作り方と各種回し方について</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <h3 className="text-lg font-semibold mb-3">配列</h3>
             <p className="leading-7 mb-3">この配列について、phpの学習上でつまづきました<br />そもそもなぜ配列が必要なのか？について的確に解説をしているサイトも参考書もなかったからです<br />自分が学習上で学び、配列の有効性について独自解釈しましたのでそれを以下に記載します</p>
             <h3 className="text-lg font-semibold mb-3">配列は一覧表示、データの検索、繰り返しに便利</h3>
@@ -268,7 +268,7 @@ export default function Home() {
          <h2 className="text-2xl font-semibold mb-3">CRUD</h2>
          <p className="leading-7 mb-3">dbにおける作成（Create）、読み出し（Read）、更新（Update）、削除（Delete）を一挙解説</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <p className="font-semibold mb-3">CRUDを始める前に</p>
             <p className="leading-7 mb-3">前提としてmysqlにdatabase名(php)を作成、user(guest)を作成し、guestに対してphpへのすべての権限を付与しています<br />
             データベースphpにはtoyというテーブルを作成し、id,nameをカラムとして登録しました</p>
@@ -324,7 +324,7 @@ export default function Home() {
          <h2 className="text-2xl font-semibold mb-3">POST、GET</h2>
          <p className="leading-7 mb-3">別のページにデータを送る{WrapCode('POST')}、クエリパラメータを取得する{WrapCode('GET')}</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <p className="font-semibold mb-3">htmlページに密接に関わる</p>
             <p className="leading-7">{WrapCode('POST')}は「登録する」ボタンなどをクリックした際に別ページやコントローラなどにデータを受け渡し、処理する際に利用します<br />
             また、getは主にクエリパラメータを取得しています<br />

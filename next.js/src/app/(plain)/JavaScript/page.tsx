@@ -28,7 +28,7 @@ function WrapCode(txt: string) {
 export default function Home() {
 
    return (
-    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90 dark:bg-opacity-90 dark:bg-slate-800">
+    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-3 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90 dark:bg-opacity-90 dark:bg-slate-800">
       <main className="flex flex-col gap-8 row-start-2 items-start w-full">
       <h1 className="flex items-end"><span className="font-semibold text-3xl mr-2">JavaScript</span><span className="text-md">について</span></h1>
       <p>本項目ではJavaScriptの書き方について、基本のみを学習し、<br />
@@ -62,7 +62,7 @@ export default function Home() {
          <p className="leading-7 mb-3">本サイトを作成するにあたり、next.jsを導入しています<br />
          next.jsが動作する環境を構築しつつ、基本動作についても学んでいきます</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <h3 className="text-lg font-semibold mb-3">各種インストール</h3>
             <p className="leading-7 mb-3">node.jsとnpmが必要なので、まずec2にインストールされているかを確認します</p>
             {SyntaxCode('sh','nextjs/install')}
@@ -105,7 +105,7 @@ export default function Home() {
          <h2 className="text-2xl font-semibold mb-3">カスタマイズ</h2>
          <p className="leading-7 mb-3">各種コードを各ページに残せるようなページを作成するため、カスタマイズを行います</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <h3 className="text-lg font-semibold mb-3">json</h3>
             <p className="leading-7 mb-3">next.js直下にdata.jsonを作成し、ページ内容をjson形式で共通で表示させます<br />
             {WrapCode('import Datas from "../../../data.json"')}</p>

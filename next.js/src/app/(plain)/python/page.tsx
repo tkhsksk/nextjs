@@ -5,6 +5,7 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { gml } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import Link  from 'next/link'
 import fs from 'fs'
+import Image from "next/image";
 
 export const metadata: Metadata = {
    title: 'python｜'+process.env.SITE_TITLE,
@@ -15,7 +16,7 @@ function SyntaxCode(lang: string, file: string) {
    const text  = fs.readFileSync("../"+lang+"/"+file+"", 'utf8')
    const lines = text.toString().split('¥n')
    return <div className="grid">
-   <div className="grid overflow-hidden w-fit mt-6"><p className="whitespace-nowrap overflow-x-auto text-base w-fill px-2 bg-slate-500 text-white">{file}</p></div>
+   <div className="grid overflow-hidden w-fit mt-3"><p className="whitespace-nowrap overflow-x-auto text-base w-fill px-2 bg-slate-500 text-white">{file}</p></div>
    <SyntaxHighlighter language={lang} style={gml} className="mb-3">{lines}</SyntaxHighlighter>
    </div>;
 }
@@ -27,7 +28,7 @@ function WrapCode(txt: string) {
 export default function Home() {
 
    return (
-    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90 dark:bg-opacity-90 dark:bg-slate-800">
+    <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-3 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90 dark:bg-opacity-90 dark:bg-slate-800">
       <main className="flex flex-col gap-8 row-start-2 items-start w-full">
       <h1 className="flex items-end"><span className="font-semibold text-3xl mr-2">python</span><span className="text-md">について</span></h1>
       <p>本項目ではpythonの書き方について、基本から応用までを学習し、<br />最終はフレームワーク{WrapCode('django')}にて基本動作の作成まで進めます</p>
@@ -53,7 +54,7 @@ export default function Home() {
          <h2 className="text-2xl font-semibold mb-3">Hello World、変数</h2>
          <p className="leading-7 mb-3">文字列としてHello Worldの出力、変数への代入について記述します</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <h3 className="text-lg font-semibold mb-3">Hello World.</h3>
             <p className="leading-7">pythonで文字列を表示する場合は、以下の表記で実行できます</p>
             {SyntaxCode('python','helloWorld.py')}
@@ -94,7 +95,7 @@ export default function Home() {
          <h2 className="text-2xl font-semibold mb-3">計算と型</h2>
          <p className="leading-7 mb-3">数字での計算（足し算、引き算、掛け算、割り算）と型について</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <h3 className="text-lg font-semibold mb-3">計算</h3>
             <p className="leading-7">単純にプラスの符号を用いて、足し算をします</p>
             {SyntaxCode('python','calc01.py')}
@@ -135,7 +136,7 @@ export default function Home() {
          <h2 className="text-2xl font-semibold mb-3">関数、Class</h2>
          <p className="leading-7 mb-3">関数の宣言、public private protectedについて</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <h3 className="text-lg font-semibold mb-3">関数</h3>
             <p className="leading-7 mb-3">プログラム中に何度も出現する数値を変数に代入することで、再利用が可能ですが<br />
             計算式や定まった結合などを行う場合は関数を用います<br />
@@ -215,7 +216,7 @@ export default function Home() {
          <h2 className="text-2xl font-semibold mb-3">配列、for</h2>
          <p className="leading-7 mb-3">配列の作り方と各種回し方について</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <h3 className="text-lg font-semibold mb-3">配列</h3>
             <p className="leading-7 mb-3">また、配列は一覧表示に有効です<br />
             pythonには{WrapCode("foreach")}がなく、{WrapCode("for")}のみです<br />
@@ -256,7 +257,7 @@ export default function Home() {
          <h2 className="text-2xl font-semibold mb-3">CRUD</h2>
          <p className="leading-7 mb-3">dbにおける作成（Create）、読み出し（Read）、更新（Update）、削除（Delete）を一挙解説</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <p className="font-semibold mb-3">CRUDを始める前に①</p>
             <p className="leading-7 mb-3">前提としてmysqlにdatabase名(python)を作成、user(guest)を作成し、guestに対してpythonへのすべての権限を付与しています<br />
             データベースpythonにはtoyというテーブルを作成し、id,nameをカラムとして登録しました</p>
@@ -325,7 +326,7 @@ export default function Home() {
          <h2 className="text-2xl font-semibold mb-3">フォームからの送信、クエリパラメータの取得</h2>
          <p className="leading-7 mb-3">phpにおけるPOSTとGETと同等の機能について、pythonでの実行方法を記す</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <p className="font-semibold mb-3">postするformのhtml</p>
             <p className="leading-7 mb-3">データを{WrapCode('post')}するためのhtmlが必要である<br />
             これに関してはphpと同様</p>
@@ -351,11 +352,11 @@ export default function Home() {
          <p className="leading-7 mb-3">pythonの代表的なフレームワークの{WrapCode('django')}にて簡易的なサイトを作成して<br />
          ページ追加、ログイン、dbへのデータ登録、データ編集、表示、検索、ページャーなどを学習します</p>
 
-         <div className="p-5 border-l-2">
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <p className="font-semibold mb-3">サーバー側でdjangoをインストール</p>
             <p className="leading-7 mb-3">まずはインストールが必要です<br />
-            ec2にログインし、django実行時に必要なlibffi-develをyumでインストール<br />
-            ドメインルートに移動し、pip3 install djangoで本体をインストールします</p>
+            ec2にログインし、django実行時に必要な{WrapCode('libffi-devel')}を{WrapCode('yum')}でインストール<br />
+            ドメインルートに移動し、{WrapCode('pip3 install django')}で本体をインストールします</p>
             {SyntaxCode('sh','python/install_django.sh')}
             <p className="leading-7 mb-3">ポート8000で表示確認するために<br />
             ec2のセキュリティグループでインバウンドルールの8000番を許可します<br /><br />
@@ -385,6 +386,16 @@ export default function Home() {
             <p className="font-semibold mb-3">ローカル上でdbを作成、接続</p>
             <p className="leading-7 mb-3">ローカルで開発を進めるために、gitをcloneしてから各種設定をします<br />
             まず、dbの作成ですデータベース名{WrapCode('django')}でデータベースを作成します</p>
+
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul>
+                    <li>/demo/settings/setting_dev.py</li>
+                    <li>/myapp/model.py</li>
+                    <li>/demo/settings/setting_common.py</li>
+                </ul>
+            </div>
+
             {SyntaxCode('sh','python/db_django.sh')}
             <p className="leading-7 mb-3">djangoの中身は初期状態では以下のようになっています</p>
             {SyntaxCode('python','django/macOS/tree.sh')}
@@ -393,25 +404,26 @@ export default function Home() {
             {WrapCode('settings_common.py')}は共通の設定、{WrapCode('settings.py')}はサーバー上の設定、{WrapCode('settings_dev.py')}はローカルの設定と、<br />
             <p className="leading-7 mb-3">それぞれの設定にします<br />
             とりあえずdbの設定のみ分けるので、{WrapCode('settings_common.py')}からDATABASESの記述を削除し<br />
-            settings.pyとsettings_dev.pyにそれぞれのdb情報を記述します<br /><br />
-            すべての設定ファイルを読み込むために、{WrapCode('__init__.py')}をsettingsディレクトリに作成し、各設定ファイルを読み込む記述をします<br />
-            settings_dev.pyの内容は以下です</p>
-            {SyntaxCode('python','django/setting_dev.py')}
-            <p className="leading-7 mb-3">setting.pyにも同じく、ec上に作成したmariaDBの設定を記述しましょう<br />
+            {WrapCode('settings.py')}と{WrapCode('settings_dev.py')}にそれぞれのdb情報を記述します<br /><br />
+            すべての設定ファイルを読み込むために、{WrapCode('__init__.py')}をsettingsディレクトリに作成し、<br />
+            各設定ファイルを読み込む記述をします<br />
+            {WrapCode('settings_dev.py')}の内容は以下です</p>
+            {SyntaxCode('python','django/migration/setting_dev.py')}
+            <p className="leading-7 mb-3">{WrapCode('setting.py')}にも同じく、ec上に作成したmariaDBの設定を記述しましょう<br />
             プロジェクトの中に、アプリを作成します<br />
             pythonの仮装環境にログインして、アプリを作成します</p>
             {SyntaxCode('python','django/macOS/cmd_app.sh')}
             <p className="leading-7 mb-3">myappというディレクトリが生成されます<br />
             このアプリ内でテーブルを作成するためのモデルを作成します<br />
-            myapp/modals.pyに以下のように記述します</p>
-            {SyntaxCode('python','django/model.py')}
+            {WrapCode('myapp/modals.py')}に以下のように記述します</p>
+            {SyntaxCode('python','django/migration/model.py')}
             <p className="leading-7 mb-3">こちらはmodelファイルです<br />
             userテーブルに、Char型でnameという名前のカラムをmaxsize20で作成します<br />
             このmodelファイルを元にmigrationファイルを生成し、さらにそれを元にmigrateします<br />
-            ※テーブルはアプリ名+テーブル名なので、実際にできるテーブル名はmyapp_userになります<br /><br />
+            ※テーブルは{WrapCode('アプリ名+テーブル名')}なので、実際にできるテーブル名は{WrapCode('myapp_user')}になります<br /><br />
             migrateする前に、myappのmodelをdjangoに認識させなければならないので、<br />
-            setting_common.pyに追記します</p>
-            {SyntaxCode('python','django/setting_common.py')}
+            {WrapCode('setting_common.py')}に追記します</p>
+            {SyntaxCode('python','django/migration/setting_common.py')}
             <p className="leading-7 mb-3">これでmigrationする準備が整いました<br />
             以下コマンドでmigrationを実行します</p>
             {SyntaxCode('python','django/macOS/cmd_migrate_user.sh')}
@@ -422,7 +434,103 @@ export default function Home() {
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">ページ追加</p>
-            
+            <p className="leading-7 mb-3">ページ追加のためのディレクトリを、プロジェクトのルートディレクトリに作成します<br />分かりやすいように{WrapCode('templates')}というディレクトリ名にしました</p>
+
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul>
+                    <li>/templates/home/index.html</li>
+                    <li>/demo/settings/setting_common.py</li>
+                    <li>/myapp/view.py</li>
+                    <li>/myapp/urls.py</li>
+                    <li>/demo/urls.py</li>
+                </ul>
+            </div>
+
+            {SyntaxCode('python','django/macOS/tree_template.sh')}
+            <p className="leading-7">template以下のディレクトリ構成は以下となっており</p>
+            {SyntaxCode('python','django/macOS/tree_template_deps.sh')}
+            <p className="leading-7">index.htmlはとりあえず表示できればいいので、以下とします</p>
+            {SyntaxCode('python','django/template/index.html')}
+
+            <hr className="my-5" />
+
+            <p className="leading-7">この時点では{WrapCode('django')}が{WrapCode('template')}ディレクトリを認識してくれないので、<br />
+            {WrapCode('settings_common.py')}ファイルに{WrapCode('template')}ディレクトリまでのパスを指定します<br />
+            先の項目で作成した{WrapCode('demo/setting_common.py')}の{WrapCode('DIRS')}部分を以下のように編集します</p>
+            {SyntaxCode('python','django/template/setting_common.py')}
+            <p className="leading-7">これで{WrapCode('templates')}ディレクトリを読み込んでくれます<br /><br />{WrapCode('myapp')}ディレクトリ内の{WrapCode('view.py')}に{WrapCode('index.html')}を取得してreturnする関数を書きます</p>
+            {SyntaxCode('python','django/template/view.py')}
+            <p className="leading-7">{WrapCode('myapp/urls.py')}を作成し、以下の記述をします<br />
+            pathの{WrapCode('第一引数')}はurlの{WrapCode('2階層以降')}のpathを入力しますが、今回はホームページを表示させるので今回は不要です<br />
+            <span className="text-gray-500">※ http://exapmle.com/aaa/ココ</span><br />
+            以降{WrapCode('第二引数')}は先ほど設定した{WrapCode('index.html')}を返す関数{WrapCode('home_template')}<br />
+            {WrapCode('第三引数')}はviewでredirectをするための通称の名称{WrapCode('home')}を記述します</p>
+            {SyntaxCode('python','django/template/urls.py')}
+            <p className="leading-7">これら{WrapCode('myappディレクトリ')}内に設定したurl関連の設定を、<br />
+            プロジェクトディレクトリの{WrapCode('demo/urls.py')}で読み込みます</p>
+            {SyntaxCode('python','django/template/demo/urls.py')}
+            <p className="leading-7 mb-3">この状態で、djangoを読み込み直し、<Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link>にアクセスしてみます</p>
+            <Image
+              className="mb-3"
+              src={'/python/template.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <p className="leading-7">index.htmlが表示されました🥳</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">データ登録</p>
+            <p className="leading-7 mb-3">このindex.htmlページで、<br />
+            先ほど作成した{WrapCode('myapp_user')}テーブルに{WrapCode('name')}を登録する機能を作成してみます</p>
+
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul>
+                    <li>/myapp/admin.py</li>
+                    <li>/myapp/forms.py</li>
+                    <li>/myapp/views.py</li>
+                    <li>/templates/home/index.html</li>
+                </ul>
+            </div>
+
+            <p className="leading-7">まずdbに登録したUserを利用できるようにするため、<br />
+            /myapp/admin.pyにUserモデルを読み込む記述をします</p>
+            {SyntaxCode('python','django/db/admin.py')}
+            <p className="leading-7">このUserモデルを読み込んで、formモデルを構築するために、<br />
+            form.pyを新規作成し、Userモデルをformに渡してFormモデルを記述します</p>
+            {SyntaxCode('python','django/db/forms.py')}
+            <p className="leading-7">このFormモデルを読み込んで、formをviewに渡します</p>
+            {SyntaxCode('python','django/db/views.py')}
+            <p className="leading-7">htmlはformをpostするためのtokenとformの変数を記述します</p>
+            {SyntaxCode('python','django/db/index.html')}
+            <p className="leading-7 mb-3">この状態で、djangoを読み込み直し、<Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link>にアクセスしてみます</p>
+            <Image
+              className="mb-3"
+              src={'/python/form.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <p className="leading-7 mb-3">formが表示されましたね<br />
+            ここにhogeを入力して、登録してみます</p>
+            <Image
+              className="mb-3"
+              src={'/python/form_hoge.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <p className="leading-7">dbをシェルで確認してみましょう</p>
+            {SyntaxCode('python','django/macOS/show_colums.sh')}
+            <p className="leading-7 mb-3">登録されていました🥳</p>
+
+            <p className="text-gray-500 break-all">参考文献:https://vynsen.net/django3-model%E3%81%A8form/</p>
          </div>
 
       </section>
