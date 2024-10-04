@@ -372,7 +372,7 @@ export default function Home() {
                    <th className="pr-4">url</th><td><Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link></td>
                 </tr>
                 <tr>
-                   <th className="pr-4">basic user</th><td>ksk</td>
+                   <th className="pr-4">basic user</th><td>guest</td>
                 </tr>
                 <tr>
                    <th className="pr-4">basic pass</th><td>7FYESXW6DUBEJFGT3RKS</td>
@@ -427,8 +427,26 @@ export default function Home() {
             <p className="leading-7 mb-3">これでmigrationする準備が整いました<br />
             以下コマンドでmigrationを実行します</p>
             {SyntaxCode('python','django/macOS/cmd_migrate_user.sh')}
-            <p className="leading-7 mb-3">この時点でdbは以下のような構成になります</p>
+            <p className="leading-7 mb-3">この時点でdbは以下のような構成になっています</p>
             {SyntaxCode('python','django/macOS/show_table.sh')}
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">サーバー上でdbを作成、接続</p>
+
+            <p className="leading-7 mb-3">mysqlclientはlocalには入っていましたが、<br />サーバー側のmysql関連モジュールが入っていなかったので、pymysqlをインストールします<br />pymysqlを利用するためには、djangoに追記する必要があります</p>
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul>
+                    <li>/demo/settings/setting_dev.py</li>
+                    <li>/myapp/model.py</li>
+                </ul>
+            </div>
+            pymysqlをimportして読み込みます
+            {SyntaxCode('python','django/ec2/manage.py')}
+            databaseの設定にオプションを追加します
+            {SyntaxCode('python','django/ec2/settings.py')}
+            サーバーにアクセスし、pymysqlのinstallやmigarateを実行しましょう
+            {SyntaxCode('python','django/ec2/mysql.sh')}
             <p className="text-gray-500 break-all">参考文献:https://www.sejuku.net/blog/27387</p>
 
             <hr className="my-5" />
