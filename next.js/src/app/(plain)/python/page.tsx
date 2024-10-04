@@ -447,7 +447,7 @@ export default function Home() {
             {SyntaxCode('python','django/ec2/settings.py')}
             サーバーにアクセスし、pymysqlのinstallやmigarateを実行しましょう
             {SyntaxCode('python','django/ec2/mysql.sh')}
-            <p className="text-gray-500 break-all">参考文献:https://www.sejuku.net/blog/27387</p>
+            <p className="text-gray-500 break-all">参考文献:https://www.sejuku.net/blog/27387、https://qiita.com/ponsuke0531/items/2251fe0cb679222dfa77</p>
 
             <hr className="my-5" />
 
