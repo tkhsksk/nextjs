@@ -12,3 +12,5 @@ deactivate
 
 # djangoの実行
 python3 manage.py runserver 0.0.0.0:8000
+# djangoを実行し続ける
+python3 manage.py runserver 0.0.0.0:8000&

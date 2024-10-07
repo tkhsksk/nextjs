@@ -1,3 +1,5 @@
+sudo mysql -u root
+use django;
 MariaDB [django]> select * from myapp_user;
 +----+------+
 | id | name |

@@ -350,7 +350,7 @@ export default function Home() {
       <section id="django">
          <h2 className="text-2xl font-semibold mb-3">Django</h2>
          <p className="leading-7 mb-3">pythonの代表的なフレームワークの{WrapCode('django')}にて簡易的なサイトを作成して<br />
-         ページ追加、ログイン、dbへのデータ登録、データ編集、表示、検索、ページャーなどを学習します</p>
+         ページ追加、dbへのデータ登録、データ編集、表示、検索までを学習します</p>
 
          <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <p className="font-semibold mb-3">サーバー側でdjangoをインストール</p>
@@ -535,7 +535,10 @@ export default function Home() {
               priority
             />
             <p className="leading-7 mb-3">formが表示されましたね<br />
-            ここにhogeを入力して、登録してみます</p>
+            一度登録してみて分かったことなのですが、このままpostすると何故かcsrfトークンエラーが発生して登録できません<br /><br />
+            設定ファイルにCSRF_TRUSTED_ORIGINSを設定しないといけないことが判明したので、/demo/settings/settings.pyにように追記します</p>
+            {SyntaxCode('python','django/db/settings.py')}
+            <p className="leading-7 mb-3">この状態でhogeを入力して、登録してみます</p>
             <Image
               className="mb-3"
               src={'/python/form_hoge.png'}
@@ -549,6 +552,57 @@ export default function Home() {
             <p className="leading-7 mb-3">登録されていました🥳</p>
 
             <p className="text-gray-500 break-all">参考文献:https://vynsen.net/django3-model%E3%81%A8form/</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">データ編集</p>
+            <p className="leading-7 mb-3">test</p>
+
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul>
+                    <li>/myapp/urls.py</li>
+                    <li>/myapp/views.py</li>
+                    <li>/templates/user/edit.html</li>
+                </ul>
+            </div>
+
+            {SyntaxCode('python','django/update/urls.py')}
+            {SyntaxCode('python','django/update/views.py')}
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">データ一覧表示</p>
+            <p className="leading-7 mb-3">test</p>
+
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul>
+                    <li>/myapp/views.py</li>
+                    <li>/templates/home/index.html</li>
+                </ul>
+            </div>
+
+            {SyntaxCode('python','django/list/views.py')}
+            {SyntaxCode('python','django/list/index.html')}
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">検索機能</p>
+            <p className="leading-7 mb-3">test</p>
+
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul>
+                    <li>/myapp/urls.py</li>
+                    <li>/myapp/views.py</li>
+                    <li>/templates/search/index.html</li>
+                </ul>
+            </div>
+
+            {SyntaxCode('python','django/search/urls.py')}
+            {SyntaxCode('python','django/search/views.py')}
+            {SyntaxCode('python','django/list/index.html')}
          </div>
 
       </section>
