@@ -21,23 +21,7 @@ public class UserController {
       this.userService = userService;
    }
 
-   // userの新規登録フォーム
-   @RequestMapping(value="/user")
-   private String user(Model model) {
-      model.addAttribute("userList", userService.findAll()); // 一覧をモデルに受け渡し
-      model.addAttribute("userForm", new UserForm());
-      return "user/index";
-   }
-
-   // userの登録
-   @RequestMapping(value="/user/new", method=RequestMethod.POST)
-   private String userNew(@ModelAttribute UserForm userForm, Model model) {
-      User user = new User(0, userForm.name, LocalDateTime.now(), LocalDateTime.now());
-      userService.insert(user);
-      // 新規登録フォームにリダイレクト
-      return "redirect:/user";
-   }
-
+   // ユーザーの詳細と更新フォームが登録されているページ
    @RequestMapping(value = "/user/edit/{id}")
    public String userEdit(Model model, @PathVariable("id") int id) {
       model.addAttribute("userForm", new UserForm());
@@ -45,6 +29,7 @@ public class UserController {
       return "user/edit";
    }
 
+   // 実際に更新が行われるページ
    @RequestMapping(value = "/user/update", method=RequestMethod.POST)
    public String userUpdate(@ModelAttribute UserForm userForm, Model model) {
       User user = new User(userForm.id, userForm.name, LocalDateTime.now(), LocalDateTime.now());

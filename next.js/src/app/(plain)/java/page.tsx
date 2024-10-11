@@ -37,7 +37,7 @@ export default function Home() {
     <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-3 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90 dark:bg-opacity-90 dark:bg-slate-800">
       <main className="flex flex-col gap-8 row-start-2 items-start w-full">
       <h1 className="flex items-end"><span className="font-semibold text-3xl mr-2">java</span><span className="text-md">について</span></h1>
-      <p>本項目ではphpの書き方について、基本から応用までを学習し、<br />最終はフレームワーク{WrapCode('spring boot')}にて基本動作の作成まで進めます</p>
+      <p>本項目ではJavaの書き方について、基本から応用までを学習し、<br />最終はフレームワーク{WrapCode('spring boot')}にて基本動作の作成まで進めます</p>
       
       <div className="block max-w-sm p-6 border border-gray-200 rounded-lg shadow bg-slate-200">
          <p className="font-semibold mb-3 text-cyan-950">前提となる開発条件</p>
@@ -340,32 +340,58 @@ export default function Home() {
 
       <section id="Spring_Boot">
          <h2 className="text-2xl font-semibold mb-3">Spring Boot</h2>
-         <p className="leading-7 mb-3">javaの代表的なフレームワークSpring Bootをインストールします<br />
-         インストールの前にJavaをインストールしましょう</p>
+         <p className="leading-7 mb-3">javaの代表的なフレームワーク{WrapCode('Spring Boot')}をインストールします<br />
+         インストールの前に{WrapCode('Java')}をインストールしましょう</p>
 
          <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <p className="font-semibold mb-3">環境構築</p>
-            <p className="leading-7 mb-3">Javaをインストール</p>
+            <p className="leading-7 mb-3">ec2のamazon linux 2023上にJavaをインストールします<br />
+            Spring Bootのインストールにはインストール用のパッケージが必要で、mavenとgradleが存在しますが<br />
+            今回はmavenを導入します<br />
+            phpでいうcomposer,node.jsでいうnpmのような存在です</p>
             {SyntaxCode('java','spring/ec2/install.sh')}
             <p className="leading-7">ここまでで環境は整いました<br />
             <Link href="http://34.197.33.76:8080/" target="_blank">http://34.197.33.76:8080/</Link><br />
             ローカルでも同じように動作するように各種インストールを行いましょう<br />
-            gitも用意し、ローカルで編集できるようにします<br /><br />
+            gitも用意し、cloneしたローカルで編集できるようにします<br /><br />
             git cloneしたものをローカルで実行してみましょう</p>
             {SyntaxCode('java','spring/macOS/install.sh')}
-            <p className="leading-7"><Link href="http://localhost:8080/" target="_blank">http://localhost:8080/</Link>でページ表示が確認できます</p>
+            <p className="leading-7">local上でspring bootが実行できました<br />
+            <Link href="http://localhost:8080/" target="_blank">http://localhost:8080/</Link>でページ表示が確認できます</p>
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">ページ表示</p>
-            <p className="leading-7">ページを表示させます</p>
+            <p className="leading-7">ページを表示させます<br />
+            ページ表示にhtmlファイルを利用したいので、pom.xmlにテンプレートエンジンの記述を追加します<br />
+            追加しておくとspring bootの起動時に自動で導入されます<br />
+            Thymeleafはspring bootでhtmlファイルを扱う際に重要です<br /><br />
+            pom.xmlファイルは以下パスに存在しています</p>
 
             {SyntaxCode('java','spring/macOS/root_1.sh')}
+
+            <p className="leading-7">対象ファイルpom.xmlにspring-boot-starter-thymeleafを記述しましょう</p>
+
             {SyntaxCode('java','spring/template/pom.xml')}
+
+            <p className="leading-7">読み込むファイルはmain/resources/templates/ディレクトリ以下が対象です</p>
             {SyntaxCode('java','spring/macOS/root_2.sh')}
+
+            <p className="leading-7">ディレクトリ以下に以下のindex.htmlファイルを配置します<br />
+            message変数を記述し、controllerからの受け渡しも同時に確認してみます</p>
             {SyntaxCode('java','spring/template/index.html')}
+
+            <p className="leading-7">controllerの記述ルールとしては<br />
+            packageは対象ファイルまでの正式なパスであること<br />
+            importはclass内で扱うものを記述すること<br />
+            classの前に必ず@controllerを記述すること<br />
+            class名はファイル名と合致させることなどが主なルールです<br />
+            それ以外の説明に関しては以下コメントアウトにて説明がなされています</p>
+
             {SyntaxCode('java','spring/template/HomeController.java')}
-            <p className="leading-7 mb-3"><Link href="http://localhost:8080/" target="_blank">http://localhost:8080/</Link></p>
+            <p className="leading-7 mb-3">ここまで実行した上で、mvn spring-boot:runにてビルドと同時に起動してみましょう<br />
+            以下URLにてローカルで確認できます<br />
+            <Link href="http://localhost:8080/" target="_blank">http://localhost:8080/</Link></p>
             <Image
               className="mb-3"
               src={'/java/template.png'}
@@ -374,33 +400,67 @@ export default function Home() {
               height={38}
               priority
             />
+            <p className="leading-7 mb-3">ページ表示が確認できました🥳<br />
+            変数もテンプレートに反映されています</p>
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">データ登録</p>
-            <p className="leading-7">ページを表示させます<br />
-            補足として、データを登録するためのシステムを作成するまで、約3日間かかりました<br />
+            <p className="leading-7">formよりデータを登録できるシステムを作成してみます<br />
+            補足として、この、データを登録するためのシステムを作成するまで、約3日間かかりました<br />
+            {WrapCode('spring boot')}のMVCは簡潔でわかりやすいのですが、すべての役割の結びつきを理解した上で構築しなければならないため、<br />
+            想定よりも時間を消費してしまいました<br /><br />
             インジェンクションや型の修飾について理解を深めるためには、さらに勉強時間が必要です<br />
             とりあえずデータを登録できるようにするための最低限必要なシステムを作成するために<br />
-            登録するためのdbとテーブルを作成します</p>
+            登録するためのdbとテーブルを作成します<br />
+            ユーザーは例によって{WrapCode('guest')}を使い、新規に{WrapCode('spring')}データベースを作成して、権限を付与しています<br />
+            また{WrapCode('user')}テーブルは、id,nameなど簡潔な構成にしています</p>
 
             {SyntaxCode('java','spring/macOS/db.sh')}
-            <p className="leading-7">Spring Bootに接続するための情報を各種ファイルに書き込みましょう</p>
+            <p className="leading-7 mb-3">{WrapCode('Spring Boot')}から{WrapCode('mysql')}に接続するための情報を以下{WrapCode('2')}ファイルに書き込みましょう</p>
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul>
+                    <li>/src/main/resources/application.properties</li>
+                    <li>/pom.xml</li>
+                </ul>
+            </div>
             {SyntaxCode('java','spring/insert/application.properties')}
             {SyntaxCode('java','spring/insert/pom.xml')}
 
-            <p className="leading-7">情報を元にuserテーブルに接続してUserモデルを作成します</p>
+            <p className="leading-7 mb-3">ここまででdb接続の準備が整いました<br />
+            {WrapCode('user')}テーブルに接続できるUserモデル〜コントローラーまでを作成します</p>
+
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul>
+                    <li>src/main/java/org/spring/boot/model/User.java</li>
+                    <li>src/main/java/org/spring/boot/mapper/UserMapper.java</li>
+                    <li>src/main/java/org/spring/boot/service/UserService.java</li>
+                    <li>src/main/java/org/spring/boot/form/UserForm.java</li>
+                    <li>src/main/java/org/spring/boot/MySpringBootApplication.java</li>
+                    <li>src/main/java/org/spring/boot/controller/UserController.java</li>
+                </ul>
+            </div>
+
+            <p className="leading-7">modelにはdbの情報を記述します</p>
             {SyntaxCode('java','spring/insert/User.java')}
-            <p className="leading-7">Userモデルに対してデータを登録したり編集する機能です</p>
-            {SyntaxCode('java','spring/insert/UserMapper.java')}
             <p className="leading-7">Mapperをserviceとして利用します</p>
+            {SyntaxCode('java','spring/insert/UserMapper.java')}
+            <p className="leading-7">Mapperを利用できるようにするには、MySpringBootApplicationへの登録が必要です</p>
+            {SyntaxCode('java','spring/insert/MySpringBootApplication.java')}
+            <p className="leading-7">serviceにはsql文を用いて、Userモデルに対してデータを登録したり編集する機能をつけます</p>
             {SyntaxCode('java','spring/insert/UserService.java')}
             <p className="leading-7">formを使ってデータ登録する機能を作成するので<br />
             formを定義するファイルも作成します</p>
             {SyntaxCode('java','spring/insert/UserForm.java')}
-            {SyntaxCode('java','spring/insert/MySpringBootApplication.java')}
+            <p className="leading-7">最後に各機能を利用して、テンプレートに反映させるようなcontrollerを作成します<br />
+            /userのフォームからpostすると/user/newにてデータが登録されるような構成にしています</p>
             {SyntaxCode('java','spring/insert/UserController.java')}
+            <p className="leading-7">テンプレートを作成しましょう</p>
             {SyntaxCode('java','spring/insert/index.html')}
+            <p className="leading-7 mb-3">ここまでをビルドして反映させると以下のような画面が表示されます<br />
+            <Link href="http://localhost:8080/user" target="_blank">http://localhost:8080/user</Link></p>
             <Image
               className="mb-3"
               src={'/java/insert.png'}
@@ -409,31 +469,69 @@ export default function Home() {
               height={38}
               priority
             />
+            <p className="leading-7 mb-3">登録後にmac OS上で対象dbを覗いてみます</p>
             {SyntaxCode('java','spring/macOS/insert.sh')}
+            <p className="leading-7">データが登録されました🥳</p>
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">データ表示</p>
-            <p className="leading-7">データを一覧表示できるようにします</p>
+
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul>
+                    <li>src/main/java/org/spring/boot/model/User.java</li>
+                    <li>src/main/java/org/spring/boot/controller/UserController.java</li>
+                </ul>
+            </div>
+
+            <p className="leading-7">データを一覧表示できるようにします<br />
+            controllerに以下１行を追加するだけで表示が可能です</p>
             {SyntaxCode('java','spring/read/UserController.java')}
+            <p className="leading-7">本来そのはずだったのですが、<br />
+            lombokのDataを利用すればビルド時に自動でGetterとSetterが設定されるところ<br />
+            なぜか設定されなかったため、Getterのみ追記しました</p>
             {SyntaxCode('java','spring/read/User.java')}
+            <p className="leading-7">Getterを追記したことで、user.nameとするだけで<br />
+            UserからgetNameする機能が付与されました</p>
             {SyntaxCode('java','spring/read/index.html')}
+            <p className="leading-7 mb-3">実際にブラウザで確認した結果が以下です<br />
+            <Link href="http://localhost:8080/user" target="_blank">http://localhost:8080/user</Link></p>
             <Image
               className="mb-3"
               src={'/java/read.png'}
               alt="success"
-              width={280}
+              width={400}
               height={38}
               priority
             />
+            <p className="leading-7">無事表示が確認できました🥳</p>
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">データ更新</p>
-            <p className="leading-7">更新できるようなページを作成します</p>
+            <p className="leading-7 mb-3">更新できるようなページを作成します</p>
+
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul>
+                    <li>src/main/java/org/spring/boot/form/UserForm.java</li>
+                    <li>src/main/java/org/spring/boot/controller/UserController.java</li>
+                </ul>
+            </div>
+
+            <p className="leading-7">更新ページはさまざまなアプローチ方法がありますが、<br />
+            formのinputでname=idをtype:hiddenにして更新するパターンが一般的であるため<br />
+            この方法で試してみます<br /><br />
+            まず、userの詳細ページと更新処理ページをcontrollerで登録します<br />
+            idに準じてユーザー情報が表示されるように構築しています</p>
             {SyntaxCode('java','spring/update/UserController.java')}
+            <p className="leading-7">idもフォームに含めるため、UserFormファイルにidを追加します</p>
             {SyntaxCode('java','spring/update/UserForm.java')}
+            <p className="leading-7">編集ページをテンプレートに追加します</p>
             {SyntaxCode('java','spring/update/edit.html')}
+            <p className="leading-7 mb-3">実際にブラウザで更新されるか確認しましょう<br />
+            <Link href="http://localhost:8080/user/edit/1" target="_blank">http://localhost:8080/user/edit/1</Link></p>
             <Image
               className="mb-3"
               src={'/java/update1.png'}
@@ -458,15 +556,40 @@ export default function Home() {
               height={38}
               priority
             />
+            <p className="leading-7">http://localhost:8080/user/にリダイレクトされ、<br />
+            id:1の情報が更新されていることが確認できました</p>
+
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">データ検索</p>
-            <p className="leading-7">データの検索を行います</p>
+            <p className="leading-7 mb-3">データの検索を行います</p>
+
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul>
+                    <li>src/main/java/org/spring/boot/mapper/UserMapper.java</li>
+                    <li>src/main/java/org/spring/boot/service/UserService.java</li>
+                    <li>src/main/java/org/spring/boot/form/SerarchForm.java</li>
+                    <li>src/main/java/org/spring/boot/controller/UserController.java</li>
+                </ul>
+            </div>
+
+            <p className="leading-7">Spring Mybatisを利用しているため、本来はxmlファイルを作成して実行するべきですが<br />
+            今回はとりあえず検索機能を作成することを目的としているため、複数文字検索やインジェクションは考慮しない作りになっています<br /><br />
+            まず、検索用のフォームを作成しましょう</p>
             {SyntaxCode('java','spring/search/UserSearchForm.java')}
+            <p className="leading-7">次にMapperファイルに検索用のSQL文を追記します</p>
             {SyntaxCode('java','spring/search/UserMapper.java')}
+            <p className="leading-7">Mapperファイルに追記した検索を、Serviceに登録します</p>
             {SyntaxCode('java','spring/search/UserService.java')}
+            <p className="leading-7">ここまでの文を反映させるページを作成します<br />
+            ポイントとして、クエリパラメータを取得できるようにRequestParamを関数の引数として読み込ませているのですが、<br />
+            requiredをfalseにしておかないと、検索前のパラメータが存在しない場合にページ表示でエラーが発生します</p>
             {SyntaxCode('java','spring/search/UserController.java')}
+            <p className="leading-7">検索と検索結果を同じページに収めたいので、formと配列をテンプレートに記述します</p>
             {SyntaxCode('java','spring/search/search.html')}
+            <p className="leading-7 mb-3">検索機能を確認しましょう<br />
+            <Link href="http://localhost:8080/user/search" target="_blank">http://localhost:8080/user/search</Link></p>
             <Image
               className="mb-3"
               src={'/java/search1.png'}
@@ -483,7 +606,18 @@ export default function Home() {
               height={38}
               priority
             />
+            <p className="leading-7 mb-3">検索機能が確認できました🥳</p>
 
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">Spring Bootまとめ</p>
+            <p className="leading-7 mb-3">Spring Bootはlaravel,djangoと違い、コンパイル言語のため<br />
+            ビルドという手間がかかります、しかしビルド時間はさほどかからず、またビルドすることで高速化が期待できるため、そこまで苦痛ではありません<br />
+            ただし、他のフレームワークと違う部分は、MVCを完全に理解していないと作成できない点<br />
+            そして何よりもプラグインとの依存関係です<br />
+            今回Spring Bootのバージョン3から作り始めたため、そこまでの脅威ではありませんでしたが<br />
+            少なくともlambokがうまく起動しなかったことがあるため、Spring Bootのバージョンを2から3にアップするだけでも<br />
+            この依存関係でプログラマーは難色を示すと思います</p>
          </div>
 
       </section>

@@ -556,7 +556,9 @@ export default function Home() {
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">データ編集</p>
-            <p className="leading-7 mb-3">test</p>
+            <p className="leading-7 mb-3">登録済みのデータを編集できる機能です<br />
+            先ほどのデータ登録とほぼ変わりませんが、個別データ専用のページを作成する点と<br />
+            idを指定してデータを更新する部分のみ変更する必要があります</p>
 
             <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
@@ -567,13 +569,38 @@ export default function Home() {
                 </ul>
             </div>
 
+            <p className="leading-7">個別データ用のページurlを作成します<br />
+            int:pkにはデータのidが収まる想定です</p>
             {SyntaxCode('python','django/update/urls.py')}
+            <p className="leading-7">insertとの大きな違いは、defにidを指定している点<br />
+            itemをidから取得してformのvalueに当てはめている点<br />
+            さらにリダイレクト先を元いた個別ページにしている点があります</p>
             {SyntaxCode('python','django/update/views.py')}
+            <p className="leading-7 mb-3">この状態でpiyoを入力して、更新してみます<br />
+            <Link href="https://django.ksk318.me/edit/1" target="_blank">https://django.ksk318.me/edit/1</Link></p>
+            <Image
+              className="mb-3"
+              src={'/python/update1.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <Image
+              className="mb-3"
+              src={'/python/update2.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <p className="leading-7">無事、更新されました</p>
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">データ一覧表示</p>
-            <p className="leading-7 mb-3">test</p>
+            <p className="leading-7 mb-3">登録したデータを一覧で表示させる機能です<br />
+            新規urlを作成せずにルートページで表示させるようにしてみます</p>
 
             <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
@@ -583,13 +610,26 @@ export default function Home() {
                 </ul>
             </div>
 
+            <p className="leading-7">リストを取得する記述をして、それをviewモデルに渡しています</p>
             {SyntaxCode('python','django/list/views.py')}
+            <p className="leading-7">リストには編集ページまでのリンクも作成してみます</p>
             {SyntaxCode('python','django/list/index.html')}
+            <p className="leading-7 mb-3">一覧を確認してみましょう<br />
+            <Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link></p>
+            <Image
+              className="mb-3"
+              src={'/python/list.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <p className="leading-7">表示が確認できましたね🥳</p>
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">検索機能</p>
-            <p className="leading-7 mb-3">test</p>
+            <p className="leading-7 mb-3">検索フォームから文字列をgetし、getした文字列で対象のデータを抽出するページを作成してみます</p>
 
             <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
@@ -600,9 +640,41 @@ export default function Home() {
                 </ul>
             </div>
 
+            <p className="leading-7 mb-3">/searchのurlを登録します</p>
             {SyntaxCode('python','django/search/urls.py')}
+            <p className="leading-7">クエリパラメータを取得し、filterを介してnameにパラメータの文字列が含まれるデータをオブジェクトにして、テンプレートに返しています</p>
             {SyntaxCode('python','django/search/views.py')}
-            {SyntaxCode('python','django/list/index.html')}
+            <p className="leading-7">これらを表示させるテンプレートビューをhtmlで作成しましょう</p>
+            {SyntaxCode('python','django/search/index.html')}
+            <p className="leading-7 mb-3">実際に検索してみます<br />
+            <Link href="https://django.ksk318.me/search/" target="_blank">https://django.ksk318.me/search/</Link></p>
+            <Image
+              className="mb-3"
+              src={'/python/search1.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <Image
+              className="mb-3"
+              src={'/python/search2.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <p className="leading-7">検索できました🥳</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">Djangoまとめ</p>
+            <p className="leading-7 mb-3">urlの登録、開発環境と本番環境の切り替えやすさ、controllerの記法など<br />
+            laravelに似ているため使いやすい、とっつき易さもありました<br />
+            デメリットとしては、記述が自由であるため、チーム開発には不向きかもしれません<br />
+            ここもlaravelと似ています<br />
+            初心者にも扱いやすいフレームワークという印象でした<br />
+            また、controllerは必要最低限で動くので、ここも非常に理解しやすかったです</p>
          </div>
 
       </section>

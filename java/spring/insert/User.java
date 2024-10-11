@@ -1,5 +1,3 @@
-// src/main/java/org/spring/model/boot/application.propertiesに以下を追加
-
 package org.spring.boot.model;
 
 import lombok.Data;

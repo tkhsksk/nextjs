@@ -1,3 +1,4 @@
+# local上にはmavenが存在していないので、brewでinstallする
 brew install maven
 
 cd git/<作業ディレクトリ>
