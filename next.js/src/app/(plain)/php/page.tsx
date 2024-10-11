@@ -336,6 +336,29 @@ export default function Home() {
 
       </section>
 
+      <section id="laravel">
+         <h2 className="text-2xl font-semibold mb-3">Django</h2>
+         <p className="leading-7 mb-3">phpの代表的なフレームワークの{WrapCode('laravel')}にて</p>
+
+         <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">実際に作成したdjango環境</p>
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                <tbody className="dark:text-gray-600">
+                <tr>
+                   <th className="pr-4 break-all">url</th><td><Link href="https://laravel.ksk318.me/" target="_blank">https://laravel.ksk318.me/</Link></td>
+                </tr>
+                <tr>
+                   <th className="pr-4">basic user</th><td>guest</td>
+                </tr>
+                <tr>
+                   <th className="pr-4">basic pass</th><td>DAZU9M27WXC59QETYMUB</td>
+                </tr>
+                </tbody>
+                </table>
+            </div>
+
+      </section>
+
       </main>
     </div>
   );

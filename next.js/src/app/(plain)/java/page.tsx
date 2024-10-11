@@ -356,8 +356,25 @@ export default function Home() {
             gitも用意し、cloneしたローカルで編集できるようにします<br /><br />
             git cloneしたものをローカルで実行してみましょう</p>
             {SyntaxCode('java','spring/macOS/install.sh')}
-            <p className="leading-7">local上でspring bootが実行できました<br />
+            <p className="leading-7 mb-3">local上でspring bootが実行できました<br />
             <Link href="http://localhost:8080/" target="_blank">http://localhost:8080/</Link>でページ表示が確認できます</p>
+
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">実際に作成したSpring Boot環境</p>
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                <tbody className="dark:text-gray-600">
+                <tr>
+                   <th className="pr-4 break-all">url</th><td><Link href="https://spring.ksk318.me/" target="_blank">https://spring.ksk318.me/</Link></td>
+                </tr>
+                <tr>
+                   <th className="pr-4">basic user</th><td>guest</td>
+                </tr>
+                <tr>
+                   <th className="pr-4">basic pass</th><td>7FYESXW6DUBEJFGT3RKS</td>
+                </tr>
+                </tbody>
+                </table>
+            </div>
 
             <hr className="my-5" />
 

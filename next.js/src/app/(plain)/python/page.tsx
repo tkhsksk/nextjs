@@ -369,7 +369,7 @@ export default function Home() {
                 <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
                 <tbody className="dark:text-gray-600">
                 <tr>
-                   <th className="pr-4">url</th><td><Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link></td>
+                   <th className="pr-4 break-all">url</th><td><Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link></td>
                 </tr>
                 <tr>
                    <th className="pr-4">basic user</th><td>guest</td>
