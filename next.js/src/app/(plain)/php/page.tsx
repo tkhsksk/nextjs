@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { gml } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import fs from 'fs'
+import Link  from 'next/link'
 
 export const metadata: Metadata = {
    title: 'php｜'+process.env.SITE_TITLE,
