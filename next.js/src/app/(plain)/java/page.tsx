@@ -28,7 +28,7 @@ function SyntaxCode(lang: string, file: string) {
 }
 
 function WrapCode(txt: string) {
-   return <code className="break-all bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">{txt}</code>;
+   return <code className="break-all bg-black/[.1] dark:text-black dark:bg-white/[.8] px-1 py-0.5 rounded font-semibold">{txt}</code>;
 }
 
 export default function Home() {
@@ -418,7 +418,7 @@ export default function Home() {
 
             {SyntaxCode('java','spring/macOS/db.sh')}
             <p className="leading-7 mb-3">{WrapCode('Spring Boot')}から{WrapCode('mysql')}に接続するための情報を以下{WrapCode('2')}ファイルに書き込みましょう</p>
-            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/src/main/resources/application.properties</li>
@@ -431,7 +431,7 @@ export default function Home() {
             <p className="leading-7 mb-3">ここまででdb接続の準備が整いました<br />
             {WrapCode('user')}テーブルに接続できるUserモデル〜コントローラーまでを作成します</p>
 
-            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>src/main/java/org/spring/boot/model/User.java</li>
@@ -477,7 +477,7 @@ export default function Home() {
 
             <p className="font-semibold mb-3">データ表示</p>
 
-            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>src/main/java/org/spring/boot/model/User.java</li>
@@ -512,7 +512,7 @@ export default function Home() {
             <p className="font-semibold mb-3">データ更新</p>
             <p className="leading-7 mb-3">更新できるようなページを作成します</p>
 
-            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>src/main/java/org/spring/boot/form/UserForm.java</li>
@@ -564,7 +564,7 @@ export default function Home() {
             <p className="font-semibold mb-3">データ検索</p>
             <p className="leading-7 mb-3">データの検索を行います</p>
 
-            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>src/main/java/org/spring/boot/mapper/UserMapper.java</li>

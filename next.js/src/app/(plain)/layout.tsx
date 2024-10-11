@@ -27,7 +27,7 @@ export default function PlainLayout({
   return (
     <html lang="ja">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased sm:text-base text-sm`}
       >
         <Header />
         <div className="grid grid-cols-4 gap-4 min-h-screen">

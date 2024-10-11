@@ -28,7 +28,7 @@ function SyntaxCode(lang: string, code: string) {
 }
 
 function WrapCode(txt: string) {
-   return <code className="break-all bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">{txt}</code>;
+   return <code className="break-all bg-black/[.1] dark:text-black dark:bg-white/[.8] px-1 py-0.5 rounded font-semibold">{txt}</code>;
 }
 
 export default function Home() {
@@ -69,7 +69,7 @@ export default function Home() {
             </p>
             <p className="font-semibold">実行内容</p>
             {SyntaxCode('go','helloWorld_br')}
-            <p className="mb-3">htmlタグを{WrapCode('go')}の文中挟むとそのまま表示されてしまいます。<br />go中の改行には末尾の半角スペース対策と同じく\nを用います。</p>
+            <p className="leading-7 mb-3">htmlタグを{WrapCode('go')}の文中挟むとそのまま表示されてしまいます。<br />go中の改行には末尾の半角スペース対策と同じく\nを用います。</p>
             <p className="font-semibold">実行結果</p>
             {Syntax('shell','Hello World.\nBye world.')}
 
@@ -81,12 +81,12 @@ export default function Home() {
             {SyntaxCode('go','var')}
             <p className="font-semibold">実行結果</p>
             {Syntax('shell','test')}
-            <p className="mb-3">{WrapCode('x := "test"')}でxにtestを格納し、それを{WrapCode('fmt.Println()')}で呼び出します<br />文字を結合する場合にはx,yにそれぞれの文字列を格納して+(プラス)で結合することができます</p>
+            <p className="leading-7 mb-3">{WrapCode('x := "test"')}でxにtestを格納し、それを{WrapCode('fmt.Println()')}で呼び出します<br />文字を結合する場合にはx,yにそれぞれの文字列を格納して+(プラス)で結合することができます</p>
             <p className="font-semibold">実行内容</p>
             {SyntaxCode('go','join')}
             <p className="font-semibold">実行結果</p>
             {Syntax('shell','testhoge')}
-            <p>ここまでで分かりましたが、pythonやjavaで厳格にされていた変数の型が、phpくらい簡略化されているようです<br />
+            <p className="leading-7 ">ここまでで分かりましたが、pythonやjavaで厳格にされていた変数の型が、phpくらい簡略化されているようです<br />
             なので{WrapCode('var s string := "test"')}といったように厳格に型を宣言することも可能ですが<br />
             {WrapCode('s := "test"')}、{WrapCode('v := 11')}といったようにタブルクォーテーションのあるなしでstrとintを区別できます</p>
          </div>
@@ -218,13 +218,13 @@ export default function Home() {
             <p className="font-semibold">データの検索</p>
             <p className="leading-7 mb-3">配列から配列を作成することで、簡易的なデータ検索が可能です<br />
             配列を回して、その中で該当となるデータのみ格納する配列を新規に作成すると、検索済みデータの配列を作成できます</p>
-            <p>実際のコードは以下です</p>
+            <p className="leading-7">実際のコードは以下です</p>
             {SyntaxCode('go','forEach_search')}
-            <p>新規に検索データの配列を作成する場合はforよりも、<br />
+            <p className="leading-7">新規に検索データの配列を作成する場合はforよりも、<br />
             繰り返しの処理に向いている、foreachの方が分かりやすく且つ作りやすい構造です<br /><br />
             繰り返しの処理で言うと、例えばすべてのデータに🐶をつける場合も</p>
             {SyntaxCode('go','dog')}
-            <p>で可能です<br />
+            <p className="leading-7">で可能です<br />
             phpを深く学ぶまで配列の利点はわかりにくいものですが、<br />
             実務で利用するにあたり、検索や繰り返しの処理で重要な役割を果たしていることに気づきました</p>
 
@@ -254,7 +254,7 @@ export default function Home() {
             <p className="leading-7 mb-3">実行すると{WrapCode('github.com/go-sql-driver/mysql')}がない旨のエラーが表示されます<br />
             エラーの指示に従ってコマンドを実行します</p>
             {SyntaxCode('sh','db_go_step')}
-            <p className="mb-3">実際に登録されたかどうかを確認するために<br />
+            <p className="leading-7 mb-3">実際に登録されたかどうかを確認するために<br />
             shell上でコマンドを利用し中身を見てみましょう</p>
             {SyntaxCode('sh','create_result_go')}
             <p>dbにデータが登録されていることが確認できました<br />
@@ -266,16 +266,16 @@ export default function Home() {
             <p className="mb-3">コマンドでdbに接続し表示させるだけでなく、golangでdbを読み取り、配列として表示させる文を考えてみます<br />
             {WrapCode('struct')}の項目で学習した、構造体を活かして、データを格納するための構造体をmain外で宣言し、そこに格納するようにしてみます<br />
             構造としては、db上のデータと同じidとnameのみの構造とします</p>
-            <p className="mb-3">それではgoから{WrapCode('select')}を使って出力してみます</p>
+            <p className="leading-7 mb-3">それではgoから{WrapCode('select')}を使って出力してみます</p>
             {SyntaxCode('go','read')}
-            <p>{WrapCode('for range')}で出力できました<br />
+            <p className="leading-7 ">{WrapCode('for range')}で出力できました<br />
             ここで気づいたことですが、{WrapCode('for range')}でiを宣言し、文中でiを使わないとエラーが発生してしまう部分<br />
             iの部分を_にすれば利用しなくてもエラーが発生しないようです</p>
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">Update</p>
-            <p className="mb-3">dbに登録したデータを変更したい場合もあるかと思います、その場合は{WrapCode('update')}を使ってデータを更新します<br />
+            <p className="leading-7 mb-3">dbに登録したデータを変更したい場合もあるかと思います、その場合は{WrapCode('update')}を使ってデータを更新します<br />
             先ほど{WrapCode('insert')}したデータをbear→robotに{WrapCode('update')}してみましょう<br />
             これまでと同様、insertで利用したものを再利用してみましょう</p>
             {SyntaxCode('go','update')}
@@ -285,12 +285,12 @@ export default function Home() {
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">Delete</p>
-            <p>実際にはdbからデータを削除することはほぼなくデータベースを設計する際にvisibleなどの項目を設け、<br />
+            <p className="leading-7">実際にはdbからデータを削除することはほぼなくデータベースを設計する際にvisibleなどの項目を設け、<br />
             そこに公開非公開をフラッグとすることが多いです<br />
             特にdbからデータを削除してしまうと二度とデータを閲覧できなくなってしまいます<br />
             そのため、deleteするケースは少ないですが、{WrapCode('delete')}する場合は{WrapCode('delete')}を使ってデータを更新します</p>
             {SyntaxCode('go','delete')}
-            <p>実際に削除されたことを確認しましょう</p>
+            <p className="leading-7">実際に削除されたことを確認しましょう</p>
             {SyntaxCode('sh','delete_result_go')}
          </div>
 
@@ -313,7 +313,7 @@ export default function Home() {
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">GET</p>
-            <p className="mb-3">クエリパラメータを取得するgolangです<br />
+            <p className="leading-7 mb-3">クエリパラメータを取得するgolangです<br />
             {WrapCode('/get_query?id=')}を取得する前提で作ってみます<br />
             {WrapCode('/get_query?id=test')}の場合、printlnで{WrapCode('test')}が出力されるはずです</p>
             {SyntaxCode('go','get')}

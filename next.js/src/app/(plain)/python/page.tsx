@@ -22,7 +22,7 @@ function SyntaxCode(lang: string, file: string) {
 }
 
 function WrapCode(txt: string) {
-   return <code className="break-all bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">{txt}</code>;
+   return <code className="break-all bg-black/[.1] dark:text-black dark:bg-white/[.8] px-1 py-0.5 rounded font-semibold">{txt}</code>;
 }
 
 export default function Home() {
@@ -387,7 +387,7 @@ export default function Home() {
             <p className="leading-7 mb-3">ローカルで開発を進めるために、gitをcloneしてから各種設定をします<br />
             まず、dbの作成ですデータベース名{WrapCode('django')}でデータベースを作成します</p>
 
-            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/demo/settings/setting_dev.py</li>
@@ -434,7 +434,7 @@ export default function Home() {
             <p className="font-semibold mb-3">サーバー上でdbを作成、接続</p>
 
             <p className="leading-7 mb-3">mysqlclientはlocalには入っていましたが、<br />サーバー側のmysql関連モジュールが入っていなかったので、pymysqlをインストールします<br />pymysqlを利用するためには、djangoに追記する必要があります</p>
-            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/demo/settings/setting_dev.py</li>
@@ -454,7 +454,7 @@ export default function Home() {
             <p className="font-semibold mb-3">ページ追加</p>
             <p className="leading-7 mb-3">ページ追加のためのディレクトリを、プロジェクトのルートディレクトリに作成します<br />分かりやすいように{WrapCode('templates')}というディレクトリ名にしました</p>
 
-            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/templates/home/index.html</li>
@@ -505,7 +505,7 @@ export default function Home() {
             <p className="leading-7 mb-3">このindex.htmlページで、<br />
             先ほど作成した{WrapCode('myapp_user')}テーブルに{WrapCode('name')}を登録する機能を作成してみます</p>
 
-            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/myapp/admin.py</li>
@@ -560,7 +560,7 @@ export default function Home() {
             先ほどのデータ登録とほぼ変わりませんが、個別データ専用のページを作成する点と<br />
             idを指定してデータを更新する部分のみ変更する必要があります</p>
 
-            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/myapp/urls.py</li>
@@ -602,7 +602,7 @@ export default function Home() {
             <p className="leading-7 mb-3">登録したデータを一覧で表示させる機能です<br />
             新規urlを作成せずにルートページで表示させるようにしてみます</p>
 
-            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/myapp/views.py</li>
@@ -631,7 +631,7 @@ export default function Home() {
             <p className="font-semibold mb-3">検索機能</p>
             <p className="leading-7 mb-3">検索フォームから文字列をgetし、getした文字列で対象のデータを抽出するページを作成してみます</p>
 
-            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/myapp/urls.py</li>

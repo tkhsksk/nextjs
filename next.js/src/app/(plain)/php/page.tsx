@@ -28,7 +28,7 @@ function SyntaxCode(lang: string, code: string) {
 }
 
 function WrapCode(txt: string) {
-   return <code className="break-all bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">{txt}</code>;
+   return <code className="break-all bg-black/[.1] dark:text-black dark:bg-white/[.8] px-1 py-0.5 rounded font-semibold">{txt}</code>;
 }
 
 export default function Home() {
