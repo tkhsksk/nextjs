@@ -378,9 +378,112 @@ export default function Home() {
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">データ登録</p>
-            <p className="leading-7">ページを表示させます</p>
+            <p className="leading-7">ページを表示させます<br />
+            補足として、データを登録するためのシステムを作成するまで、約3日間かかりました<br />
+            インジェンクションや型の修飾について理解を深めるためには、さらに勉強時間が必要です<br />
+            とりあえずデータを登録できるようにするための最低限必要なシステムを作成するために<br />
+            登録するためのdbとテーブルを作成します</p>
 
             {SyntaxCode('java','spring/macOS/db.sh')}
+            <p className="leading-7">Spring Bootに接続するための情報を各種ファイルに書き込みましょう</p>
+            {SyntaxCode('java','spring/insert/application.properties')}
+            {SyntaxCode('java','spring/insert/pom.xml')}
+
+            <p className="leading-7">情報を元にuserテーブルに接続してUserモデルを作成します</p>
+            {SyntaxCode('java','spring/insert/User.java')}
+            <p className="leading-7">Userモデルに対してデータを登録したり編集する機能です</p>
+            {SyntaxCode('java','spring/insert/UserMapper.java')}
+            <p className="leading-7">Mapperをserviceとして利用します</p>
+            {SyntaxCode('java','spring/insert/UserService.java')}
+            <p className="leading-7">formを使ってデータ登録する機能を作成するので<br />
+            formを定義するファイルも作成します</p>
+            {SyntaxCode('java','spring/insert/UserForm.java')}
+            {SyntaxCode('java','spring/insert/MySpringBootApplication.java')}
+            {SyntaxCode('java','spring/insert/UserController.java')}
+            {SyntaxCode('java','spring/insert/index.html')}
+            <Image
+              className="mb-3"
+              src={'/java/insert.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            {SyntaxCode('java','spring/macOS/insert.sh')}
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">データ表示</p>
+            <p className="leading-7">データを一覧表示できるようにします</p>
+            {SyntaxCode('java','spring/read/UserController.java')}
+            {SyntaxCode('java','spring/read/User.java')}
+            {SyntaxCode('java','spring/read/index.html')}
+            <Image
+              className="mb-3"
+              src={'/java/read.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">データ更新</p>
+            <p className="leading-7">更新できるようなページを作成します</p>
+            {SyntaxCode('java','spring/update/UserController.java')}
+            {SyntaxCode('java','spring/update/UserForm.java')}
+            {SyntaxCode('java','spring/update/edit.html')}
+            <Image
+              className="mb-3"
+              src={'/java/update1.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <Image
+              className="mb-3"
+              src={'/java/update2.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <Image
+              className="mb-3"
+              src={'/java/update3.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">データ検索</p>
+            <p className="leading-7">データの検索を行います</p>
+            {SyntaxCode('java','spring/search/UserSearchForm.java')}
+            {SyntaxCode('java','spring/search/UserMapper.java')}
+            {SyntaxCode('java','spring/search/UserService.java')}
+            {SyntaxCode('java','spring/search/UserController.java')}
+            {SyntaxCode('java','spring/search/search.html')}
+            <Image
+              className="mb-3"
+              src={'/java/search1.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <Image
+              className="mb-3"
+              src={'/java/search2.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+
          </div>
 
       </section>
