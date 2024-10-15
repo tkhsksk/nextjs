@@ -28,7 +28,7 @@
             "id": 5,
             "title": "go",
             "name": "Ricky Hamer",
-            "subs": ["helloWorld","calc","func,struct","array","crud","post,get"]
+            "subs": ["helloWorld","calc","func,struct","array","crud","post,get","gin"]
         },
         {
             "id": 6,
