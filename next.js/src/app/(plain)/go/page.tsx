@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 // import Test from '@/app/common';
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { gml } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import Link  from 'next/link'
 import fs from 'fs'
 import Image from "next/image"
 
@@ -36,7 +37,7 @@ export default function Home() {
     <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-3 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90 dark:bg-opacity-90 dark:bg-slate-800">
       <main className="flex flex-col gap-8 row-start-2 items-start w-full">
       <h1 className="flex items-end"><span className="font-semibold text-3xl mr-2">go</span><span className="text-md">について</span></h1>
-      <p>本項目ではphpの書き方について、基本から応用までを学習し、<br />最終はフレームワーク{WrapCode('gin')}にて基本動作の作成まで進めます</p>
+      <p className="leading-7">本項目ではphpの書き方について、基本から応用までを学習し、<br />最終はフレームワーク{WrapCode('gin')}にて基本動作の作成まで進めます</p>
       
       <div className="block max-w-sm p-6 border border-gray-200 rounded-lg shadow bg-slate-200">
          <p className="font-semibold mb-3 text-cyan-950">前提となる開発条件</p>
@@ -256,7 +257,7 @@ export default function Home() {
             <p className="leading-7 mb-3">実際に登録されたかどうかを確認するために<br />
             shell上でコマンドを利用し中身を見てみましょう</p>
             {SyntaxCode('sh','create_result_go.sh')}
-            <p>dbにデータが登録されていることが確認できました<br />
+            <p className="leading-7">dbにデータが登録されていることが確認できました<br />
             insertは商品登録、会員登録など、新規のデータを追加する際に利用します</p>
 
             <hr className="my-5" />
@@ -278,7 +279,7 @@ export default function Home() {
             先ほど{WrapCode('insert')}したデータをbear→robotに{WrapCode('update')}してみましょう<br />
             これまでと同様、insertで利用したものを再利用してみましょう</p>
             {SyntaxCode('go','update.go')}
-            <p>実際に更新されたことを確認しましょう</p>
+            <p className="leading-7">実際に更新されたことを確認しましょう</p>
             {SyntaxCode('sh','update_result_go.sh')}
 
             <hr className="my-5" />
@@ -322,19 +323,71 @@ export default function Home() {
 
       <section id="gin">
          <h2 className="text-2xl font-semibold mb-3">gin</h2>
-         <p className="leading-7 mb-3">goの代表的なワイヤーフレームginを習得します</p>
+         <p className="leading-7 mb-3">goの代表的なワイヤーフレーム{WrapCode('gin')}を習得します<br />
+         他ワイヤーフレームと同じく、ページ表示、データの登録、表示、更新、検索まで作成します</p>
 
          <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <p className="font-semibold mb-3">環境構築</p>
-            <p className="leading-7 mb-3">test</p>
+            <p className="leading-7 mb-3">まずはサーバー側に接続して、<br />
+            goモジュールの設定とginのインストールをします</p>
             {SyntaxCode('go','gin/ec2/install.sh')}
+            <p className="leading-7">インストールが完了したら、git環境を構築してlocalにcloneしましょう<br />
+            次の項目からlocal(macOS上)で実行します</p>
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">ページ表示</p>
-            <p className="leading-7 mb-3">test</p>
+            <p className="leading-7 mb-3">{WrapCode('main.go')}ファイルにルーティングとページファイルのパスを記述をすると<br />
+            ページ表示できます<br />
+            本体は{WrapCode('controller')}に記述すべきですが、とりあえず表示させるために、<br />
+            {WrapCode('main.go')}にすべて記述してみます</p>
+
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul className="dark:text-gray-600">
+                    <li>main.go</li>
+                    <li>view/index.html</li>
+                </ul>
+            </div>
+
             {SyntaxCode('go','gin/template/main.go')}
+            <p className="leading-7">対象のページファイルは通常のhtmlファイル構成と同じ記述で大丈夫です</p>
             {SyntaxCode('go','gin/template/index.html')}
+            <p className="leading-7 mb-3">ここまで編集を終えたら{WrapCode('main.go')}の階層で{WrapCode('go run main.go')}を実行します</p>
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8090/" target="_blank">http://localhost:8090/</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://gin.ksk318.me/" target="_blank">https://gin.ksk318.me/</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <Image
               className="mb-3 border"
               src={'/go/template.png'}
@@ -343,12 +396,319 @@ export default function Home() {
               height={38}
               priority
             />
+            <p className="leading-7">ページ表示が確認できました</p>
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">データ登録</p>
-            <p className="leading-7 mb-3">test</p>
+            <p className="leading-7 mb-3">例によって、dbの作成が必要になるので<br />
+            macOSでdbを作成、ユーザーに権限付与します</p>
             {SyntaxCode('go','gin/macOS/db.sh')}
+            <p className="leading-7">データ登録のシステムを構築するにあたってMVCをわかりやすくしたいので<br />
+            各ディレクトリに役割を分担させて、構成します<br />
+            先ほどmain.goに作成したトップページの表示は、home_controller.goに分けました</p>
+            {SyntaxCode('go','gin/macOS/root_insert.sh')}
+
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul className="dark:text-gray-600">
+                    <li>main.go</li>
+                    <li>controller/router.go</li>
+                    <li>controller/user_controller.go</li>
+                    <li>model/database.go</li>
+                    <li>model/user_model.go</li>
+                    <li>view/user.html</li>
+                </ul>
+            </div>
+            <p className="leading-7">{WrapCode('main.go')}では{WrapCode('controller')}にある{WrapCode('router.go')}を取得してルーティングします<br />
+            また実行時のポートを{WrapCode('8090')}とする記述を施します</p>
+            {SyntaxCode('go','gin/insert/main.go')}
+            <p className="leading-7">取得先の{WrapCode('router.go')}です<br />
+            各controllerからページ表示を取得し、urlを指定します</p>
+            {SyntaxCode('go','gin/insert/router.go')}
+            <p className="leading-7">controllerの記述です<br />
+            表示させるページファイル、postしたデータの受け取りとデータ登録<br />
+            データ登録後のリダイレクト先を示します</p>
+            {SyntaxCode('go','gin/insert/user_controller.go')}
+            <p className="leading-7">先ほどの{WrapCode('controller')}で使用するデータ登録用の関数を指定します<br />
+            データ登録にはCreateを使用しています</p>
+            {SyntaxCode('go','gin/insert/user_model.go')}
+            <p className="leading-7">dbを接続するための情報記述です<br />
+            とりあえず接続することを目的としているため、別途{WrapCode('.env')}ファイルへの記述はせず、そのまま指定しています</p>
+            {SyntaxCode('go','gin/insert/database.go')}
+            <p className="leading-7">htmlは通常のフォーム構成です</p>
+            {SyntaxCode('go','gin/insert/user.html')}
+            <p className="leading-7 mb-3">ここまで編集を終えたら{WrapCode('main.go')}の階層で{WrapCode('go run main.go')}を実行します</p>
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8090/user/" target="_blank">http://localhost:8090/user/</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://gin.ksk318.me/user/" target="_blank">https://gin.ksk318.me/user/</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <Image
+              className="mb-3 border"
+              src={'/go/insert1.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+
+            <Image
+              className="mb-3 border"
+              src={'/go/insert2.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <p className="leading-7">登録後、ターミナルからdbを参照します</p>
+            {SyntaxCode('go','gin/macOS/show_db_insert.sh')}
+            <p className="leading-7 mb-3">データ登録が確認できました🥳</p>
+            <p className="text-gray-500 break-all">参考文献:https://zenn.dev/ajapa/articles/65b9934db18396<br />
+            参考文献:https://zenn.dev/tonbi_attack/articles/cf412d07baa10a</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">データ表示</p>
+            <p className="leading-7 mb-3">先の項目で登録したデータを表示します</p>
+
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul className="dark:text-gray-600">
+                    <li>controller/user_controller.go</li>
+                    <li>view/user.html</li>
+                </ul>
+            </div>
+            <p className="leading-7">すでにmodelに、データ全件を取得する{WrapCode('GetAll')}が存在しているので、<br />
+            こちらを{WrapCode('controller')}で利用します<br />
+            表示させるページは、先ほどの/userページに追加してみましょう</p>
+            {SyntaxCode('go','gin/read/user_controller.go')}
+            <p className="leading-7">html上で配列を回すためにはrangeを利用します</p>
+            {SyntaxCode('go','gin/read/user.html')}
+            <p className="leading-7 mb-3">ここまで編集を終えたら{WrapCode('main.go')}の階層で{WrapCode('go run main.go')}を実行します</p>
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8090/user/" target="_blank">http://localhost:8090/user/</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://gin.ksk318.me/user/" target="_blank">https://gin.ksk318.me/user/</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <Image
+              className="mb-3 border"
+              src={'/go/read.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <p className="leading-7">データが表示されました、先ほど登録したデータ1つのみです</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">データ更新</p>
+            <p className="leading-7 mb-3">登録したデータを更新してみます</p>
+
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+                <ul className="dark:text-gray-600">
+                    <li>controller/router.go</li>
+                    <li>controller/user_controller.go</li>
+                    <li>view/edit.html</li>
+                </ul>
+            </div>
+            <p className="leading-7">更新用に、各データを更新できるようなページを作成します<br />
+            url末尾のidから取得するページを追加します</p>
+            {SyntaxCode('go','gin/update/router.go')}
+            <p className="leading-7">{WrapCode('controller')}にページ表示とデータ取得およびデータ更新を記述します<br />
+            modelは、{WrapCode('GetOne')}と{WrapCode('Update')}を利用しましょう</p>
+            {SyntaxCode('go','gin/update/user_controller.go')}
+            <p className="leading-7">編集ページではhiddenで{WrapCode('id')}を更新用として用意します</p>
+            {SyntaxCode('go','gin/update/edit.html')}
+            <p className="leading-7 mb-3">ここまで編集を終えたら{WrapCode('main.go')}の階層で{WrapCode('go run main.go')}を実行します</p>
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8090/edit/1" target="_blank">http://localhost:8090/edit/1</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://gin.ksk318.me/edit/1" target="_blank">https://gin.ksk318.me/edit/1</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p className="leading-7 mb-3">{WrapCode('hoge')}を{WrapCode('piyo')}で更新してみましょう</p>
+            <Image
+              className="mb-3 border"
+              src={'/go/update1.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+
+            <Image
+              className="mb-3 border"
+              src={'/go/update2.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <p className="leading-7">/userページにリダイレクトして、{WrapCode('piyo')}に更新されていることが確認できました🥳</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">データ検索</p>
+            <p className="leading-7 mb-3">最後にデータの検索です</p>
+
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+               <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
+               <ul className="dark:text-gray-600">
+                  <li>model/user_model.go</li>
+                  <li>controller/router.go</li>
+                  <li>controller/user_controller.go</li>
+                  <li>view/edit.html</li>
+               </ul>
+            </div>
+            <p className="leading-7">modelに新たな関数Searchを追加します<br />
+            こちらで{WrapCode('name')}に{WrapCode('LIKE')}しているデータを取得する記述を施します</p>
+            {SyntaxCode('go','gin/search/user_model.go')}
+            <p className="leading-7">searchページで{WrapCode('get')}と{WrapCode('post')}ができるようにします</p>
+            {SyntaxCode('go','gin/search/router.go')}
+            <p className="leading-7">クエリパラメータを取得して、<br />
+            取得したパラメータで関数{WrapCode('Search')}を使って検索しています</p>
+            {SyntaxCode('go','gin/search/user_controller.go')}
+            <p className="leading-7">データの表示と同じように、検索したデータを{WrapCode('range')}で回します</p>
+            {SyntaxCode('go','gin/search/search.html')}
+            <p className="leading-7 mb-3">ここまで編集を終えたら{WrapCode('main.go')}の階層で{WrapCode('go run main.go')}を実行します</p>
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8090/search/" target="_blank">http://localhost:8090/search/</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://gin.ksk318.me/search/" target="_blank">https://gin.ksk318.me/search/</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p className="leading-7 mb-3">piで検索してみましょう</p>
+            <Image
+              className="mb-3 border"
+              src={'/go/search.png'}
+              alt="success"
+              width={280}
+              height={38}
+              priority
+            />
+            <p className="leading-7">検索できました🥳</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">ginまとめ</p>
+            <p className="leading-7 mb-3">MVCをゼロから作成する手間はありますが、逆に自己流にわかりやすくディレクトリ名をつけられるので、<br />
+            カスタマイズしやすいフレームワークでした<br /><br />
+            MVCをゼロから、というとSpring Bootのような難しさがあると思われがちですが、Spring Bootのようなモジュールのバージョン問題などもなく、<br />
+            そもそもgo自体がシンプルな記述なので、難易度もそこまでで、尚且つ管理しやすかったです</p>
          </div>
 
       </section>

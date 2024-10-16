@@ -338,7 +338,7 @@ export default function Home() {
       </section>
 
       <section id="laravel">
-         <h2 className="text-2xl font-semibold mb-3">Django</h2>
+         <h2 className="text-2xl font-semibold mb-3">laravel</h2>
          <p className="leading-7 mb-3">phpの代表的なフレームワークの{WrapCode('laravel')}にて</p>
 
          <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
