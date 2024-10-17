@@ -9,7 +9,6 @@ import { useEffect } from 'react'
 
 export default function Aside() {
   const pathname = usePathname()
-  //const searchParams = useSearchParams()
 
   const [active, setActive] = useState(false);
   const handleClick = () => {
