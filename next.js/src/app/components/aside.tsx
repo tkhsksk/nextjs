@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link  from 'next/link'
 import Image from "next/image";
 import Datas from "../../../data.json"
@@ -9,7 +9,8 @@ import { useEffect } from 'react'
 
 export default function Aside() {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
+  //const searchParams = useSearchParams()
+
   const [active, setActive] = useState(false);
   const handleClick = () => {
     setActive(!active)
@@ -17,7 +18,7 @@ export default function Aside() {
 
   useEffect(() => {
     setActive(false)
-  }, [pathname, searchParams])
+  }, [pathname])
 
   return (
     <aside className="flex justify-center h-40 h-full">

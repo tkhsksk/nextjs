@@ -9,7 +9,7 @@ import Header from '@components/header';
 import Aside  from '@components/aside';
 import Footer from '@components/footer';
 import React, { useState } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Image from "next/image"
 
 const geistSans = localFont({
@@ -30,14 +30,14 @@ export default function PlainLayout({
 }>) {
   const [active, setActive] = useState(false);
   const pathname = usePathname()
-  const searchParams = useSearchParams()
+
   const handleClick = () => {
     setActive(!active)
   }
 
   useEffect(() => {
     setActive(false)
-  }, [pathname, searchParams])
+  }, [pathname])
 
   return (
     <html lang="ja" className={active ? "active" : "deactive"}>
