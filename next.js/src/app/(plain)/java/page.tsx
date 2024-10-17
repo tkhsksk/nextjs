@@ -356,8 +356,7 @@ export default function Home() {
             gitも用意し、cloneしたローカルで編集できるようにします<br /><br />
             git cloneしたものをローカルで実行してみましょう</p>
             {SyntaxCode('java','spring/macOS/install.sh')}
-            <p className="leading-7 mb-3">local上でspring bootが実行できました<br />
-            <Link href="http://localhost:8080/" target="_blank">http://localhost:8080/</Link>でページ表示が確認できます</p>
+            <p className="leading-7 mb-3">local上で{WrapCode('spring boot')}が実行できました</p>
 
             <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
                 <p className="font-semibold mb-3 text-cyan-950">実際に作成したSpring Boot環境</p>
@@ -370,7 +369,7 @@ export default function Home() {
                    <th className="pr-4">basic user</th><td>guest</td>
                 </tr>
                 <tr>
-                   <th className="pr-4">basic pass</th><td>7FYESXW6DUBEJFGT3RKS</td>
+                   <th className="pr-4">basic pass</th><td>E8SLV3RVEZGEAZATCJZK</td>
                 </tr>
                 </tbody>
                 </table>
@@ -406,11 +405,45 @@ export default function Home() {
             それ以外の説明に関しては以下コメントアウトにて説明がなされています</p>
 
             {SyntaxCode('java','spring/template/HomeController.java')}
-            <p className="leading-7 mb-3">ここまで実行した上で、mvn spring-boot:runにてビルドと同時に起動してみましょう<br />
-            以下URLにてローカルで確認できます<br />
-            <Link href="http://localhost:8080/" target="_blank">http://localhost:8080/</Link></p>
+
+            <p className="leading-7 mb-3">ここまで実行した上で、{WrapCode('mvn spring-boot:run')}にてビルドと同時に起動してみましょう<br />
+            以下URLにてローカルで確認できます</p>
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8080/" target="_blank">http://localhost:8080/</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://spring.ksk318.me/" target="_blank">https://spring.ksk318.me/</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <Image
-              className="mb-3"
+              className="mb-3 border"
               src={'/java/template.png'}
               alt="success"
               width={280}
@@ -435,7 +468,7 @@ export default function Home() {
 
             {SyntaxCode('java','spring/macOS/db.sh')}
             <p className="leading-7 mb-3">{WrapCode('Spring Boot')}から{WrapCode('mysql')}に接続するための情報を以下{WrapCode('2')}ファイルに書き込みましょう</p>
-            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200 dark:text-gray-600">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/src/main/resources/application.properties</li>
@@ -448,7 +481,7 @@ export default function Home() {
             <p className="leading-7 mb-3">ここまででdb接続の準備が整いました<br />
             {WrapCode('user')}テーブルに接続できるUserモデル〜コントローラーまでを作成します</p>
 
-            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200 dark:text-gray-600">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>src/main/java/org/spring/boot/model/User.java</li>
@@ -476,10 +509,46 @@ export default function Home() {
             {SyntaxCode('java','spring/insert/UserController.java')}
             <p className="leading-7">テンプレートを作成しましょう</p>
             {SyntaxCode('java','spring/insert/index.html')}
-            <p className="leading-7 mb-3">ここまでをビルドして反映させると以下のような画面が表示されます<br />
-            <Link href="http://localhost:8080/user" target="_blank">http://localhost:8080/user</Link></p>
+            <p className="leading-7 mb-3">ここまでをビルドして反映させると以下のような画面が表示されます</p>
+
+            <p className="leading-7 mb-3">ここまで実行した上で、{WrapCode('mvn spring-boot:run')}にてビルドと同時に起動してみましょう<br />
+            以下URLにて確認できます</p>
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8080/user" target="_blank">http://localhost:8080/user</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://spring.ksk318.me/user" target="_blank">https://spring.ksk318.me/user</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <Image
-              className="mb-3"
+              className="mb-3 border"
               src={'/java/insert.png'}
               alt="success"
               width={280}
@@ -494,7 +563,7 @@ export default function Home() {
 
             <p className="font-semibold mb-3">データ表示</p>
 
-            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200 dark:text-gray-600">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>src/main/java/org/spring/boot/model/User.java</li>
@@ -512,8 +581,42 @@ export default function Home() {
             <p className="leading-7">Getterを追記したことで、user.nameとするだけで<br />
             UserからgetNameする機能が付与されました</p>
             {SyntaxCode('java','spring/read/index.html')}
-            <p className="leading-7 mb-3">実際にブラウザで確認した結果が以下です<br />
-            <Link href="http://localhost:8080/user" target="_blank">http://localhost:8080/user</Link></p>
+            <p className="leading-7 mb-3">実際にブラウザで確認してみます<br />
+            {WrapCode('mvn spring-boot:run')}</p>
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8080/user" target="_blank">http://localhost:8080/user</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://spring.ksk318.me/user" target="_blank">https://spring.ksk318.me/user</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <Image
               className="mb-3"
               src={'/java/read.png'}
@@ -529,7 +632,7 @@ export default function Home() {
             <p className="font-semibold mb-3">データ更新</p>
             <p className="leading-7 mb-3">更新できるようなページを作成します</p>
 
-            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200 dark:text-gray-600">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>src/main/java/org/spring/boot/form/UserForm.java</li>
@@ -548,9 +651,43 @@ export default function Home() {
             <p className="leading-7">編集ページをテンプレートに追加します</p>
             {SyntaxCode('java','spring/update/edit.html')}
             <p className="leading-7 mb-3">実際にブラウザで更新されるか確認しましょう<br />
-            <Link href="http://localhost:8080/user/edit/1" target="_blank">http://localhost:8080/user/edit/1</Link></p>
+            {WrapCode('mvn spring-boot:run')}</p>
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8080/user/edit/1" target="_blank">http://localhost:8080/user/edit/1</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://spring.ksk318.me/user/edit/1" target="_blank">https://spring.ksk318.me/user/edit/1</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <Image
-              className="mb-3"
+              className="mb-3 border"
               src={'/java/update1.png'}
               alt="success"
               width={280}
@@ -558,7 +695,7 @@ export default function Home() {
               priority
             />
             <Image
-              className="mb-3"
+              className="mb-3 border"
               src={'/java/update2.png'}
               alt="success"
               width={280}
@@ -566,14 +703,14 @@ export default function Home() {
               priority
             />
             <Image
-              className="mb-3"
+              className="mb-3 border"
               src={'/java/update3.png'}
               alt="success"
               width={280}
               height={38}
               priority
             />
-            <p className="leading-7">http://localhost:8080/user/にリダイレクトされ、<br />
+            <p className="leading-7">/userにリダイレクトされ、<br />
             id:1の情報が更新されていることが確認できました</p>
 
             <hr className="my-5" />
@@ -581,7 +718,7 @@ export default function Home() {
             <p className="font-semibold mb-3">データ検索</p>
             <p className="leading-7 mb-3">データの検索を行います</p>
 
-            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200 dark:text-gray-600">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>src/main/java/org/spring/boot/mapper/UserMapper.java</li>
@@ -591,7 +728,7 @@ export default function Home() {
                 </ul>
             </div>
 
-            <p className="leading-7">Spring Mybatisを利用しているため、本来はxmlファイルを作成して実行するべきですが<br />
+            <p className="leading-7">{WrapCode('Spring Mybatis')}を利用しているため、本来はxmlファイルを作成して実行するべきですが<br />
             今回はとりあえず検索機能を作成することを目的としているため、複数文字検索やインジェクションは考慮しない作りになっています<br /><br />
             まず、検索用のフォームを作成しましょう</p>
             {SyntaxCode('java','spring/search/UserSearchForm.java')}
@@ -600,15 +737,48 @@ export default function Home() {
             <p className="leading-7">Mapperファイルに追記した検索を、Serviceに登録します</p>
             {SyntaxCode('java','spring/search/UserService.java')}
             <p className="leading-7">ここまでの文を反映させるページを作成します<br />
-            ポイントとして、クエリパラメータを取得できるようにRequestParamを関数の引数として読み込ませているのですが、<br />
-            requiredをfalseにしておかないと、検索前のパラメータが存在しない場合にページ表示でエラーが発生します</p>
+            ポイントとして、クエリパラメータを取得できるように{WrapCode('RequestParam')}を関数の引数として読み込ませているのですが、<br />
+            {WrapCode('required')}をfalseにしておかないと、検索前のパラメータが存在しない場合にページ表示でエラーが発生します</p>
             {SyntaxCode('java','spring/search/UserController.java')}
             <p className="leading-7">検索と検索結果を同じページに収めたいので、formと配列をテンプレートに記述します</p>
             {SyntaxCode('java','spring/search/search.html')}
-            <p className="leading-7 mb-3">検索機能を確認しましょう<br />
-            <Link href="http://localhost:8080/user/search" target="_blank">http://localhost:8080/user/search</Link></p>
+            <p className="leading-7 mb-3">検索機能を確認しましょう</p>
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8080/user/search" target="_blank">http://localhost:8080/user/search</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://spring.ksk318.me/user/search" target="_blank">https://spring.ksk318.me/user/search</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <Image
-              className="mb-3"
+              className="mb-3 border"
               src={'/java/search1.png'}
               alt="success"
               width={280}
@@ -616,7 +786,7 @@ export default function Home() {
               priority
             />
             <Image
-              className="mb-3"
+              className="mb-3 border"
               src={'/java/search2.png'}
               alt="success"
               width={280}

@@ -296,7 +296,7 @@ export default function Home() {
             <p className="font-semibold mb-3">Update</p>
             <p className="leading-7 mb-3">先ほどcreateしたデータを更新してみましょう</p>
             <div className="p-6 py-3 border border-gray-200 rounded-lg shadow bg-slate-200 w-full grid my-3">
-                <p className="font-semibold dark:bg-slate-800">実行内容</p>
+                <p className="font-semibold dark:text-gray-600">実行内容</p>
                 <p className="dark:text-gray-600">id:1、name:<span className="font-semibold">bear</span>をid:1、name:<span className="font-semibold">robot</span>に更新(update)する</p>
             </div>
             <p className="leading-7 mb-3">セキュリティ上、更新データの内容をbindしています<br />
@@ -387,7 +387,7 @@ export default function Home() {
             <p className="leading-7 mb-3">ローカルで開発を進めるために、gitをcloneしてから各種設定をします<br />
             まず、dbの作成ですデータベース名{WrapCode('django')}でデータベースを作成します</p>
 
-            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200 dark:text-gray-600">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/demo/settings/setting_dev.py</li>
@@ -397,18 +397,25 @@ export default function Home() {
             </div>
 
             {SyntaxCode('sh','python/db_django.sh')}
+
             <p className="leading-7 mb-3">djangoの中身は初期状態では以下のようになっています</p>
+
             {SyntaxCode('python','django/macOS/tree.sh')}
+
             <p className="leading-7 mb-3">localとサーバー上の設定を分けるために、以下のように構成し直します</p>
+
             {SyntaxCode('python','django/macOS/tree_for_db.sh')}
-            {WrapCode('settings_common.py')}は共通の設定、{WrapCode('settings.py')}はサーバー上の設定、{WrapCode('settings_dev.py')}はローカルの設定と、<br />
-            <p className="leading-7 mb-3">それぞれの設定にします<br />
+
+            <p className="leading-7 mb-3">{WrapCode('settings_common.py')}は共通の設定、{WrapCode('settings.py')}はサーバー上の設定、{WrapCode('settings_dev.py')}はローカルの設定と、<br />
+            それぞれの設定にします<br />
             とりあえずdbの設定のみ分けるので、{WrapCode('settings_common.py')}からDATABASESの記述を削除し<br />
             {WrapCode('settings.py')}と{WrapCode('settings_dev.py')}にそれぞれのdb情報を記述します<br /><br />
             すべての設定ファイルを読み込むために、{WrapCode('__init__.py')}をsettingsディレクトリに作成し、<br />
             各設定ファイルを読み込む記述をします<br />
             {WrapCode('settings_dev.py')}の内容は以下です</p>
+
             {SyntaxCode('python','django/migration/setting_dev.py')}
+
             <p className="leading-7 mb-3">{WrapCode('setting.py')}にも同じく、ec上に作成したmariaDBの設定を記述しましょう<br />
             プロジェクトの中に、アプリを作成します<br />
             pythonの仮装環境にログインして、アプリを作成します</p>
@@ -416,7 +423,9 @@ export default function Home() {
             <p className="leading-7 mb-3">myappというディレクトリが生成されます<br />
             このアプリ内でテーブルを作成するためのモデルを作成します<br />
             {WrapCode('myapp/modals.py')}に以下のように記述します</p>
+
             {SyntaxCode('python','django/migration/model.py')}
+
             <p className="leading-7 mb-3">こちらはmodelファイルです<br />
             userテーブルに、Char型でnameという名前のカラムをmaxsize20で作成します<br />
             このmodelファイルを元にmigrationファイルを生成し、さらにそれを元にmigrateします<br />
@@ -434,7 +443,7 @@ export default function Home() {
             <p className="font-semibold mb-3">サーバー上でdbを作成、接続</p>
 
             <p className="leading-7 mb-3">mysqlclientはlocalには入っていましたが、<br />サーバー側のmysql関連モジュールが入っていなかったので、pymysqlをインストールします<br />pymysqlを利用するためには、djangoに追記する必要があります</p>
-            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200 dark:text-gray-600">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/demo/settings/setting_dev.py</li>
@@ -454,7 +463,7 @@ export default function Home() {
             <p className="font-semibold mb-3">ページ追加</p>
             <p className="leading-7 mb-3">ページ追加のためのディレクトリを、プロジェクトのルートディレクトリに作成します<br />分かりやすいように{WrapCode('templates')}というディレクトリ名にしました</p>
 
-            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200 dark:text-gray-600">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/templates/home/index.html</li>
@@ -476,19 +485,64 @@ export default function Home() {
             <p className="leading-7">この時点では{WrapCode('django')}が{WrapCode('template')}ディレクトリを認識してくれないので、<br />
             {WrapCode('settings_common.py')}ファイルに{WrapCode('template')}ディレクトリまでのパスを指定します<br />
             先の項目で作成した{WrapCode('demo/setting_common.py')}の{WrapCode('DIRS')}部分を以下のように編集します</p>
+
             {SyntaxCode('python','django/template/setting_common.py')}
-            <p className="leading-7">これで{WrapCode('templates')}ディレクトリを読み込んでくれます<br /><br />{WrapCode('myapp')}ディレクトリ内の{WrapCode('view.py')}に{WrapCode('index.html')}を取得してreturnする関数を書きます</p>
+
+            <p className="leading-7">これで{WrapCode('templates')}ディレクトリを読み込んでくれます<br /><br />
+            {WrapCode('myapp')}ディレクトリ内の{WrapCode('view.py')}に{WrapCode('index.html')}を取得してreturnする関数を書きます</p>
+
             {SyntaxCode('python','django/template/view.py')}
+
             <p className="leading-7">{WrapCode('myapp/urls.py')}を作成し、以下の記述をします<br />
             pathの{WrapCode('第一引数')}はurlの{WrapCode('2階層以降')}のpathを入力しますが、今回はホームページを表示させるので今回は不要です<br />
             <span className="text-gray-500">※ http://exapmle.com/aaa/ココ</span><br />
             以降{WrapCode('第二引数')}は先ほど設定した{WrapCode('index.html')}を返す関数{WrapCode('home_template')}<br />
             {WrapCode('第三引数')}はviewでredirectをするための通称の名称{WrapCode('home')}を記述します</p>
+
             {SyntaxCode('python','django/template/urls.py')}
+
             <p className="leading-7">これら{WrapCode('myappディレクトリ')}内に設定したurl関連の設定を、<br />
             プロジェクトディレクトリの{WrapCode('demo/urls.py')}で読み込みます</p>
+
             {SyntaxCode('python','django/template/demo/urls.py')}
-            <p className="leading-7 mb-3">この状態で、djangoを読み込み直し、<Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link>にアクセスしてみます</p>
+
+            <p className="leading-7 mb-3">この状態で、以下コマンドにて実行します<br />
+            {WrapCode('source [python仮想環境]/bin/activate')}<br />
+            {WrapCode('python [ドメインディレクトリ]/manage.py runserver')}</p>
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8000" target="_blank">http://localhost:8000</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <Image
               className="mb-3"
               src={'/python/template.png'}
@@ -505,7 +559,7 @@ export default function Home() {
             <p className="leading-7 mb-3">このindex.htmlページで、<br />
             先ほど作成した{WrapCode('myapp_user')}テーブルに{WrapCode('name')}を登録する機能を作成してみます</p>
 
-            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200 dark:text-gray-600">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/myapp/admin.py</li>
@@ -525,7 +579,42 @@ export default function Home() {
             {SyntaxCode('python','django/db/views.py')}
             <p className="leading-7">htmlはformをpostするためのtokenとformの変数を記述します</p>
             {SyntaxCode('python','django/db/index.html')}
-            <p className="leading-7 mb-3">この状態で、djangoを読み込み直し、<Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link>にアクセスしてみます</p>
+            <p className="leading-7 mb-3">この状態で、以下コマンドにて実行します<br />
+            {WrapCode('source [python仮想環境]/bin/activate')}<br />
+            {WrapCode('python [ドメインディレクトリ]/manage.py runserver')}</p>
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8000" target="_blank">http://localhost:8000</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <Image
               className="mb-3"
               src={'/python/form.png'}
@@ -536,7 +625,7 @@ export default function Home() {
             />
             <p className="leading-7 mb-3">formが表示されましたね<br />
             一度登録してみて分かったことなのですが、このままpostすると何故かcsrfトークンエラーが発生して登録できません<br /><br />
-            設定ファイルにCSRF_TRUSTED_ORIGINSを設定しないといけないことが判明したので、/demo/settings/settings.pyにように追記します</p>
+            設定ファイルに{WrapCode('CSRF_TRUSTED_ORIGINS')}を設定しないといけないことが判明したので、{WrapCode('/demo/settings/settings.py')}にように追記します</p>
             {SyntaxCode('python','django/db/settings.py')}
             <p className="leading-7 mb-3">この状態でhogeを入力して、登録してみます</p>
             <Image
@@ -560,7 +649,7 @@ export default function Home() {
             先ほどのデータ登録とほぼ変わりませんが、個別データ専用のページを作成する点と<br />
             idを指定してデータを更新する部分のみ変更する必要があります</p>
 
-            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200 dark:text-gray-600">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/myapp/urls.py</li>
@@ -576,8 +665,46 @@ export default function Home() {
             itemをidから取得してformのvalueに当てはめている点<br />
             さらにリダイレクト先を元いた個別ページにしている点があります</p>
             {SyntaxCode('python','django/update/views.py')}
-            <p className="leading-7 mb-3">この状態でpiyoを入力して、更新してみます<br />
-            <Link href="https://django.ksk318.me/edit/1" target="_blank">https://django.ksk318.me/edit/1</Link></p>
+
+            <p className="leading-7 mb-3">この状態で、以下コマンドにて実行します<br />
+            {WrapCode('source [python仮想環境]/bin/activate')}<br />
+            {WrapCode('python [ドメインディレクトリ]/manage.py runserver')}</p>
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8000/edit/1" target="_blank">http://localhost:8000/edit/1</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://django.ksk318.me/edit/1" target="_blank">https://django.ksk318.me/edit/1</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p className="leading-7 mb-3">formにpiyoを入力して、更新してみます</p>
+
             <Image
               className="mb-3"
               src={'/python/update1.png'}
@@ -602,7 +729,7 @@ export default function Home() {
             <p className="leading-7 mb-3">登録したデータを一覧で表示させる機能です<br />
             新規urlを作成せずにルートページで表示させるようにしてみます</p>
 
-            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200 dark:text-gray-600">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/myapp/views.py</li>
@@ -614,8 +741,45 @@ export default function Home() {
             {SyntaxCode('python','django/list/views.py')}
             <p className="leading-7">リストには編集ページまでのリンクも作成してみます</p>
             {SyntaxCode('python','django/list/index.html')}
-            <p className="leading-7 mb-3">一覧を確認してみましょう<br />
-            <Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link></p>
+            <p className="leading-7 mb-3">一覧を確認してみましょう</p>
+
+            <p className="leading-7 mb-3">この状態で、以下コマンドにて実行します<br />
+            {WrapCode('source [python仮想環境]/bin/activate')}<br />
+            {WrapCode('python [ドメインディレクトリ]/manage.py runserver')}</p>
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8000/" target="_blank">http://localhost:8000/</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://django.ksk318.me/" target="_blank">https://django.ksk318.me/</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <Image
               className="mb-3"
               src={'/python/list.png'}
@@ -631,7 +795,7 @@ export default function Home() {
             <p className="font-semibold mb-3">検索機能</p>
             <p className="leading-7 mb-3">検索フォームから文字列をgetし、getした文字列で対象のデータを抽出するページを作成してみます</p>
 
-            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200 dark:text-gray-600">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
                 <ul>
                     <li>/myapp/urls.py</li>
@@ -646,8 +810,45 @@ export default function Home() {
             {SyntaxCode('python','django/search/views.py')}
             <p className="leading-7">これらを表示させるテンプレートビューをhtmlで作成しましょう</p>
             {SyntaxCode('python','django/search/index.html')}
-            <p className="leading-7 mb-3">実際に検索してみます<br />
-            <Link href="https://django.ksk318.me/search/" target="_blank">https://django.ksk318.me/search/</Link></p>
+            <p className="leading-7 mb-3">実際に検索してみます</p>
+
+            <p className="leading-7 mb-3">この状態で、以下コマンドにて実行します<br />
+            {WrapCode('source [python仮想環境]/bin/activate')}<br />
+            {WrapCode('python [ドメインディレクトリ]/manage.py runserver')}</p>
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                環境名(環境)
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                確認用URL
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                local(Mac OS)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="http://localhost:8000/search" target="_blank">http://localhost:8000/search</Link>
+                            </td>
+                        </tr>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                Amazon EC2(Amazon Linux 2023)
+                            </th>
+                            <td className="px-6 py-4">
+                                <Link href="https://django.ksk318.me/search" target="_blank">https://django.ksk318.me/search</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <Image
               className="mb-3"
               src={'/python/search1.png'}
@@ -656,6 +857,9 @@ export default function Home() {
               height={38}
               priority
             />
+
+            <p className="leading-7 mb-3">{WrapCode('p')}と入力して検索します</p>
+
             <Image
               className="mb-3"
               src={'/python/search2.png'}

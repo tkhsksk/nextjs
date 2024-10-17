@@ -331,8 +331,25 @@ export default function Home() {
             <p className="leading-7 mb-3">まずはサーバー側に接続して、<br />
             goモジュールの設定とginのインストールをします</p>
             {SyntaxCode('go','gin/ec2/install.sh')}
-            <p className="leading-7">インストールが完了したら、git環境を構築してlocalにcloneしましょう<br />
+            <p className="leading-7 mb-3">インストールが完了したら、{WrapCode('git環境')}を構築してlocalにcloneしましょう<br />
             次の項目からlocal(macOS上)で実行します</p>
+
+            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">実際に作成したgin環境</p>
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                <tbody className="dark:text-gray-600">
+                <tr>
+                   <th className="pr-4 break-all">url</th><td><Link href="https://gin.ksk318.me/" target="_blank">https://gin.ksk318.me/</Link></td>
+                </tr>
+                <tr>
+                   <th className="pr-4">basic user</th><td>guest</td>
+                </tr>
+                <tr>
+                   <th className="pr-4">basic pass</th><td>B7MQDZRWW2EF35C957P8</td>
+                </tr>
+                </tbody>
+                </table>
+            </div>
 
             <hr className="my-5" />
 

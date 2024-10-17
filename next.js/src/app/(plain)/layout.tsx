@@ -3,10 +3,14 @@
 import localFont from "next/font/local";
 import "@/app/globals.css";
 import "@/../public/css/customize.css";
+import { useEffect } from 'react'
 
 import Header from '@components/header';
 import Aside  from '@components/aside';
 import Footer from '@components/footer';
+import React, { useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import Image from "next/image"
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -24,17 +28,44 @@ export default function PlainLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [active, setActive] = useState(false);
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const handleClick = () => {
+    setActive(!active)
+  }
+
+  useEffect(() => {
+    setActive(false)
+  }, [pathname, searchParams])
+
   return (
-    <html lang="ja">
+    <html lang="ja" className={active ? "active" : "deactive"}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased sm:text-base text-sm`}
       >
-        <Header />
-        <div className="grid grid-cols-4 gap-4 min-h-screen">
+        <Header className="aa" />
+        <div className="grid grid-cols-4 min-h-screen">
           <Aside />
-            {children}
+          {children}
         </div>
         <Footer />
+
+        <div className="w-full sm:hidden fixed bottom-0 z-20">
+          <div className="text-gray-400 flex justify-center">
+            <button onClick={handleClick}>
+              <Image
+                className="mb-3"
+                src={pathname+'.png'}
+                alt="Next.js logo {'/'+pathname+'.png'}"
+                width={60}
+                height={60}
+                priority
+              />
+            </button>
+          </div>
+        </div>
+
       </body>
     </html>
   );
