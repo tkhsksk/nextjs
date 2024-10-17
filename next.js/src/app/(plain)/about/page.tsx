@@ -1,7 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { gml } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 export const metadata: Metadata = {
   title: 'about｜'+process.env.SITE_TITLE,
@@ -9,11 +6,6 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-
-   const codeString = [
-     '<link rel="shortcut icon" sizes="16x16" href="">',
-     '</link>',
-   ].join('\n');
    
    return (
     <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-3 pb-20 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90 dark:bg-opacity-90 dark:bg-slate-800">

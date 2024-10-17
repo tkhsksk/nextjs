@@ -44,7 +44,7 @@ export default function PlainLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased sm:text-base text-sm`}
       >
-        <Header className="aa" />
+        <Header />
         <div className="grid grid-cols-4 min-h-screen">
           <Aside />
           {children}
