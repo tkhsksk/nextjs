@@ -13,10 +13,14 @@ html.active aside{
 }
 
 html.active aside>div{
-box-shadow: 0 4px 32px 0 gray;
-    backdrop-filter: blur(8px);
+  box-shadow: 0 4px 32px 0 gray;
+  backdrop-filter: blur(8px);
+  background: white;
 }
 
+/*
+load animation
+*/
 .svg-loader{
   position: relative;
   align-content: space-around;

@@ -11,6 +11,7 @@ import Footer from '@components/footer';
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image"
+import Script from 'next/script'
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -41,6 +42,7 @@ export default function PlainLayout({
 
   return (
     <html lang="ja" className={active ? "active" : "deactive"}>
+      <Script src="https://unpkg.com/@phosphor-icons/web" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased sm:text-base text-sm`}
       >

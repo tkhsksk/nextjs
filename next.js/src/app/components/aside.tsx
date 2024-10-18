@@ -21,8 +21,8 @@ export default function Aside() {
 
   return (
     <aside className="flex justify-center h-40 h-full">
-      <div className="fixed top-0 left-0 p-4 bg-white">
-      <Link href="/" onClick={handleClick} className={active ? "hidden" : "inline"}>
+      <div className="fixed top-0 left-0 p-4">
+      <Link href="/" onClick={handleClick}>
         <Image
           className="mb-3"
           src={pathname+'.png'}
@@ -33,7 +33,7 @@ export default function Aside() {
         />
       </Link>
 
-      <div className={active ? "flex svg-loader mb-3" : "hidden svg-loader mb-3"}>
+      <div className="hidden svg-loader mb-3">
         <svg className="svg-container" height={100} width={100} viewBox="0 0 100 100">
           <circle className="loader-svg bg" cx={50} cy={50} r={45}></circle>
           <circle className="loader-svg animate" cx={50} cy={50} r={45}></circle>
@@ -48,7 +48,7 @@ export default function Aside() {
       {
         //const active_link = (pathname == item.title ? 'yes': '');
         return (
-          <li className='font-[family-name:var(--font-geist-mono)]' key={item.id}>
+          <li className='font-[family-name:var(--font-geist-mono)] dark:text-gray-600' key={item.id}>
             <Link className={pathname == '/'+item.title ? 'font-bold': ''} onClick={handleClick} href={{ pathname:item.title}}>{item.title}</Link>
             {pathname == '/'+item.title ? <ul className='mb-2 pt-2'>{item.subs.map(item => 
               {

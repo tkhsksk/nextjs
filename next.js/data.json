@@ -4,7 +4,7 @@
             "id": 1,
             "title": "about",
             "name": "Leo Dover",
-            "subs": ["biography","history"]
+            "subs": ["biography","history","sitegraphy","skills"]
         },
         {
             "id": 2,
