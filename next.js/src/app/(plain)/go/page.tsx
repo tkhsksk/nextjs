@@ -322,6 +322,16 @@ export default function Home() {
       </section>
 
       <section id="gin">
+
+      <Image
+              className="mb-3 mx-auto"
+              src={'/go/gin.svg'}
+              alt="success"
+              width={60}
+              height={38}
+              priority
+            />
+
          <h2 className="text-2xl font-semibold mb-3">gin</h2>
          <p className="leading-7 mb-3">goの代表的なワイヤーフレーム{WrapCode('gin')}を習得します<br />
          他ワイヤーフレームと同じく、ページ表示、データの登録、表示、更新、検索まで作成します</p>

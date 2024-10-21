@@ -339,6 +339,16 @@ export default function Home() {
       </section>
 
       <section id="Spring_Boot">
+
+      <Image
+              className="mb-3 mx-auto"
+              src={'/java/spring.svg'}
+              alt="success"
+              width={60}
+              height={38}
+              priority
+            />
+
          <h2 className="text-2xl font-semibold mb-3">Spring Boot</h2>
          <p className="leading-7 mb-3">javaの代表的なフレームワーク{WrapCode('Spring Boot')}をインストールします<br />
          インストールの前に{WrapCode('Java')}をインストールしましょう</p>

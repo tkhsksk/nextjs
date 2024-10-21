@@ -5,6 +5,7 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { gml } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import fs from 'fs'
 import Link  from 'next/link'
+import Image from "next/image"
 
 export const metadata: Metadata = {
    title: 'php｜'+process.env.SITE_TITLE,
@@ -338,11 +339,22 @@ export default function Home() {
       </section>
 
       <section id="laravel">
+
+      <Image
+              className="mb-3 mx-auto"
+              src={'/php/laravel.svg'}
+              alt="success"
+              width={60}
+              height={38}
+              priority
+            />
+
          <h2 className="text-2xl font-semibold mb-3">laravel</h2>
-         <p className="leading-7 mb-3">phpの代表的なフレームワークの{WrapCode('laravel')}にて</p>
+         <p className="leading-7 mb-3">phpの代表的なフレームワークの{WrapCode('laravel')}にて社員管理サイトを作成しました<br />
+         以下urlにて、作成したサイトを実際に操作できるように、別サーバーにて環境を再構築しました</p>
 
          <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
-                <p className="font-semibold mb-3 text-cyan-950">実際に作成したdjango環境</p>
+                <p className="font-semibold mb-3 text-cyan-950">実際に作成したlaravel環境</p>
                 <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
                 <tbody className="dark:text-gray-600">
                 <tr>
@@ -357,6 +369,53 @@ export default function Home() {
                 </tbody>
                 </table>
             </div>
+
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
+            <h3 className="text-lg font-semibold mb-3">はじめに</h3>
+            <p className="leading-7 mb-3">本コンテンツを作成しようと思ったきっかけは、<br />
+            前職では勤怠管理システムや、有料の社員管理システムを保持しておらず、退社時刻を紙に記載し、それをスプレッドシートに打ち込むというアナログな作業について<br />
+            代表を除く、全社員が懸念を示していたことがきっかけです<br /><br />
+            私はこの現状を見かねて、自身の尽くせる技術を全て尽くし、<br />
+            退社前にせめてもの謝礼としてこのコンテンツ（以下、{WrapCode('ララワークス')}）を残そうと決心しました</p>
+         </div>
+
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
+            <h3 className="text-lg font-semibold mb-3">ララワークスのデータベース設計</h3>
+            <p className="leading-7 mb-3">まず制作に取り掛かる前にデータベースの定義です<br />
+            主体となるユーザーのテーブルからのリレーション、さらにそのテーブルから関連するリレーションを踏まえ、<br />
+            機能と照らし合わせたところ、SQL図は以下のようになりました（以下図は制作当初のもの）</p>
+            <Image
+              className="mb-3"
+              src={'/php/sql.png'}
+              alt="success"
+              width={500}
+              height={38}
+              priority
+            />
+            <p className="leading-7 mb-3">全ての企業データを網羅できるように以下の機能を前提としています</p>
+            <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
+                <p className="font-semibold mb-3 text-cyan-950">ララワークスの予定機能</p>
+                <ul className="dark:text-gray-600">
+                  <li>ユーザー管理</li>
+                    <li>社員管理</li>
+                    <li>会社管理</li>
+                    <li>役職管理</li>
+                    <li>サイト管理</li>
+                    <li>データベース管理</li>
+                    <li>サーバー管理</li>
+                    <li>タスク管理</li>
+                    <li>マニュアル管理</li>
+                    <li>FAQ管理（マニュアルよりも簡単なもの）</li>
+                    <li>シフト管理</li>
+                    <li>機材管理</li>
+                    <li>ファイル管理（アップロード機能付き）</li>
+                    <li>経費購入商品管理</li>
+                </ul>
+            </div>
+
+            <p className="leading-7 mb-3">上記機能に関わるカテゴリー用のテーブルも全て含めると、テーブルの数は最終的に{WrapCode('23')}となりました</p>
+
+         </div>
 
       </section>
 

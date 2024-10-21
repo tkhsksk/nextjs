@@ -348,6 +348,16 @@ export default function Home() {
       </section>
 
       <section id="django">
+
+        <Image
+              className="mb-3 mx-auto"
+              src={'/python/django.svg'}
+              alt="success"
+              width={60}
+              height={38}
+              priority
+            />
+
          <h2 className="text-2xl font-semibold mb-3">Django</h2>
          <p className="leading-7 mb-3">pythonの代表的なフレームワークの{WrapCode('django')}にて簡易的なサイトを作成して<br />
          ページ追加、dbへのデータ登録、データ編集、表示、検索までを学習します</p>
