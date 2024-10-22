@@ -13,7 +13,7 @@ function WrapCode(txt: string) {
 }
 
 function LinkTag(link: string, txt: string) {
-   let text = txt ? txt : link;
+   const text = txt ? txt : link;
    return <Link className="ms-2 break-all bg-sky-100 dark:text-black dark:bg-white/[.8] px-1 py-0.5 font-semibold rounded text-sky-500 text-xs" href={link} target="_blank">{text}</Link>;
 }
 
