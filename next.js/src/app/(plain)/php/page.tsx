@@ -39,7 +39,7 @@ export default function Home() {
     <div className="sm:col-span-3 col-span-4 grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-3 pb-20 sm:p-10 font-[family-name:var(--font-geist-sans)] z-10 bg-white bg-opacity-90 dark:bg-opacity-90 dark:bg-slate-800">
       <main className="flex flex-col gap-8 row-start-2 items-start w-full">
       <h1 className="flex items-end"><span className="font-semibold text-3xl mr-2">php</span><span className="text-md">について</span></h1>
-      <p>本項目ではphpの書き方について、基本から応用までを学習し、<br />最終はフレームワーク{WrapCode('laravel')}にて基本動作の作成まで進めます</p>
+      <p>本項目ではphpの書き方について、基本から応用までを学習し、<br />最終はフレームワーク{WrapCode('laravel')}にて基本動作を作成するまでの経緯です</p>
       
       <div className="block max-w-sm p-6 border border-gray-200 rounded-lg shadow bg-slate-200">
          <p className="font-semibold mb-3 text-cyan-950">前提となる開発条件</p>
@@ -379,11 +379,14 @@ export default function Home() {
             退社前にせめてもの謝礼としてこのコンテンツ（以下、{WrapCode('ララワークス')}）を残そうと決心しました</p>
          </div>
 
+         <hr className="my-5" />
+
          <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <h3 className="text-lg font-semibold mb-3">ララワークスのデータベース設計</h3>
             <p className="leading-7 mb-3">まず制作に取り掛かる前にデータベースの定義です<br />
             主体となるユーザーのテーブルからのリレーション、さらにそのテーブルから関連するリレーションを踏まえ、<br />
-            機能と照らし合わせたところ、SQL図は以下のようになりました（以下図は制作当初のもの）</p>
+            機能と照らし合わせたところ、SQL図は以下のようになりました（以下図は制作当初のもの）<br />
+            https://drawsql.app/teams/portia/diagrams/attendance</p>
             <Image
               className="mb-3"
               src={'/php/sql.png'}
@@ -394,26 +397,337 @@ export default function Home() {
             />
             <p className="leading-7 mb-3">全ての企業データを網羅できるように以下の機能を前提としています</p>
             <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
-                <p className="font-semibold mb-3 text-cyan-950">ララワークスの予定機能</p>
-                <ul className="dark:text-gray-600">
+               <p className="font-semibold mb-3 text-cyan-950">ララワークスの予定機能</p>
+               <ul className="dark:text-gray-600">
                   <li>ユーザー管理</li>
-                    <li>社員管理</li>
-                    <li>会社管理</li>
-                    <li>役職管理</li>
-                    <li>サイト管理</li>
-                    <li>データベース管理</li>
-                    <li>サーバー管理</li>
-                    <li>タスク管理</li>
-                    <li>マニュアル管理</li>
-                    <li>FAQ管理（マニュアルよりも簡単なもの）</li>
-                    <li>シフト管理</li>
-                    <li>機材管理</li>
-                    <li>ファイル管理（アップロード機能付き）</li>
-                    <li>経費購入商品管理</li>
-                </ul>
+                  <li>社員管理</li>
+                  <li>会社管理</li>
+                  <li>役職管理</li>
+                  <li>事業部管理</li>
+                  <li>サイト管理</li>
+                  <li>データベース管理</li>
+                  <li>サーバー管理</li>
+                  <li>タスク管理</li>
+                  <li>マニュアル管理</li>
+                  <li>FAQ管理（マニュアルよりも簡単なもの）</li>
+                  <li>シフト管理</li>
+                  <li>機材管理</li>
+                  <li>ファイル管理（アップロード機能付き）</li>
+                  <li>経費購入商品管理</li>
+               </ul>
             </div>
 
             <p className="leading-7 mb-3">上記機能に関わるカテゴリー用のテーブルも全て含めると、テーブルの数は最終的に{WrapCode('23')}となりました</p>
+
+         </div>
+
+         <hr className="my-5" />
+
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
+            <h3 className="text-lg font-semibold mb-3">ララワークスの設計でこだわったポイント10</h3>
+            <p className="leading-7 mb-3">本来は0から完成まで、全ての手順を記録したいところですが、膨大なページ数になってしまうため<br />
+            特にこだわった点や、ユーザビリティに配慮した点など、特筆すべき点のみを{WrapCode('10項目')}ピックアップします</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">1.ユーザー登録と社員登録</p>
+            <p className="leading-7 mb-5">予定機能をざっと見て、ユーザー管理と社員管理の違いが一見して分からないと思います<br />
+            この2つの機能の違いは、フロントの表面上ではわかりませんが、基本的にはユーザー管理はログインしたユーザー本人が編集できるテーブル、社員管理は権限を持つユーザーが他のユーザーを編集できるテーブルです<br /><br />
+            あえてこの管理を2つに分けている理由は、登録の効率化です<br />
+            例えば各従業員の住所は、管理者から登録する機能をつければ良いですが、従業員が100名在籍していた場合は、管理者側から100人分の住所を登録しなければいけません<br />
+            ログインしたユーザーが自身の住所を入力できるようにすれば、管理者側で大量のデータを登録する必要がなく、業務効率化に繋がります<br /><br />
+            また、管理者側で登録したユーザーに関する情報の中でも、本ユーザー側に見せたくない情報もあるかと思います<br />
+            例えば、保険に関する情報のうち、雇用保険被保険者番号や税区分など、管理者のみ保持していれば良い情報です<br />
+            この情報は社員管理のテーブルに登録されて、ユーザー側には表示されないようになっています<br /><br />
+            このようにユーザーから編集すべき情報、管理者のみ知り得る情報、ユーザーのみ保持したい個人メモなど、同じユーザー情報でも別テーブルにしたい情報は数々あるため<br />
+            ユーザー管理と社員管理でテーブルを分けています</p>
+
+            <div className="w-full mb-3">
+               <div className="border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+                  <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
+                     <div className="items-center justify-center dark:bg-gray-800">
+                        <p className="mb-3"><span className="font-semibold">管理者管理</span>では管理者のみに関連している情報</p>
+                        <Image
+                          className="mb-3 border"
+                          src={'/php/01.png'}
+                          alt="success"
+                          width={500}
+                          height={38}
+                          priority
+                        />
+                     </div>
+                     <div className="items-center justify-center dark:bg-gray-800">
+                        <p className="mb-3"><span className="font-semibold">ユーザー管理</span>ではユーザーのみが保持していれば良い情報</p>
+                        <Image
+                          className="mb-3 border"
+                          src={'/php/02.png'}
+                          alt="success"
+                          width={500}
+                          height={38}
+                          priority
+                        />
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <p className="leading-7">ユーザーの登録は、ユーザー側、管理者側どちらからも登録が可能で<br />
+            尚且つどちらから登録しても、ユーザー管理と社員管理どちらのテーブルにも同時に登録されるようなロジックを組んでいます</p>
+
+            {SyntaxCode('php','laravel/AdminController')}
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">2.ファイル登録機能</p>
+            <p className="leading-7 mb-5">管理者側よりユーザに関連するファイルとして履歴書や経歴書ファイルをアップロードできる機能を搭載しています<br />
+            アップロードしたファイルはなるべくブラウザ上で確認できるようにしていますが、ブラウザの特性上画像ファイルとpdfのみです<br /><br />
+            もちろん、アップロードした個人のファイルは管理者権限以外には見えてはいけないので、ディレクトリにauthをかけてあります<br />
+            例えば、id:1のユーザー関連のファイルをアップロードした場合には、/protected/admin/1/以下に保存され、protected/adminディレクトリは特定の上位権限を持っているユーザーのみ閲覧できるようになっています<br /><br />
+            同時複数アップロード機能、500kb制限、プレビュー機能など、利用者にわかりやすい仕様にしています</p>
+            <Image
+              className="mb-3 border"
+              src={'/php/03.png'}
+              alt="success"
+              width={500}
+              height={38}
+              priority
+            />
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">3.カレンダーシフト機能</p>
+            <p className="leading-7 mb-3">シフト提出は当初、日付を入力して、そこから時刻など他の項目を登録するフォームにしていました</p>
+            <Image
+              className="mb-3 border"
+              src={'/php/04.png'}
+              alt="success"
+              width={500}
+              height={38}
+              priority
+            />
+            <p className="leading-7 mb-5">テスターの方からご意見をいただき、登録しづらいとの意見を頂いたため、カレンダーから選択して登録できるタイプに変更しました</p>
+
+            <div className="w-full mb-3">
+               <div className="border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+                  <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
+                     <div className="items-center justify-center dark:bg-gray-800">
+                        <p className="mb-3">カレンダーから日付をクリックするとモーダル表示</p>
+                        <Image
+                          className="mb-3 border"
+                          src={'/php/05.png'}
+                          alt="success"
+                          width={500}
+                          height={38}
+                          priority
+                        />
+                     </div>
+                     <div className="items-center justify-center dark:bg-gray-800">
+                        <p className="mb-3">「提出する」とフォーム上で日付が選択された状態になる</p>
+                        <Image
+                          className="mb-3 border"
+                          src={'/php/06.png'}
+                          alt="success"
+                          width={500}
+                          height={38}
+                          priority
+                        />
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <p className="leading-7 mb-3">カレンダー上でシフトを確認することも可能です<br />
+            ですが、提出して時点でのシフトのステータスは「新規」となっており、他人の新規シフトは閲覧できません<br />
+            新規シフトを管理者が承認した時点で、他人のシフトを閲覧可能となります<br />
+            管理者のみ「新規」、「承認」どちらのステータス時点でも、全てのシフトを閲覧することができます</p>
+
+            <p className="mb-3">自身のシフトは新規でも閲覧可能</p>
+            <Image
+              className="mb-3 border"
+              src={'/php/07.png'}
+              alt="success"
+              width={500}
+              height={38}
+              priority
+            />
+
+            <p className="leading-7 mb-3">さらに、国民の祝日はapiから取得し、社内休業日はコンフィグより設定できるようになっています<br />
+            https://laravel.ksk318.me/config<br />
+            例に示した記述をすれば、配列を読み取って休日としてカレンダーに表記されます</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">4.権限について</p>
+            <p className="leading-7 mb-3">ユーザーに付与する権限について、権限を登録するテーブルを設置する場合や、ユーザーごとに権限を登録できる機能が一般的ですが<br />
+            権限を登録できるようにしてしまうと、把握が困難となり、複雑化してしまうので、権限は3つとし、マスター、管理者、一般と簡潔にしました<br /><br />
+            それぞれ簡潔に説明すると、マスターは全ての機能が使えるユーザー、管理者は承認などが行えるユーザー、一般はそれ以外の通常の機能のみ利用できるユーザーです<br />
+            これらの権限はデータベースに設定されておらず、modelに直で記述されています</p>
+
+            {SyntaxCode('php','laravel/Admin')}
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">5.TinyMCEの導入</p>
+            <p className="leading-7 mb-3">マニュアル機能、FAQ機能はpcに不慣れな方にも利用いただけるように、wordpressでも利用されている代表的なテキストエディターTinyMCEを導入しました<br />
+            特にマニュアルの場合はアップロード機能が必要なため、編集上のために画像を貼り付けた時点でサーバー上に画像がアップロードされるようにしています<br />
+            元来、TinyMCEにはコピーペーストで画像を貼り付ける機能がありますが、コピーペーストすると画像の名称変換機能がうまく動作しないため、無効にしました<br /><br />
+            マニュアルにはコーディングに関する知識も記載する場合があるため、コードブロックを設置できるように、TinyMCE自体をカスタマイズしています</p>
+
+            {SyntaxCode('js','base')}
+
+            <p className="leading-7 mb-3">特定のキーをpressすると上記コードでwrapされるようにしています</p>
+
+            <p className="mb-3">実行した場合の表示</p>
+            <Image
+              className="mb-3 border"
+              src={'/php/08.png'}
+              alt="success"
+              width={500}
+              height={38}
+              priority
+            />
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">6.FAQの簡略化</p>
+            <p className="leading-7 mb-3">マニュアルはページ上で表示されるためidを取得して詳細表示されますが、<br />
+            faqはモーダルのため、詳細表示できませんでした<br />
+            そのため、faqではパラメータを取得して、該当のfaqを取得する機能を追加しました<br />
+            https://laravel.ksk318.me/faq?pw-faq=1</p>
+            <Image
+              className="mb-3 border"
+              src={'/php/09.png'}
+              alt="success"
+              width={500}
+              height={38}
+              priority
+            />
+            <p className="leading-7 mb-3">これにより、faqから別のfaqにリンク移動できるようになっています<br />
+            faqをモーダルにした理由は、全ページの共通ヘッダーにfaqの検索ボックスを設置しているため、<br />
+            あえてモーダル表示するようにしています</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">7.Bootstrap Dual Listboxで従業員選択をわかりやすく</p>
+            <p className="leading-7 mb-3">機材をユーザーに関連づける際には、全機材から選択する必要があり、<br />
+            また、シフトを提出する際には全ユーザーから該当のユーザーを選択する必要があるため、例えば従業員が1000を超える場合は、長いリストの中から選択しなければなりません<br />
+            これをセレクトボックスで実現してしまうと大変なので、{WrapCode('Bootstrap Dual Listbox')}を導入しました<br />
+            https://www.virtuosoft.eu/code/bootstrap-duallistbox/<br />
+            このプラグインは、セレクトボックスからの選択をわかりやすくする機能を持っていて、リストからの検索もできるようになります</p>
+            <Image
+              className="mb-3 border"
+              src={'/php/10.png'}
+              alt="success"
+              width={500}
+              height={38}
+              priority
+            />
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">8.ダークモード</p>
+            <p className="leading-7 mb-3">ヘッダー右上にある月のマークをクリックするとダークモードに切り替わります<br />
+            ダークモードの記憶はブラウザのクッキーに保存されて、1440分(24時間)保持されるようにしました</p>
+            {SyntaxCode('php','laravel/TopController')}
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">9.シフトの集計</p>
+            <p className="leading-7 mb-3">シフトを月間の範囲で集計できる機能があります<br />
+            https://laravel.ksk318.me/shift/total<br /><br />
+            細かいシフト計算はモデルで計算し、コントローラー側の計算を元に配列にして集計してます<br />
+            また、集計の条件をチェックボックスで複数選択できるようにし、特定のユーザー（従業員）のみ集計できます<br />
+            以下はシフト計算したものを再度配列化して集計している部分の抜粋です</p>
+            {SyntaxCode('php','laravel/ShiftController')}
+            <p className="leading-7 mb-3">実際に表示されるページのフロントデザインです</p>
+            <Image
+              className="mb-3 border"
+              src={'/php/11.png'}
+              alt="success"
+              width={500}
+              height={38}
+              priority
+            />
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">10.会員の有効無効</p>
+            <p className="leading-7 mb-3">こういった従業員を管理するツールで発生が考えられる事項は、従業員が退職する場合です<br />
+            その場合、ユーザーがログインできないようにしなくてはいけません<br />
+            無効にした場合、ログイン不可とする機能が必要です</p>
+            <p className="leading-7 mb-3">ログイン部のコントローラーに以下を記述します<br />
+            {WrapCode('if(Admin::find(Auth::user()->id)->status === "D")')}<br />
+            登録ユーザーのステータスがD、すなわち無効の場合にはログインを不可とします</p>
+            <p className="leading-7 mb-3">無効にしたユーザーは、従業員のセレクトボックスからも排除され、無効ユーザーは選択できないように設定されています</p>
+
+         </div>
+
+         <hr className="my-5" />
+
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
+            <h3 className="text-lg font-semibold mb-3">従業員管理ツール 「ララワークス」 のまとめ</h3>
+            <p className="leading-7 mb-5">ララワークスの設計、デザインをした経験から、<br />
+            laravelでユーザー管理システムを構築するにあたって、重要な点や気をつけるべき点をまとめます</p>
+            <p className="font-semibold mb-3">権限周りが最重要項目</p>
+            <p className="leading-7 mb-5">本システムを構築するにあたって、最も設計と作成に時間がかかった部分がこの{WrapCode('権限')}の部分でした<br />
+            制作当初は権限自体もデータベース化し、テーブルを用意しようかと思いましたが<br />
+            テーブルに登録する権限のからリレーションを伸ばし、それぞれのサービスに関連づけるとなると、ユーザー周りの権限だけでもおよそ三倍くらいの複雑さとなることが事前に判明していました<br />
+            また、サービスの機能を増やすたびに、権限の思索がまとわりつく為、権限周りは{WrapCode('３つ')}で固定としました<br /><br />
+            {WrapCode('ポイントの4')}にも記した通り、権限は配列で宣言しました<br />
+            配列にしておけば、もし今後データベースに権限のテーブルを追加する場合にも対応できるため、今回は最善の選択だったかと思います<br /><br />
+            またこの権限の数3、という数は、実際に制作を進めないと不明な場合が多いです<br />
+            例えば今回の場合、シフトを登録するユーザー、それを承認するユーザー、承認はできても他社の個人情報は閲覧できないユーザー、全てを司れるユーザーなど<br />
+            全てのパターンを考慮しつつ、最低限の権限数として{WrapCode('3つ')}を設定しました</p>
+            <Image
+              className="mb-3 border"
+              src={'/php/12.png'}
+              alt="success"
+              width={500}
+              height={38}
+              priority
+            />
+            <p className="leading-7 mb-5">この辺りも設計と運用を想定しないと、設定しにくい部分のため、制作を進めながら設定しが必要かもしれません<br /><br />
+            見えてはいけない部分、登録できてはいけない部分、修正できてはいけない部分、これらは権限やステータスが大きく関わりがあるため<br />
+            今後大きなシステム開発を進めるにあたっては最も重要な部分です</p>
+
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">ユーザビリティは過剰なほどに考慮すべき</p>
+            <p className="leading-7 mb-5">ユーザビリティに配慮したUXを心がけて制作を進めましたが、他者にテストを行ってもらったところ、<br />
+            早速デザイン面で分かりにくいという部分が出てきました<br />
+            シフト申請をする画面を以下のurlにしていましたが<br />
+            https://laravel.ksk318.me/shift/edit<br />
+            この画面上でどのようにシフトを登録すれば良いのか？また時間も設定する面倒であるなど、いろいろな意見がありました<br />
+            これらの意見を受け止め、より分かりやすくするために、ある程度固定されているシフトの期間を候補として3件登録しました</p>
+
+            <Image
+              className="mb-3 border"
+              src={'/php/13.png'}
+              alt="success"
+              width={500}
+              height={38}
+              priority
+            />
+
+            <p className="leading-7 mb-5">ユーザーに分かりやすく、フォントサイズを大きくしたり、注釈を追記するだけで制作側は満足していましたが<br />
+            やはり実際に他者に利用してもらわないと自身が気づけない部分が多いです</p>
+
+            <p className="leading-7 mb-5">さらにシフトについて、一般ユーザーのみシフトを登録できるようにしていました<br />
+            これに関しても、{WrapCode('承認者側からもシフトを登録できるようにしたい')}という意見が出てきたため、<br />
+            一般ユーザーの場合は自身のシフト登録ページ、<br />
+            承認ユーザー以上は他者のシフト登録ページが表示されるように条件で表示分けをしています<br /><br />
+            実際の利用者に触ってもらえないと、万人に分かりやすいサービスの達成しないケースは往々にありそうです</p>
+
+            <hr className="my-5" />
+
+            <p className="font-semibold mb-3">テストはしすぎということはない、なるべく第三者に</p>
+            <p className="leading-7 mb-5">テスト無くしてリリースはありえません、もちろん自身が何度もテストした上でもです<br />
+            本サービスは社内案件のため、リリース後も運用しながら適宜微調整が可能でしたが<br />
+            ecサイトやカスタマーが利用するサイトの場合は、いったんサイトを停止して、微調整後にテスト、その後本番適用してリリースの流れになりますが<br />
+            本番リリース後に不具合が見つかってしまった場合は、再度サイト停止が必要になってしまいます<br /><br />
+            テストにかかる時間は多めにバッファを見積もって、尚且つテスト項目は前もってリストアップする、等々事前準備は欠かせません<br /><br />
+            当然の実施事項のように思われがちですが、何度もテストと本番適用を繰り返すうちに疎かにやすいため、<br />
+            気を抜いた際にヒューマンエラーを起こしてしまいます<br /><br />
+            些細なことでも気を抜かず、尚且つ適切な行動を取れることが、サービス運用者として最も重要なことなのかもしれません</p>
 
          </div>
 
