@@ -383,7 +383,7 @@ export default function Home() {
 
          <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <h3 className="text-lg font-semibold mb-3">ララワークスのデータベース設計</h3>
-            <p className="leading-7 mb-3">まず制作に取り掛かる前にデータベースの定義です<br />
+            <p className="break-all leading-7 mb-3">まず制作に取り掛かる前にデータベースの定義です<br />
             主体となるユーザーのテーブルからのリレーション、さらにそのテーブルから関連するリレーションを踏まえ、<br />
             機能と照らし合わせたところ、SQL図は以下のようになりました（以下図は制作当初のもの）<br />
             https://drawsql.app/teams/portia/diagrams/attendance</p>
