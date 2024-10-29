@@ -50,7 +50,7 @@ export default function Aside() {
         return (
           <li className='font-[family-name:var(--font-geist-mono)] dark:text-gray-600' key={item.id}>
             <Link className={pathname == '/'+item.title ? 'font-bold': ''} onClick={handleClick} href={{ pathname:item.title}}>{item.title}</Link>
-            {pathname == '/'+item.title ? <ul className='mb-2 pt-2'>{item.subs.map(item => 
+            {pathname == '/'+item.title ? <ul className='mb-2 pt-2 ms-3'>{item.subs.map(item => 
               {
                 return (<li className='text-[#5B995B] text-slate-400 text-sm leading-5' key="id"><Link href={'#'+item}>{item}</Link></li>);
               })}
