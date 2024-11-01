@@ -1,31 +1,14 @@
 import type { Metadata } from "next";
-// import Image from "next/image";
-// import Test from '@/app/common';
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { gml } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+
 import Link  from 'next/link'
-import fs from 'fs'
 import Image from "next/image"
+import Github from '@components/github';
+import Syhl from '@components/code';
 
 export const metadata: Metadata = {
    title: 'java｜'+process.env.SITE_TITLE,
    description: "について",
 };
-
-function Syntax(lang: string, code: string) {
-   return <div className="grid">
-   <SyntaxHighlighter language={lang} style={gml} className="my-3">{code}</SyntaxHighlighter>
-   </div>;
-}
-
-function SyntaxCode(lang: string, file: string) {
-   const text  = fs.readFileSync("../"+lang+"/"+file+"", 'utf8')
-   const lines = text.toString().split('¥n')
-   return <div className="grid">
-   <div className="grid overflow-hidden w-fit mt-3"><p className="whitespace-nowrap overflow-x-auto text-base w-fill px-2 bg-slate-500 text-white">{file}</p></div>
-   <SyntaxHighlighter language={lang} style={gml} className="mb-3">{lines}</SyntaxHighlighter>
-   </div>;
-}
 
 function WrapCode(txt: string) {
    return <code className="break-all bg-black/[.1] dark:text-black dark:bg-white/[.8] px-1 py-0.5 rounded font-semibold">{txt}</code>;
@@ -69,17 +52,29 @@ export default function Home() {
             ファイルをコンパイルする必要がある<br />
             その手順を含めてHello World.を出力する方法を記載します<br />
             {WrapCode('java')}で文字列を表示する場合は、以下の表記で実行できます</p>
-            {SyntaxCode('java','Helloworld.java')}
+            <Syhl
+                lang='java'
+                file='Helloworld.java'
+            />
             <p className="leading-7 mb-3">{WrapCode('java')}の構文は{WrapCode('class')}および{WrapCode('public static void main(String[] args)')}が必要です<br />
             基本的にこの体系がないとコンパイルの時点でエラーが発生するのでエラーメッセージを元に確認しましょう<br />
             この.javaファイルに対して以下のコマンドを実行しコンパイルします</p>
-            {SyntaxCode('sh','javac.sh')}
+            <Syhl
+                lang='sh'
+                file='javac.sh'
+            />
             <p className="mb-3">コンパイル実行後、{WrapCode('Helloworld.class')}ファイルが生成されます<br />
             .classファイルの中身は機械語のため、英語と数字の羅列があります<br />
             この.classファイルをさらに以下のコマンドで実行しましょう</p>
-            {SyntaxCode('sh','java.sh')}
+            <Syhl
+                lang='sh'
+                file='java.sh'
+            />
             <p className="font-semibold">実行結果</p>
-            {Syntax('shell','Hello World.')}
+            <Syhl
+                lang='sh'
+                file='java/helloWorld.sh'
+            />
             <p className="mb-3">改行については多言語と同じく{WrapCode('\\n')}を用います。</p>
 
             <hr className="my-5" />
@@ -87,15 +82,27 @@ export default function Home() {
             <h3 className="text-lg font-semibold mb-3">変数と型宣言</h3>
             <p className="leading-7">文字列にテキストや数値を格納しておくことも可能です<br />中学生の数学で学習したx=1,y=2と同じ要領です</p>
             <p className="font-semibold">実行内容</p>
-            {SyntaxCode('java','type_int.java')}
+            <Syhl
+                lang='java'
+                file='type_int.java'
+            />
             <p className="font-semibold">実行結果</p>
-            {Syntax('shell','hoge')}
+            <Syhl
+                lang='sh'
+                file='java/type.sh'
+            />
             <p className="mb-3">{WrapCode('String x = "hoge";')}でxにhogeを格納し、それを{WrapCode('System.out.println()')}で呼び出します<br />
             文字を結合する場合にはx,yにそれぞれの文字列を格納して+(プラス)で結合することができます</p>
             <p className="font-semibold">実行内容</p>
-            {SyntaxCode('java','join.java')}
+            <Syhl
+                lang='java'
+                file='join.java'
+            />
             <p className="font-semibold">実行結果</p>
-            {Syntax('shell','hogepiyo')}
+            <Syhl
+                lang='sh'
+                file='java/join.sh'
+            />
          </div>
 
       </section>
@@ -107,19 +114,40 @@ export default function Home() {
          <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <h3 className="text-lg font-semibold mb-3">計算</h3>
             <p className="leading-7">単純にプラスの符号を用いて、足し算をします</p>
-            {SyntaxCode('java','add.java')}
+            <Syhl
+                lang='java'
+                file='add.java'
+            />
             <p className="font-semibold">実行結果</p>
-            {Syntax('shell','16')}
+            <Syhl
+                lang='sh'
+                file='java/calc01.sh'
+            />
+
             <p className="leading-7 mb-3">引き算、掛け算、割り算も以下の符号で計算可能です</p>
             <p className="font-semibold">実行内容</p>
-            {SyntaxCode('java','calc.java')}
+            <Syhl
+                lang='java'
+                file='calc.java'
+            />
             <p className="font-semibold">実行結果</p>
-            {Syntax('shell','6\n25\n2')}
+            <Syhl
+                lang='sh'
+                file='java/calc02.sh'
+            />
+
             <p className="leading-7 mb-3">では、文字を{WrapCode('int')}型にせず{WrapCode('string')}型でプラス符号を使ったらどうなるでしょうか</p>
             <p className="font-semibold">実行内容</p>
-            {SyntaxCode('java','string.java')}
+            <Syhl
+                lang='java'
+                file='string.java'
+            />
             <p className="font-semibold">実行結果</p>
-            {Syntax('shell','52')}
+            <Syhl
+                lang='sh'
+                file='java/calc03.sh'
+            />
+
             <p>この場合{WrapCode('string')}で文字列として宣言しているため、足し算は行われず結合のみ行われます</p>
          </div>
 
@@ -134,7 +162,10 @@ export default function Home() {
             <p className="leading-7 mb-3">{WrapCode('java')}ではデフォルトで{WrapCode('main')}関数が設定されているので、{WrapCode('main')}はそのまま宣言します<br />
             同じクラス内で他の関数を宣言し、そこから取得するパターンを試してみましょう<br />
             以下は別関数で足し算して、その関数結果を取得して表示しています</p>
-            {SyntaxCode('java','class_sub.java')}
+            <Syhl
+                lang='java'
+                file='class_sub.java'
+            />
             <p className="leading-7 mb-3">基本的な説明は、コード内にコメントアウトで表記していますが、{WrapCode('function')}のアクセス修飾子については以下に詳細を表記します</p>
 
             <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
@@ -208,15 +239,24 @@ export default function Home() {
             javaでは{WrapCode("for")}と{WrapCode("forEach")}どちらも使えます<br />
             具体的には以下のように回します</p>
             <p className="font-semibold">forで配列を「回数制限して」回す</p>
-            {SyntaxCode('java','for.java')}
+            <Syhl
+                lang='java'
+                file='for.java'
+            />
             <p className="font-semibold">forで配列を「最後まで」回す</p>
-            {SyntaxCode('java','forEnd.java')}
+            <Syhl
+                lang='java'
+                file='forEnd.java'
+            />
 
             <hr className="my-5" />
 
             <p className="mb-3">次に{WrapCode('forEach')}で回すケースです<br />
             配列を宣言する場合もさまざまな宣言方法があるので、一挙宣言して回してみましょう</p>
-            {SyntaxCode('java','forEach.java')}
+            <Syhl
+                lang='java'
+                file='forEach.java'
+            />
             <p className="leading-7 mb-3">Mapsのみ引数を2つ用意する必要があるので、インデックスも取得しています<br />
             ところが、通常の配列を{WrapCode('forEach')}ではインデックスを取得できないとのことで<br />
             通常の配列でインデックスを使う場合は、for文で回す必要があるようです</p>
@@ -227,7 +267,10 @@ export default function Home() {
             <p className="leading-7 mb-3">一つの要素に複数の情報を含めたいときに利用する多次元配列を利用する場合です<br />
             この場合以下のように設定し、取得します</p>
             <p className="font-semibold">多次元配列</p>
-            {SyntaxCode('java','forEachIn.java')}
+            <Syhl
+                lang='java'
+                file='forEachIn.java'
+            />
             <p className="leading-7 mb-3">本来は{WrapCode('{0,"test"}')}として、インデックスは{WrapCode('int')}で取得したいところですが、<br />
             多次元配列に複数の型を宣言できないようなので、{WrapCode('String')}で数字を入力しています</p>
 
@@ -237,15 +280,24 @@ export default function Home() {
             <p className="leading-7 mb-3">配列から配列を作成することで、簡易的なデータ検索が可能です<br />
             配列を回して、その中で該当となるデータのみ格納する配列を新規に作成すると、検索済みデータの配列を作成できます</p>
             <p>まずは{WrapCode('if')}で表示するのみの場合</p>
-            {SyntaxCode('java','IfElse.java')}
+            <Syhl
+                lang='java'
+                file='IfElse.java'
+            />
             <p>また新規にデータ配列を作成する場合は、空の配列を作成して、{WrapCode('for文')}と{WrapCode('if文')}で配列に格納していきます</p>
-            {SyntaxCode('java','Search.java')}
+            <Syhl
+                lang='java'
+                file='Search.java'
+            />
             <p>新規に検索データの配列を作成する場合は{WrapCode('for')}よりも、<br />
             繰り返しの処理に向いている、{WrapCode('forEach')}の方が分かりやすく且つ作りやすい構造です<br />
             ただしインデックスを付けたい場合などの場合は、{WrapCode('Map')}や{WrapCode('for文')}を使うなど工夫しなければなりません<br />
             また配列の作成は前述にもあるとおり複数あるので、ある程度自分の中で特定の{WrapCode('import')}などを確定させる必要があります<br /><br />
             繰り返しの処理で言うと、例えばすべてのデータに🐶をつける場合も</p>
-            {SyntaxCode('java','Dog.java')}
+            <Syhl
+                lang='java'
+                file='Dog.java'
+            />
             <p>で可能です<br />
             {WrapCode('java')}ではやはり複数の方法があるため、逆に分かりづらい部分も多そうです</p>
 
@@ -261,10 +313,16 @@ export default function Home() {
             <p className="font-semibold mb-3">CRUDを始める前に</p>
             <p className="leading-7 mb-3">前提としてmysqlにdatabase名{WrapCode('java')}を作成、user(guest)を作成し、guestに対して{WrapCode('java')}へのすべての権限を付与しています<br />
             データベース{WrapCode('java')}には{WrapCode('toy')}というテーブルを作成し、id,nameをカラムとして登録しました</p>
-            {SyntaxCode('sh','db_java.sh')}
+            <Syhl
+                lang='sh'
+                file='db_java.sh'
+            />
             <p className="leading-7 mb-3">また、db操作するためには{WrapCode('jdbcコネクタ')}が別途必要となるため、{WrapCode('mysql-connector-j-9.0.0.jar')}をダウンロードし<br />
             {WrapCode('lib')}フォルダに移動させてクラスパスを通す必要があります</p>
-            {SyntaxCode('sh','use_jdbc.sh')}
+            <Syhl
+                lang='sh'
+                file='use_jdbc.sh'
+            />
             <p className="leading-7 mb-3">ここまででようやく{WrapCode('CRUD')}の操作が可能となります</p>
 
             <hr className="my-5" />
@@ -276,10 +334,16 @@ export default function Home() {
             {WrapCode('insert')}には各種方法がありますが、mysqliにて{WrapCode('insert')}する例を示します<br />
             これまでhostは{WrapCode('localhost')}などになっていましたが、javaの場合は{WrapCode('jdbc')}を利用するため{WrapCode('jdbc:mysql://localhost/java')}と指定します、ここだけ多言語とは違う部分です<br />
             データベース{WrapCode('java')}、テーブル{WrapCode('toy')}に{WrapCode('id:1、name:bear')}をinsertするjavaが以下です</p>
-            {SyntaxCode('java','insert.java')}
+            <Syhl
+                lang='java'
+                file='insert.java'
+            />
             <p>実際に登録されたかどうかを確認するために<br />
             データを読み込む、readするjavaを作成する前に、shell上でコマンドを利用し中身を見てみましょう</p>
-            {SyntaxCode('sh','insert_result_java.sh')}
+            <Syhl
+                lang='sh'
+                file='insert_result_java.sh'
+            />
 
             <hr className="my-5" />
 
@@ -289,7 +353,10 @@ export default function Home() {
             ですが実際に各種サイトデータを利用する場合は、登録後にread(読み込み)し出力させなければなりません</p>
             <p className="mb-3">それではjavaから{WrapCode('select')}を使って出力してみます<br />
             そのままdbのデータを表示させることも可能ですが、今回はdbのデータを配列に格納し、その配列を回して表示させるパターンも記載します</p>
-            {SyntaxCode('java','read.java')}
+            <Syhl
+                lang='java'
+                file='read.java'
+            />
             <p>配列に格納しておくと、別コントローラにデータを渡したり、検索結果を表示させるときに有効です</p>
 
             <hr className="my-5" />
@@ -297,9 +364,15 @@ export default function Home() {
             <p className="font-semibold mb-3">Update</p>
             <p className="mb-3">dbに登録したデータを変更したい場合もあるかと思います、その場合は{WrapCode('update')}を使ってデータを更新します<br />
             先ほど{WrapCode('insert')}したデータをbear→robotに{WrapCode('update')}してみましょう</p>
-            {SyntaxCode('java','update.java')}
+            <Syhl
+                lang='java'
+                file='update.java'
+            />
             <p>実際に更新されたことを確認しましょう</p>
-            {SyntaxCode('sh','update_result_java.sh')}
+            <Syhl
+                lang='sh'
+                file='update_result_java.sh'
+            />
 
             <hr className="my-5" />
 
@@ -308,9 +381,15 @@ export default function Home() {
             そこに公開非公開をフラッグとすることが多いです<br />
             特にdbからデータを削除してしまうと二度とデータを閲覧できなくなってしまいます<br />
             そのため、deleteするケースは少ないですが、deleteする場合は{WrapCode('delete')}を使ってデータを更新します</p>
-            {SyntaxCode('java','delete.java')}
+            <Syhl
+                lang='java'
+                file='delete.java'
+            />
             <p>実際に削除されたことを確認しましょう</p>
-            {SyntaxCode('sh','delete_result_java.sh')}
+            <Syhl
+                lang='sh'
+                file='delete_result_java.sh'
+            />
          </div>
 
       </section>
@@ -326,14 +405,20 @@ export default function Home() {
             ページロード時に消えてしまう{WrapCode('POST')}に対して、{WrapCode('GET')}はurl上のパラメータを取得するため、反恒久的にデータを保持することが可能です<br />
             {WrapCode('POST,GET')}も実行できるjavaを作成する予定でしたが<br />
             htmlやTomcatも関わってくるため、実行できるはずのプログラムを以下に示します</p>
-            {SyntaxCode('html','java_form.html')}
+            <Syhl
+                lang='html'
+                file='java_form.html'
+            />
 
             <hr className="my-5" />
 
             <p className="font-semibold mb-3">GET</p>
             <p className="leading-7 mb-3">クエリパラメータを取得する場合です<br />
             urlの／以降が{WrapCode('?name=hoge')}の場合、{WrapCode('hoge')}という実行結果が表示されるかと思います</p>
-            {SyntaxCode('java','get.java')}
+            <Syhl
+                lang='java'
+                file='get.java'
+            />
          </div>
 
       </section>
@@ -359,30 +444,63 @@ export default function Home() {
             Spring Bootのインストールにはインストール用のパッケージが必要で、mavenとgradleが存在しますが<br />
             今回はmavenを導入します<br />
             phpでいうcomposer,node.jsでいうnpmのような存在です</p>
-            {SyntaxCode('java','spring/ec2/install.sh')}
+            <Syhl
+                lang='java'
+                file='spring/ec2/install.sh'
+            />
             <p className="leading-7">ここまでで環境は整いました<br />
             <Link href="http://34.197.33.76:8080/" target="_blank">http://34.197.33.76:8080/</Link><br />
             ローカルでも同じように動作するように各種インストールを行いましょう<br />
             gitも用意し、cloneしたローカルで編集できるようにします<br /><br />
             git cloneしたものをローカルで実行してみましょう</p>
-            {SyntaxCode('java','spring/macOS/install.sh')}
+            <Syhl
+                lang='java'
+                file='spring/macOS/install.sh'
+            />
             <p className="leading-7 mb-3">local上で{WrapCode('spring boot')}が実行できました</p>
 
-            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200">
-                <p className="font-semibold mb-3 text-cyan-950">実際に作成したSpring Boot環境</p>
-                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
-                <tbody className="dark:text-gray-600">
-                <tr>
-                   <th className="pr-4 break-all">url</th><td><Link href="https://spring.ksk318.me/" target="_blank">https://spring.ksk318.me/</Link></td>
-                </tr>
-                <tr>
-                   <th className="pr-4">basic user</th><td>guest</td>
-                </tr>
-                <tr>
-                   <th className="pr-4">basic pass</th><td>E8SLV3RVEZGEAZATCJZK</td>
-                </tr>
-                </tbody>
-                </table>
+            <div className="w-full mb-3">
+                <div className="p-4">
+                    <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
+                        <div className="items-center justify-center dark:bg-gray-800">
+                            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden bg-slate-200">
+                                <p className="font-semibold mb-3 text-cyan-950">実際に作成したSpring Boot環境</p>
+                                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                                <tbody className="dark:text-gray-600">
+                                <tr>
+                                   <th className="pr-4 break-all">url</th><td><Link href="https://spring.ksk318.me/" target="_blank">https://spring.ksk318.me/</Link></td>
+                                </tr>
+                                <tr>
+                                   <th className="pr-4">basic user</th><td>guest</td>
+                                </tr>
+                                <tr>
+                                   <th className="pr-4">basic pass</th><td>E8SLV3RVEZGEAZATCJZK</td>
+                                </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div className="items-center justify-center dark:bg-gray-800">
+                            <div className="relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden bg-slate-200">
+                                <Image
+                                  className="mb-5 mx-auto"
+                                  src={'/GitHub_Lockup_Dark.svg'}
+                                  alt="success"
+                                  width={120}
+                                  height={38}
+                                  priority
+                                />
+                                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                                <tbody className="dark:text-gray-600">
+                                <tr>
+                                    <th className="pr-4 break-all">url</th><td><Link href="https://github.com/tkhsksk/spring" target="_blank">https://github.com/tkhsksk/spring</Link></td>
+                                </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <hr className="my-5" />
@@ -394,18 +512,32 @@ export default function Home() {
             Thymeleafはspring bootでhtmlファイルを扱う際に重要です<br /><br />
             pom.xmlファイルは以下パスに存在しています</p>
 
-            {SyntaxCode('java','spring/macOS/root_1.sh')}
+            <Syhl
+                lang='java'
+                file='spring/macOS/root_1.sh'
+            />
 
             <p className="leading-7">対象ファイルpom.xmlにspring-boot-starter-thymeleafを記述しましょう</p>
 
-            {SyntaxCode('java','spring/template/pom.xml')}
+            <Syhl
+                lang='java'
+                file='spring/template/pom.xml'
+            />
+            <Github url="spring/blob/main/pom.xml" />
 
             <p className="leading-7">読み込むファイルはmain/resources/templates/ディレクトリ以下が対象です</p>
-            {SyntaxCode('java','spring/macOS/root_2.sh')}
+            <Syhl
+                lang='java'
+                file='spring/macOS/root_2.sh'
+            />
 
             <p className="leading-7">ディレクトリ以下に以下のindex.htmlファイルを配置します<br />
             message変数を記述し、controllerからの受け渡しも同時に確認してみます</p>
-            {SyntaxCode('java','spring/template/index.html')}
+            <Syhl
+                lang='java'
+                file='spring/template/index.html'
+            />
+            <Github url="spring/blob/main/src/main/resources/templates/index.html" />
 
             <p className="leading-7">controllerの記述ルールとしては<br />
             packageは対象ファイルまでの正式なパスであること<br />
@@ -414,7 +546,11 @@ export default function Home() {
             class名はファイル名と合致させることなどが主なルールです<br />
             それ以外の説明に関しては以下コメントアウトにて説明がなされています</p>
 
-            {SyntaxCode('java','spring/template/HomeController.java')}
+            <Syhl
+                lang='java'
+                file='spring/template/HomeController.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/controller/HomeController.java" />
 
             <p className="leading-7 mb-3">ここまで実行した上で、{WrapCode('mvn spring-boot:run')}にてビルドと同時に起動してみましょう<br />
             以下URLにてローカルで確認できます</p>
@@ -476,7 +612,10 @@ export default function Home() {
             ユーザーは例によって{WrapCode('guest')}を使い、新規に{WrapCode('spring')}データベースを作成して、権限を付与しています<br />
             また{WrapCode('user')}テーブルは、id,nameなど簡潔な構成にしています</p>
 
-            {SyntaxCode('java','spring/macOS/db.sh')}
+            <Syhl
+                lang='java'
+                file='spring/macOS/db.sh'
+            />
             <p className="leading-7 mb-3">{WrapCode('Spring Boot')}から{WrapCode('mysql')}に接続するための情報を以下{WrapCode('2')}ファイルに書き込みましょう</p>
             <div className="break-all relative shadow-md p-6 sm:rounded-lg mb-4 grid overflow-hidden w-fit bg-slate-200 dark:text-gray-600">
                 <p className="font-semibold mb-3 text-cyan-950">編集対象ファイル</p>
@@ -485,8 +624,16 @@ export default function Home() {
                     <li>/pom.xml</li>
                 </ul>
             </div>
-            {SyntaxCode('java','spring/insert/application.properties')}
-            {SyntaxCode('java','spring/insert/pom.xml')}
+            <Syhl
+                lang='java'
+                file='spring/insert/application.properties'
+            />
+            <Github url="spring/blob/main/src/main/resources/application.properties" />
+            <Syhl
+                lang='java'
+                file='spring/insert/pom.xml'
+            />
+            <Github url="spring/blob/main/pom.xml" />
 
             <p className="leading-7 mb-3">ここまででdb接続の準備が整いました<br />
             {WrapCode('user')}テーブルに接続できるUserモデル〜コントローラーまでを作成します</p>
@@ -504,21 +651,49 @@ export default function Home() {
             </div>
 
             <p className="leading-7">modelにはdbの情報を記述します</p>
-            {SyntaxCode('java','spring/insert/User.java')}
+            <Syhl
+                lang='java'
+                file='spring/insert/User.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/model/User.java" />
             <p className="leading-7">Mapperをserviceとして利用します</p>
-            {SyntaxCode('java','spring/insert/UserMapper.java')}
+            <Syhl
+                lang='java'
+                file='spring/insert/UserMapper.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/mapper/UserMapper.java" />
             <p className="leading-7">Mapperを利用できるようにするには、MySpringBootApplicationへの登録が必要です</p>
-            {SyntaxCode('java','spring/insert/MySpringBootApplication.java')}
+            <Syhl
+                lang='java'
+                file='spring/insert/MySpringBootApplication.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/MySpringBootApplication.java" />
             <p className="leading-7">serviceにはsql文を用いて、Userモデルに対してデータを登録したり編集する機能をつけます</p>
-            {SyntaxCode('java','spring/insert/UserService.java')}
+            <Syhl
+                lang='java'
+                file='spring/insert/UserService.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/service/UserService.java" />
             <p className="leading-7">formを使ってデータ登録する機能を作成するので<br />
             formを定義するファイルも作成します</p>
-            {SyntaxCode('java','spring/insert/UserForm.java')}
+            <Syhl
+                lang='java'
+                file='spring/insert/UserForm.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/form/UserForm.java" />
             <p className="leading-7">最後に各機能を利用して、テンプレートに反映させるようなcontrollerを作成します<br />
             /userのフォームからpostすると/user/newにてデータが登録されるような構成にしています</p>
-            {SyntaxCode('java','spring/insert/UserController.java')}
+            <Syhl
+                lang='java'
+                file='spring/insert/UserController.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/controller/UserController.java" />
             <p className="leading-7">テンプレートを作成しましょう</p>
-            {SyntaxCode('java','spring/insert/index.html')}
+            <Syhl
+                lang='java'
+                file='spring/insert/index.html'
+            />
+            <Github url="spring/blob/main/src/main/resources/templates/user/index.html" />
             <p className="leading-7 mb-3">ここまでをビルドして反映させると以下のような画面が表示されます</p>
 
             <p className="leading-7 mb-3">ここまで実行した上で、{WrapCode('mvn spring-boot:run')}にてビルドと同時に起動してみましょう<br />
@@ -566,7 +741,10 @@ export default function Home() {
               priority
             />
             <p className="leading-7 mb-3">登録後にmac OS上で対象dbを覗いてみます</p>
-            {SyntaxCode('java','spring/macOS/insert.sh')}
+            <Syhl
+                lang='java'
+                file='spring/macOS/insert.sh'
+            />
             <p className="leading-7">データが登録されました🥳</p>
 
             <hr className="my-5" />
@@ -583,14 +761,26 @@ export default function Home() {
 
             <p className="leading-7">データを一覧表示できるようにします<br />
             controllerに以下１行を追加するだけで表示が可能です</p>
-            {SyntaxCode('java','spring/read/UserController.java')}
+            <Syhl
+                lang='java'
+                file='spring/read/UserController.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/controller/UserController.java" />
             <p className="leading-7">本来そのはずだったのですが、<br />
             lombokのDataを利用すればビルド時に自動でGetterとSetterが設定されるところ<br />
             なぜか設定されなかったため、Getterのみ追記しました</p>
-            {SyntaxCode('java','spring/read/User.java')}
+            <Syhl
+                lang='java'
+                file='spring/read/User.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/model/User.java" />
             <p className="leading-7">Getterを追記したことで、user.nameとするだけで<br />
             UserからgetNameする機能が付与されました</p>
-            {SyntaxCode('java','spring/read/index.html')}
+            <Syhl
+                lang='java'
+                file='spring/read/index.html'
+            />
+            <Github url="spring/blob/main/src/main/resources/templates/user/index.html" />
             <p className="leading-7 mb-3">実際にブラウザで確認してみます<br />
             {WrapCode('mvn spring-boot:run')}</p>
 
@@ -655,11 +845,23 @@ export default function Home() {
             この方法で試してみます<br /><br />
             まず、userの詳細ページと更新処理ページをcontrollerで登録します<br />
             idに準じてユーザー情報が表示されるように構築しています</p>
-            {SyntaxCode('java','spring/update/UserController.java')}
+            <Syhl
+                lang='java'
+                file='spring/update/UserController.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/controller/UserController.java" />
             <p className="leading-7">idもフォームに含めるため、UserFormファイルにidを追加します</p>
-            {SyntaxCode('java','spring/update/UserForm.java')}
+            <Syhl
+                lang='java'
+                file='spring/update/UserForm.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/form/UserForm.java" />
             <p className="leading-7">編集ページをテンプレートに追加します</p>
-            {SyntaxCode('java','spring/update/edit.html')}
+            <Syhl
+                lang='java'
+                file='spring/update/edit.html'
+            />
+            <Github url="spring/blob/main/src/main/resources/templates/user/edit.html" />
             <p className="leading-7 mb-3">実際にブラウザで更新されるか確認しましょう<br />
             {WrapCode('mvn spring-boot:run')}</p>
 
@@ -741,17 +943,40 @@ export default function Home() {
             <p className="leading-7">{WrapCode('Spring Mybatis')}を利用しているため、本来はxmlファイルを作成して実行するべきですが<br />
             今回はとりあえず検索機能を作成することを目的としているため、複数文字検索やインジェクションは考慮しない作りになっています<br /><br />
             まず、検索用のフォームを作成しましょう</p>
-            {SyntaxCode('java','spring/search/UserSearchForm.java')}
+            <Syhl
+                lang='java'
+                file='spring/search/UserSearchForm.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/form/UserSearchForm.java" />
+
             <p className="leading-7">次にMapperファイルに検索用のSQL文を追記します</p>
-            {SyntaxCode('java','spring/search/UserMapper.java')}
+            <Syhl
+                lang='java'
+                file='spring/search/UserMapper.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/mapper/UserMapper.java" />
+
             <p className="leading-7">Mapperファイルに追記した検索を、Serviceに登録します</p>
-            {SyntaxCode('java','spring/search/UserService.java')}
+            <Syhl
+                lang='java'
+                file='spring/search/UserService.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/service/UserService.java" />
+            
             <p className="leading-7">ここまでの文を反映させるページを作成します<br />
             ポイントとして、クエリパラメータを取得できるように{WrapCode('RequestParam')}を関数の引数として読み込ませているのですが、<br />
             {WrapCode('required')}をfalseにしておかないと、検索前のパラメータが存在しない場合にページ表示でエラーが発生します</p>
-            {SyntaxCode('java','spring/search/UserController.java')}
+            <Syhl
+                lang='java'
+                file='spring/search/UserController.java'
+            />
+            <Github url="spring/blob/main/src/main/java/org/spring/boot/controller/UserController.java" />
             <p className="leading-7">検索と検索結果を同じページに収めたいので、formと配列をテンプレートに記述します</p>
-            {SyntaxCode('java','spring/search/search.html')}
+            <Syhl
+                lang='java'
+                file='spring/search/search.html'
+            />
+            <Github url="spring/blob/main/src/main/resources/templates/user/search.html" />
             <p className="leading-7 mb-3">検索機能を確認しましょう</p>
 
             <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">

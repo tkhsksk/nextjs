@@ -2,20 +2,12 @@ import type { Metadata } from "next";
 
 import Image from "next/image"
 import Link  from 'next/link'
+import Datas from "@/../data.json"
 
 export const metadata: Metadata = {
   title: 'about｜'+process.env.SITE_TITLE,
   description: "について",
 };
-
-function WrapCode(txt: string) {
-   return <code className="ms-2 break-all bg-red-100 dark:text-black dark:bg-white/[.8] px-1 py-0.5 font-semibold rounded text-red-500 text-xs">{txt}</code>;
-}
-
-function LinkTag(link: string, txt: string) {
-   const text = txt ? txt : link;
-   return <Link className="ms-2 break-all bg-sky-100 dark:text-black dark:bg-white/[.8] px-1 py-0.5 font-semibold rounded text-sky-500 text-xs" href={link} target="_blank">{text}</Link>;
-}
 
 function LinkMark(link: string) {
    return <Link href={link} target="_blank"><i className="ph ph-arrow-square-out ms-1"></i></Link>;
@@ -129,8 +121,7 @@ export default function Home() {
                   <span className="font-semibold">【担当業務】</span><br />
                   バックエンド関連連絡窓口、デザイン、コーディング、フロント・バックエンド、データベース管理、更新作業<br /><br />
                   <span className="font-semibold">【ポイント】</span><br />
-                  企業様からサイト立ち上げのお話をいただき、ecサイトをご希望だったので、無料のec専用システムeccube3にて作成しました。<br />
-                  購入者が主に企業様である、BtoB専門のecサイトだったため、支払い方法にポーシャペイを組み込んでいます。<br />
+                  購入者が主に企業様のBtoB専門ecサイトだったため、支払い方法にポーシャペイを組み込んでいます。<br />
                   他にも確認事項を登録するオプション機能、各商品の説明ページを編集する機能などを、カスタマイズで追加しています。<br />
                   商品単価が高いこともあって大きな売上を達成することができました。<br />
                   初めてのecサイト制作で、ecサイトにおける基本定義を学習させていただきました</p>
@@ -193,7 +184,7 @@ export default function Home() {
                   <span className="font-semibold">【担当業務】</span><br />
                   デザイン、コーディング、フロント・バックエンド、データベース管理、更新作業<br /><br />
                   <span className="font-semibold">【ポイント】</span><br />
-                  コーポレートサイトの立ち上げと同時に、ecサイトの立ち上げも同時に行いました。<br />
+                  クライアント様のコーポレートサイト立ち上げと同時に、ecサイトの立ち上げも同時に行いました。<br />
                   無料のec専用システムeccube4にて作成しています。<br />
                   卸売サイトのためポーシャペイの導入、量り売り機能、お届け日指定機能を追加しています。<br /><br />
                   運用中、カードの不正使用によりオーソリの大量発生が検知されたため、同ipでクレジット支払にて3回以上購入失敗があった場合はアクセス停止とする機能を追加しました</p>
@@ -455,7 +446,7 @@ export default function Home() {
                   <span className="font-semibold">【ポイント】</span><br />
                   シフト提出や社員管理をするためのデータベースがなかったため、社内業務改善のために作成しました。<br />
                   開発期間はおよそ半年で、デザインからdb設計、要件定義、コーディングに至るまで全てを担当しています。<br />
-                  詳細につきましては以下リンク先に制作課程のログとテストサイトを公開しています。</p>
+                  詳細につきましては以下リンク先に制作課程のレポートとテストサイトを公開しています。</p>
                   <Link className="flex justify-center items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 text-center" href="/php#laravel" target="_blank">ララワークス制作について<i className="ms-2 ph ph-caret-right"></i></Link>
 
                </div>
@@ -513,62 +504,161 @@ export default function Home() {
             ＜各種プロダクトの言語やフレームワークの画一化＞<br />
             各種プロダクトは開発当初の言語が使われている場合もあれば、途中から言語を変更したり、状況に応じてフレームワークのアップデートをするなど、さまざまなケースがあると思います。<br />
             プロダクトの開発をなるべく画一化することで、チーム同士で相互に情報を共有しあえることもあり、効率的な開発が望めるかと思います。もちろん、割ける時間と人員は各部署毎に違い、リソースの把握と確保も必要なため、改善する場合はタイミングが重要です。<br />
-            タイミングやスケジュール感、実現に伴う資料作成など障害は多々ありますが、もし実現できた際にはぜひ一員として貢献したいと思います。<br /><br />
+            タイミングやスケジュール感の確認、それらに伴う資料作成など障害は多々ありますが、もし実現できた際にはぜひ一員として貢献したいと思います。<br /><br />
             ＜全ての社員にわかりやすいエンジニアブログの作成＞<br />
-            開発者ブログは専門用語がズラッと並んでいても、開発者の立場であれば内容を把握し、内部のアーキテクチャーを理解できるかもしれません。しかし、他の部署の場合は全く内容は理解できないかと思います。<br />
-            もちろん、他部署だから理解できなくても問題ないのですが、社内に広く認知されることによって各方面からアイデアが浮かぶ可能性もあるのではないでしょうか。<br />
-            具体的には、エンジニア向けのブログを万人向けに訳して別途公開する、もしくは専門用語のマウスホバーで専門用語の内容がツールチップとして表示されるなど、実現方法はさまざまです。<br /><br />
-            ＜各種サービスにおける特色や特徴のリストアップ＞<br />
-            新たなサービスを選定する際に、実際にサービスに触れてみてから、使えない機能が判明するケースが多いかと思います。これを解消するために、あらかじめ各種サービスについて機能をリストアップし、企業全体の作業効率化を図りたいと思っています。<br />
-            具体的にはサービス毎の、負荷耐久、コスト、対応言語など。DBの場合は、DBMSの互換性、ロールバック機能など。<br />
-            それぞれを一括で確認できるようなリストアップ機能です。今後開発の際には、共有の本リストから性能を確認し、自身のプロジェクトに沿ったものを選択することで、効率的な開発が遂行できるようになると思います。</p>
+            開発者ブログは専門用語がズラッと並んでいても、開発者の立場であれば内容を把握し、解説が無くても内部のアーキテクチャーまで全貌を理解できるかもしれません。しかし、社内の他部署、デザインや営業担当の方々の大半は全く内容が理解できないのではないでしょうか。<br />
+            もちろん、他部署だから理解できなくても問題ないのですが、社内で多くの人の目に留まることよって各方面からアイデアが飛び交い、思ってもみなかった発想が生まれるかもしれません。<br />
+            具体的には、エンジニア向けのブログを一般向けに編集して別途公開する、もしくは専門用語にマウスホバーすることで用語の内容がツールチップとして表示されるなど、さまざまなアプローチ方法を思案しています。<br /><br />
+            ＜プロジェクト新規参入者にもわかりやすい仕様書やコードコメント＞<br />
+            各プロジェクト内で仕様書やコードコメントは存在しているかもしれませんが、真っさらな状態の私自信が、改めてそれらを見直したいと思っています。<br />
+            自分を含め、すでにプロダクトが完成した状態のプロジェクトに、途中からプログラマーとして新規参入する社員なども多くいるかと思います。<br />
+            その際に、仕様書はプログラムやフローやロジックを完全に理解している立場の人物が制作したということもあり、携わってこなかった第三者が仕様書を見ると、どうしても分かりにくい部分や不明瞭な点が出てきてしまいがちです。<br />
+            gitのhistoryを確認しても、全体像は把握しにくいところもあるかと思います。<br />
+            見直すことによって、依存関係や内部処理を短時間で把握できるようにし、社内全体の業務効率化に繋げていきたいです。</p>
             <p className="leading-7 mb-5"><span className="font-semibold">◾️ご自身のGitHubリポジトリや執筆論文、開発したサービスのURLなど、ご自身をアピールできるものをご記載ください。</span></p>
-            <p className="leading-7 mb-3">前職では主にPHPを主体としていましたが、python、Java、goの基本プログラミングが可能です<br />
-            以下、各種言語の実践ログを公開しています</p>
+            <p className="leading-7 mb-3">前職では主にPHPを主体としていましたが、python、Java、go、JavaScript(Next.js)の基本プログラミングも可能です<br />
+            以下、各種言語の実践ログをページ上で公開しています<br />
+            https://ksk318.me<br />
+            guest<br />
+            2A3CSSNJELW653X8H2GR<br /><br />
+            各言語の代表的なフレームワーク(laravel、Django、Spring Boot、gin)について<br />
+            各gitと実際の動作ページを公開しております<br />
+            laravelに関してはサービスの動作環境を整えておりますので、ぜひご確認ください<br />
+            例）laravelのgitと動作環境URL<br />
+            https://ksk318.me/php#laravel<br />
+            他フレームワークについてもページ内の各リンクよりご確認くださいませ</p>
          </div>
 
       </section>
 
       <section id="skills" className="w-full">
          <h2 className="text-2xl font-semibold mb-2 text-center">skills</h2>
-         <p className="leading-7 mb-3 text-center text-gray-700/75 mb-3 dark:text-slate-400">現時点で所持している私のスキルです<br />
+         <p className="leading-7 mb-3 text-center text-gray-700/75 mb-3 dark:text-slate-400">現時点で所持している私のテクニカルスキルです<br />
          年数が明示されていないものは、リンク先にて学習ログを残しています</p>
 
          <div className="p-5 border-l-2 pe-0 sm:pe-5">
-            <p className="leading-7 text-center font-semibold"><i className="ph ph-app-window me-2"></i>フロントエンド</p>
-            <h3 className="text-lg font-semibold">html</h3>
-            <p className="leading-7 mb-2">HTML5{WrapCode('9年')}</p>
-            <h3 className="text-lg font-semibold">template</h3>
-            <p className="leading-7 mb-2">Smarty{WrapCode('6年')}、Twig{WrapCode('8年')}、Laravel Blade{WrapCode('6年')}</p>
-            <h3 className="text-lg font-semibold">css</h3>
-            <p className="leading-7">CSS{WrapCode('9年')}、SCSS{WrapCode('6年')}、Bootstrap v3〜5{WrapCode('9年')}、Tailwind CSS</p>
+            <p className="leading-7 text-center font-semibold mb-3"><i className="ph ph-app-window me-2"></i>フロントエンド</p>
+
+            <div className="relative border mb-4 grid overflow-hidden w-fit">
+               <table className="text-sm whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                  <tbody>
+                     {Datas.front.map(item =>
+                     {
+                       return (
+                         <>
+                           {item.progs.map((prog, i) => 
+                             {
+                               return (
+                                 <tr className="odd:bg-white border-b dark:border-gray-700" key="front{i}">
+                                    { i == 0 && (
+                                    <td className="font-bold px-4 py-2 align-top bg-slate-100 border-e font-[family-name:var(--font-geist-mono)]" rowSpan={item.progs.length}>{item.category}</td>
+                                    )}
+                                    <td className="px-4 py-2 border-e font-[family-name:var(--font-geist-mono)]">{prog.name}</td>
+                                    <td className="px-4 py-2 border-e">{prog.years}</td>
+                                    <td className="px-4 py-2 border-e">{prog.note}</td>
+                                 </tr>
+                                 );
+                             })}
+                           
+                         </>);
+                     })}
+                    </tbody>
+                </table>
+            </div>
 
             <hr className="my-5" />
 
-            <p className="leading-7 text-center font-semibold"><i className="ph ph-terminal-window me-2"></i>バックエンド</p>
-            <h3 className="text-lg font-semibold">PHP</h3>
-            <p className="leading-7 mb-2">php v5.7〜8.2{WrapCode('8年')}{LinkTag('php','ログ')}、Symfony{WrapCode('8年')}、Laravel{WrapCode('4年')}{LinkTag('php#laravel','ログ')}</p>
-            <h3 className="text-lg font-semibold">python</h3>
-            <p className="leading-7 mb-2">python{LinkTag('python','ログ')}、django{LinkTag('python#django','ログ')}</p>
-            <h3 className="text-lg font-semibold">Java</h3>
-            <p className="leading-7 mb-2">Java{LinkTag('java','ログ')}、Spring Boot{LinkTag('java#Spring_Boot','ログ')}</p>
-            <h3 className="text-lg font-semibold">Go</h3>
-            <p className="leading-7 mb-2">Go{LinkTag('go','ログ')}、gin{LinkTag('go#gin','ログ')}</p>
-            <h3 className="text-lg font-semibold">JavaScript</h3>
-            <p className="leading-7 mb-2">jQuery{WrapCode('8年')}、Vue.js{WrapCode('2年')}、Next.js{LinkTag('JavaScript','ログ')}</p>
-            <h3 className="text-lg font-semibold">Shell</h3>
-            <p className="leading-7">macOS{WrapCode('5年')}、Windows PowerShell{WrapCode('5年')}、Amazon Linux{WrapCode('4年')}、<br />Amazon Linux2{WrapCode('4年')}、Amazon Linux2023{WrapCode('1年')}</p>
+            <p className="leading-7 text-center font-semibold mb-3"><i className="ph ph-terminal-window me-2"></i>バックエンド</p>
+
+            <div className="relative border mb-4 grid overflow-hidden w-fit">
+               <table className="text-sm whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                  <tbody>
+                     {Datas.backend.map(item =>
+                     {
+                       return (
+                         <>
+                           {item.progs.map((prog, i) => 
+                             {
+                               return (
+                                 <tr className="odd:bg-white border-b dark:border-gray-700" key="backend{i}">
+                                    { i == 0 && (
+                                    <td className="font-bold px-4 py-2 align-top bg-slate-100 border-e font-[family-name:var(--font-geist-mono)]" rowSpan={item.progs.length}>{item.category}</td>
+                                    )}
+                                    <td className="px-4 py-2 border-e font-[family-name:var(--font-geist-mono)]">{prog.name}</td>
+                                    <td className="px-4 py-2 border-e">{prog.years}{ prog.log && (<Link className="break-all bg-sky-100 dark:text-black dark:bg-white/[.8] px-1 py-0.5 font-semibold rounded text-sky-500 text-xs" href={prog.log} target="_blank">ログ</Link>) }</td>
+                                    <td className="px-4 py-2 border-e">{prog.note}</td>
+                                 </tr>
+                                 );
+                             })}
+                           
+                         </>);
+                     })}
+                    </tbody>
+                </table>
+            </div>
 
             <hr className="my-5" />
 
-            <p className="leading-7 text-center font-semibold"><i className="ph ph-database me-2"></i>データベース</p>
-            <p className="leading-7">MySQL{WrapCode('7年')}、MariaDB{WrapCode('3年')}、PostgreSQL{WrapCode('3年')}</p>
+            <p className="leading-7 text-center font-semibold mb-3"><i className="ph ph-database me-2"></i>データベース</p>
+
+            <div className="relative border mb-4 grid overflow-hidden w-fit">
+               <table className="text-sm whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                  <tbody>
+                     {Datas.database.map(item =>
+                     {
+                       return (
+                         <>
+                           {item.progs.map((prog, i) => 
+                             {
+                               return (
+                                 <tr className="odd:bg-white border-b dark:border-gray-700" key="database{i}">
+                                    { i == 0 && (
+                                    <td className="font-bold px-4 py-2 align-top bg-slate-100 border-e font-[family-name:var(--font-geist-mono)]" rowSpan={item.progs.length}>{item.category}</td>
+                                    )}
+                                    <td className="px-4 py-2 border-e font-[family-name:var(--font-geist-mono)]">{prog.name}</td>
+                                    <td className="px-4 py-2 border-e">{prog.years}</td>
+                                    <td className="px-4 py-2 border-e">{prog.note}</td>
+                                 </tr>
+                                 );
+                             })}
+                           
+                         </>);
+                     })}
+                    </tbody>
+                </table>
+            </div>
 
             <hr className="my-5" />
 
-            <p className="leading-7 text-center font-semibold"><i className="ph ph-hard-drives me-2"></i>サーバーエンド</p>
-            <h3 className="text-lg font-semibold">AWS{WrapCode('5年')}</h3>
-            <p className="leading-7">EC2、route53、VPC、RDS、SES、WorkMail、ELB</p>
+            <p className="leading-7 text-center font-semibold mb-3"><i className="ph ph-hard-drives me-2"></i>サーバーエンド</p>
+
+            <div className="relative border mb-4 grid overflow-hidden w-fit">
+               <table className="text-sm whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                  <tbody>
+                     {Datas.server.map(item =>
+                     {
+                       return (
+                         <>
+                           {item.progs.map((prog, i) => 
+                             {
+                               return (
+                                 <tr className="odd:bg-white border-b dark:border-gray-700" key="server{i}">
+                                    { i == 0 && (
+                                    <td className="font-bold px-4 py-2 align-top bg-slate-100 border-e font-[family-name:var(--font-geist-mono)]" rowSpan={item.progs.length}>{item.category}</td>
+                                    )}
+                                    <td className="px-4 py-2 border-e font-[family-name:var(--font-geist-mono)]">{prog.name}</td>
+                                    <td className="px-4 py-2 border-e">{prog.years}</td>
+                                    <td className="px-4 py-2 border-e">{prog.note}</td>
+                                 </tr>
+                                 );
+                             })}
+                           
+                         </>);
+                     })}
+                    </tbody>
+                </table>
+            </div>
+
          </div>
 
       </section>

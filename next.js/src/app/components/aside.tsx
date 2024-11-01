@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import Link  from 'next/link'
 import Image from "next/image";
-import Datas from "../../../data.json"
+import Datas from "@/../data.json"
 import React, { useState } from "react";
 import { useEffect } from 'react'
 
@@ -52,7 +52,10 @@ export default function Aside() {
             <Link className={pathname == '/'+item.title ? 'font-bold': ''} onClick={handleClick} href={{ pathname:item.title}}>{item.title}</Link>
             {pathname == '/'+item.title ? <ul className='mb-2 pt-2 ms-3'>{item.subs.map(item => 
               {
-                return (<li className='text-[#5B995B] text-slate-400 text-sm leading-5' key="id"><Link href={'#'+item}>{item}</Link></li>);
+                return (
+                  <li className='text-[#5B995B] text-slate-400 text-sm leading-5' key="id">
+                  <Link href={'#'+item}>{item}</Link>
+                  </li>);
               })}
             </ul>: ''}
           </li>);
