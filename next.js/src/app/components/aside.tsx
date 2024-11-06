@@ -21,17 +21,26 @@ export default function Aside() {
 
   return (
     <aside className="flex justify-center h-40 h-full">
-      <div className="fixed top-0 left-0 p-4">
+      <div className="fixed top-0 left-0 p-8">
       <Link href="/" onClick={handleClick}>
         <Image
-          className="mb-3"
-          src={pathname+'.png'}
-          alt="Next.js logo {'/'+pathname+'.png'}"
+          className="mb-5"
+          src="/logo.svg"
+          alt="logo"
           width={180}
           height={38}
           priority
         />
       </Link>
+
+      <Image
+        className="mb-3"
+        src={pathname+'.png'}
+        alt="Next.js logo {'/'+pathname+'.png'}"
+        width={140}
+        height={38}
+        priority
+      />
 
       <div className="hidden svg-loader mb-3">
         <svg className="svg-container" height={100} width={100} viewBox="0 0 100 100">
