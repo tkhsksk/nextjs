@@ -433,7 +433,7 @@ export default function Home() {
 
       <Image
               className="mb-3 mx-auto"
-              src={'/go/gin.svg'}
+              src={'/go/gin.png'}
               alt="success"
               width={60}
               height={38}
