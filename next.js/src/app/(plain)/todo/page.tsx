@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-// import Image from "next/image"
+import Image from "next/image"
 // import Link  from 'next/link'
 
 export const metadata: Metadata = {
@@ -22,6 +22,21 @@ export default function Todo() {
          <h2 className="text-2xl font-semibold mb-2 text-center">クローゼット管理サービス<br />「WADRO(ワドロ)」(仮称)の開発</h2>
          <p className="leading-7 mb-3 text-center text-gray-700/75 mb-3 dark:text-slate-400">サービスの開発をしてみたいです</p>
 
+         <div className="w-full mb-3">
+            <div className="border-gray-200 border-dashed rounded-lg">
+               <div className="grid sm:grid-cols-[repeat(auto-fit,_16.666666%)] grid-cols-[repeat(auto-fit,_33.333333%)] m-auto justify-center">
+                   <Image
+                       className="mb-3 border"
+                       src={'/todo/home.png'}
+                       alt="home"
+                       width={500}
+                       height={38}
+                       priority
+                     />
+               </div>
+            </div>
+         </div>
+
          <h3 className="text-lg font-semibold mb-2"><i className="ph ph-pants me-2"></i>「WADRO(ワドロ)」(仮称)とは？</h3>
          <p className="leading-7 mb-3">入社後に取り組みたいプロジェクトは、自身が考案した、<br />
          ユーザーのクローゼット管理サービス「WADRO(ワドロ)」({WrapCode('仮称、以下WADRO')})のプロジェクト実施です。<br /><br />
@@ -35,29 +50,98 @@ export default function Todo() {
             <h3 className="text-lg font-semibold mb-5 flex items-center"><i className="ph text-2xl ph-hoodie mr-2"></i>機能について</h3>
 
             <div className="relative sm:rounded-lg mb-4 grid overflow-hidden w-fit">
-               <p className="font-semibold">クローゼット管理</p>
-               <p className="leading-7 mb-3">ユーザー自身のクローゼットやチェストで保管している、服やアクセサリーなどのアイテムを登録できる機能です。<br />
-               画像などの商品データを手動で登録することでデータの登録が可能です。<br />
-               ZOZO TOWN内で販売している商品であれば連携することで、データ取得ができます。</p>
+               <p className="font-semibold mb-3">クローゼット管理</p>
+
+               <div className="cm-auto grid grid-cols-1 sm:grid-cols-8 gap-4">
+                  <div className="sm:col-span-5 sm:order-1 order-2">
+                    <p className="leading-7 mb-3">ユーザー自身のクローゼットやチェストで保管している、服やアクセサリーなどのアイテムを登録できる機能です。<br />
+                     画像などの商品データを手動で登録することでデータの登録が可能です。<br />
+                     ZOZO TOWN内で販売している商品であれば連携することで、データ取得ができます。</p>
+                  </div>
+                  <div className="sm:col-span-3 sm:order-2 order-1">
+                     <div className="items-center justify-center sm:order-2 order-1">
+                        <Image
+                          className="mb-3 mx-auto aspect-square object-contain"
+                          src={'/todo/home.png'}
+                          alt="success"
+                          width={200}
+                          height={38}
+                          priority
+                        />
+                     </div>
+                  </div>
+               </div>
 
                <hr className="my-5" />
 
-               <p className="font-semibold">欲しいモノ管理</p>
-               <p className="leading-7 mb-3">欲しい服やアクセサリーなどのアイテムが登録できる機能です。<br />
-               ZOZO TOWNやZOZO USEDでお気に入り登録した商品も、自動的にこちらのリストに登録されます。</p>
+               <p className="font-semibold mb-3">欲しいモノ管理</p>
+
+               <div className="cm-auto grid grid-cols-1 sm:grid-cols-8 gap-4">
+                  <div className="sm:col-span-5 sm:order-1 order-2">
+                    <p className="leading-7 mb-3">欲しい服やアクセサリーなどのアイテムが登録できる機能です。<br />
+                     ZOZO TOWNやZOZO USEDでお気に入り登録した商品も、自動的にこちらのリストに登録されます。</p>
+                  </div>
+                  <div className="sm:col-span-3 sm:order-2 order-1">
+                     <div className="items-center justify-center sm:order-2 order-1">
+                        <Image
+                          className="mb-3 mx-auto aspect-square object-contain"
+                          src={'/todo/want.png'}
+                          alt="success"
+                          width={200}
+                          height={38}
+                          priority
+                        />
+                     </div>
+                  </div>
+               </div>
 
                <hr className="my-5" />
 
-               <p className="font-semibold">スケジュールコーデ管理</p>
-               <p className="leading-7 mb-3">クローゼット管理に登録したアイテムで、その日毎のコーデをあらかじめカレンダーに登録しておける機能です。<br />
+               <p className="font-semibold mb-3">スケジュールコーデ管理</p>
+
+               <div className="cm-auto grid grid-cols-1 sm:grid-cols-8 gap-4">
+                  <div className="sm:col-span-5 sm:order-1 order-2">
+                    <p className="leading-7 mb-3">クローゼット管理に登録したアイテムで、その日毎のコーデをあらかじめカレンダーに登録しておける機能です。<br />
                登録したコーデは別日へのコピー可能で、コーデの一般公開も可能です。</p>
+                  </div>
+                  <div className="sm:col-span-3 sm:order-2 order-1">
+                     <div className="items-center justify-center sm:order-2 order-1">
+                        <Image
+                          className="mb-3 mx-auto aspect-square object-contain"
+                          src={'/todo/calendar.png'}
+                          alt="success"
+                          width={200}
+                          height={38}
+                          priority
+                        />
+                     </div>
+                  </div>
+               </div>
 
                <hr className="my-5" />
 
-               <p className="font-semibold">ランドリー管理</p>
-               <p className="leading-7 mb-3">洗濯中、クリーニング中の衣類を管理できる機能です。<br />
+               <p className="font-semibold mb-3">ランドリー管理</p>
+
+               <div className="cm-auto grid grid-cols-1 sm:grid-cols-8 gap-4">
+                  <div className="sm:col-span-5 sm:order-1 order-2">
+                    <p className="leading-7 mb-3">洗濯中、クリーニング中の衣類を管理できる機能です。<br />
                クローゼット管理とも連動し、洗濯中の衣類に関しては「洗濯中」などのバッジ付与。<br />
                洗濯中の衣類は、コーデとしてはグループ化できないなどの制限がかかります。</p>
+                  </div>
+                  <div className="sm:col-span-3 sm:order-2 order-1">
+                     <div className="items-center justify-center sm:order-2 order-1">
+                        <Image
+                          className="mb-3 mx-auto aspect-square object-contain"
+                          src={'/todo/laundry.png'}
+                          alt="success"
+                          width={200}
+                          height={38}
+                          priority
+                        />
+                     </div>
+                  </div>
+               </div>
+
             </div>
          </div>
 
@@ -77,28 +161,63 @@ export default function Todo() {
             <h3 className="text-lg font-semibold mb-5 flex items-center"><i className="ph text-2xl ph-coat-hanger mr-2"></i>既存機能との比較、違い</h3>
 
             <div className="relative sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+
                <p className="font-semibold mb-3">持ち服管理</p>
-               <p className="leading-7 mb-3">WEARには類似機能として「お持ちのアイテム」が存在しています。<br />
-               この機能内の「参考価格」について、基本的には連携できた場合のみ登録され、ユーザー側からは登録できません。<br />
-               そこで新たに「{WrapCode('購入価格')}」というカラムを作成し、ユーザーが購入した時点の金額をユーザー側から登録可能に。<br />
-               また、「{WrapCode('買取金額')}」カラムを作成し連携先のフリマサイトより、現在の最高買取金額を取得して表示できるようにします。<br /><br />
-               さらに、表示方法としてWEARアプリ内では「お持ちのアイテム」はカテゴリ毎にフォルダ分け表示となっていますが、<br />
-               WADROでは、これをタブ表示できるようにします。<br />
-               カテゴリ毎にフォルダを作成すると、スクロール域が縦に増え続け見えにくくなりがちです。<br />
-               カテゴリは横方向、カテゴリ毎のアイテムは縦方向にすることで、ユーザビリティに配慮した動きになります。</p>
+
+               <div className="cm-auto grid grid-cols-1 sm:grid-cols-8 gap-4">
+                  <div className="sm:col-span-5 sm:order-1 order-2">
+                    <p className="leading-7 mb-3">WEARには類似機能として「お持ちのアイテム」が存在しています。<br />
+                     この機能内の「参考価格」について、基本的には連携できた場合のみ登録され、ユーザー側からは登録できません。<br />
+                     そこで新たに「{WrapCode('購入価格')}」というカラムを作成し、ユーザーが購入した時点の金額をユーザー側から登録可能に。<br />
+                     また、「{WrapCode('買取金額')}」カラムを作成し連携先のフリマサイトより、現在の最高買取金額を取得して表示できるようにします。<br /><br />
+                     さらに、表示方法としてWEARアプリ内では「お持ちのアイテム」はカテゴリ毎にフォルダ分け表示となっていますが、<br />
+                     WADROでは、これをタブ表示できるようにします。<br />
+                     カテゴリ毎にフォルダを作成すると、スクロール域が縦に増え続け見えにくくなりがちです。<br />
+                     カテゴリは横方向、カテゴリ毎のアイテムは縦方向にすることで、ユーザビリティに配慮した動きになります。</p>
+                  </div>
+                  <div className="sm:col-span-3 sm:order-2 order-1">
+                     <div className="items-center justify-center sm:order-2 order-1">
+                        <Image
+                          className="mb-3 mx-auto aspect-square object-contain"
+                          src={'/todo/home2.png'}
+                          alt="success"
+                          width={200}
+                          height={38}
+                          priority
+                        />
+                     </div>
+                  </div>
+               </div>
 
                <hr className="my-5" />
 
                <p className="font-semibold mb-3">欲しいモノ管理</p>
-               <p className="leading-7 mb-3">WEAR、ZOZOTOWNのどちらにも「お気に入り」機能が存在していますが、外部ec、未対応ecには対応していません。<br />
-               商品毎に、外部URL、価格、および写真を登録可能とし、ありとあらゆるウェブサイト上のアイテムに対応させます。<br />
-               「{WrapCode('お気に入りは、内部購入につながる機能のため、内部商品のみ登録可とすることで外部への流出を最小限にしたい')}」という観点から、この機能はメリットがないように思うかもしれませんが、<br />
-               やはりネット上に存在する{WrapCode('全ての「欲しい」アイテム')}を管理するためには、サイト内で購入できる服のみでは対応しきれない部分が出てきてしまいます。<br />
-               これをカバーするためには、外部URLの登録を可能とし、一元管理できるサービスを作成すべきだと思っています。<br /><br />
-               本機能のメリットとしては、<br />
-               欲しい服を登録する際には「お持ちのアイテム」にある機能と同じように、ZOZOサービス内から同一アイテムを紐付けることによって、最終的にはZOZO対応ECへの誘導。<br />
-               また、外部URLの登録が多数存在するアイテムやブランドの傾向を把握することができるなど、<br />
-               メリットも数多く存在します。</p>
+
+               <div className="cm-auto grid grid-cols-1 sm:grid-cols-8 gap-4">
+                  <div className="sm:col-span-5 sm:order-1 order-2">
+                    <p className="leading-7 mb-3">WEAR、ZOZOTOWNのどちらにも「お気に入り」機能が存在していますが、外部ec、未対応ecには対応していません。<br />
+                     商品毎に、外部URL、価格、および写真を登録可能とし、ありとあらゆるウェブサイト上のアイテムに対応させます。<br />
+                     「{WrapCode('お気に入りは、内部購入につながる機能のため、内部商品のみ登録可とすることで外部への流出を最小限にしたい')}」という観点から、この機能はメリットがないように思うかもしれませんが、<br />
+                     やはりネット上に存在する{WrapCode('全ての「欲しい」アイテム')}を管理するためには、サイト内で購入できる服のみでは対応しきれない部分が出てきてしまいます。<br />
+                     これをカバーするためには、外部URLの登録を可能とし、一元管理できるサービスを作成すべきだと思っています。<br /><br />
+                     本機能のメリットとしては、<br />
+                     欲しい服を登録する際には「お持ちのアイテム」にある機能と同じように、ZOZOサービス内から同一アイテムを紐付けることによって、最終的にはZOZO対応ECへの誘導。<br />
+                     また、外部URLの登録が多数存在するアイテムやブランドの傾向を把握することができるなど、<br />
+                     メリットも数多く存在します。</p>
+                  </div>
+                  <div className="sm:col-span-3 sm:order-2 order-1">
+                     <div className="items-center justify-center sm:order-2 order-1">
+                        <Image
+                          className="mb-3 mx-auto aspect-square object-contain"
+                          src={'/todo/want2.png'}
+                          alt="success"
+                          width={200}
+                          height={38}
+                          priority
+                        />
+                     </div>
+                  </div>
+               </div>
 
                <hr className="my-5" />
 
