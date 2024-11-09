@@ -19,7 +19,7 @@ export default function Github(props: Props) {
        />
           <div>
             <p className="font-semibold text-cyan-950">Read on github</p>
-            <Link className="break-all" href={'https://github.com/tkhsksk/'+props.url} target="_blank">{'https://github.com/tkhsksk/'+props.url}<i className="ph ph-arrow-square-out ms-1"></i></Link>
+            <Link className="break-all dark:text-gray-600" href={'https://github.com/tkhsksk/'+props.url} target="_blank">{'https://github.com/tkhsksk/'+props.url}<i className="ph ph-arrow-square-out ms-1"></i></Link>
           </div>
        </div>
     </div>

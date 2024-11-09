@@ -26,7 +26,7 @@ export default function Todo() {
             <div className="border-gray-200 border-dashed rounded-lg">
                <div className="grid sm:grid-cols-[repeat(auto-fit,_16.666666%)] grid-cols-[repeat(auto-fit,_33.333333%)] m-auto justify-center">
                    <Image
-                       className="mb-3 border"
+                       className="mb-3"
                        src={'/todo/home.png'}
                        alt="home"
                        width={500}

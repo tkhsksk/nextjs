@@ -24,23 +24,23 @@ export default function Aside() {
       <div className="fixed top-0 left-0 p-8">
       <Link href="/" onClick={handleClick}>
         <Image
-          className="mb-5"
+          className="mb-5 dark:hidden"
           src="/logo.svg"
           alt="logo"
           width={180}
           height={38}
           priority
         />
-      </Link>
 
-      <Image
-        className="mb-3"
-        src={pathname+'.png'}
-        alt="Next.js logo {'/'+pathname+'.png'}"
-        width={140}
-        height={38}
-        priority
-      />
+        <Image
+          className="mb-3 hidden dark:inline"
+          src="/logo-dark.svg"
+          alt="logo"
+          width={180}
+          height={38}
+          priority
+        />
+      </Link>
 
       <div className="hidden svg-loader mb-3">
         <svg className="svg-container" height={100} width={100} viewBox="0 0 100 100">
