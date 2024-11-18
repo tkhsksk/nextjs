@@ -4,13 +4,7 @@
             "id": 1,
             "title": "about",
             "name": "Leo Dover",
-            "subs": ["biography","history","work_history","zozo","skills"]
-        },
-        {
-            "id": 10,
-            "title": "todo",
-            "name": "Leo Dover",
-            "subs": ["about","diff","point","epilogue"]
+            "subs": ["biography","history","work_history","skills"]
         },
         {
             "id": 2,

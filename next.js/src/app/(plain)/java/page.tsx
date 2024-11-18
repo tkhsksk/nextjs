@@ -474,7 +474,7 @@ export default function Home() {
                                    <th className="pr-4">basic user</th><td>guest</td>
                                 </tr>
                                 <tr>
-                                   <th className="pr-4">basic pass</th><td>E8SLV3RVEZGEAZATCJZK</td>
+                                   <th className="pr-4">basic pass</th><td>{process.env.BASIC_PASS_SPRING}</td>
                                 </tr>
                                 </tbody>
                                 </table>

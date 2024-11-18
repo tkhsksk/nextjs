@@ -470,7 +470,7 @@ export default function Home() {
                                    <th className="pr-4">basic user</th><td>guest</td>
                                 </tr>
                                 <tr>
-                                   <th className="pr-4">basic pass</th><td>B7MQDZRWW2EF35C957P8</td>
+                                   <th className="pr-4">basic pass</th><td>{process.env.BASIC_PASS_GIN}</td>
                                 </tr>
                                 </tbody>
                                 </table>
