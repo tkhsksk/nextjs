@@ -452,7 +452,7 @@ export default function Home() {
                             <th className="pr-4 break-all">basic user</th><td>guest</td>
                          </tr>
                          <tr>
-                            <th className="pr-4 break-all">basic pass</th><td>{process.env.BASIC_PASS_NEXTJS}</td>
+                            <th className="pr-4 break-all">basic pass</th><td>{process.env.BASIC_PASS_LARAVEL}</td>
                          </tr>
                          <tr>
                             <th className="pr-4 break-all">login user</th><td>tkhsksk0318+master@gmail.com</td>
