@@ -32,6 +32,12 @@
         },
         {
             "id": 6,
+            "title": "swift",
+            "name": "Ricky Hamer",
+            "subs": ["helloWorld","calc","func,struct","array","crud","post,get","gin"]
+        },
+        {
+            "id": 7,
             "title": "JavaScript",
             "name": "主にnext.jsについて",
             "subs": ["basis","customize"]
