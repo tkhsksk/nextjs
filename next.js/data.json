@@ -34,7 +34,7 @@
             "id": 6,
             "title": "swift",
             "name": "Ricky Hamer",
-            "subs": ["helloWorld","calc","func,struct","array","crud","post,get","gin"]
+            "subs": ["helloWorld","calc","func,class","array"]
         },
         {
             "id": 7,
