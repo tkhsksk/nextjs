@@ -41,6 +41,12 @@
             "title": "JavaScript",
             "name": "主にnext.jsについて",
             "subs": ["basis","customize"]
+        },
+        {
+            "id": 8,
+            "title": "summary",
+            "name": "まとめ",
+            "subs": []
         }
     ],
 

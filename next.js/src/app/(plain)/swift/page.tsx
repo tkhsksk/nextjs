@@ -170,7 +170,7 @@ export default function Home() {
 
       </section>
 
-      <section id="func,struct">
+      <section id="func,class">
          <h2 className="text-2xl font-semibold mb-3">関数、Class、struct</h2>
          <p className="leading-7 mb-3">関数の宣言、public private protectedについて</p>
 
@@ -215,19 +215,15 @@ export default function Home() {
                file='struct.swift'
             />
 
-            <p className="leading-7 mb-3">{WrapCode('モジュールモード')}の実行にはルートとなるディレクトリを作成して、その配下に取得するパッケージを登録します<br />
-            取得元はmain.go、取得先はprice.goとしています<br />
-            price.goで実行する内容を見てみましょう</p>
+            <p className="leading-7 mb-3">実行すると、それぞれの数値が計算されて文章が表示されるはずです</p>
+            <p className="font-semibold">実行結果</p>
 
             <Syhl
                lang='sh'
                file='swift/struct.sh'
             />
 
-            <p className="leading-7 mb-3">Productメソッドを公開状態にし、main.goで取得できるようにしています<br />
-            このパッケージをmainで取得できるようにするには、main側でimportして読み込めるようにしなければなりません<br />
-            そのためには{WrapCode('モジュールモード')}を利用します<br />
-            以下コマンドです</p>
+            <p className="leading-7 mb-3">文章と配列が返ってきます</p>
 
          </div>
 
@@ -239,7 +235,7 @@ export default function Home() {
 
          <div className="p-5 border-l-2 pe-0 sm:pe-5">
             <h3 className="text-lg font-semibold mb-3">配列</h3>
-            <p className="leading-7 mb-3">この配列について、phpの学習上でつまづきました<br />
+            <p className="leading-7 mb-3">この配列について、{WrapCode('swift')}の学習上でつまづきました<br />
             そもそもなぜ配列が必要なのか？について的確に解説をしているサイトも参考書もなかったからです<br />
             自分が学習上で学び、配列の有効性について独自解釈しましたのでそれを以下に記載します</p>
             <p className="font-semibold">forで配列を回す</p>
@@ -247,15 +243,22 @@ export default function Home() {
                lang='swift'
                file='for.swift'
             />
-            <p className="leading-7 mb-3">上記構文をざっくりした解説はコメントアウトにて説明されていますが、<br />
-            $xの配列の0番目、1番目...と続き、3番目までをechoする構文です<br />
-            もちろんfor文で配列を表示させることは可能ですし、具体的にx番目からx番目まで表示、などの場合は有効なのですが<br />
-            例えば配列が何番目まで存在しているかが不明なケースは存在していない配列を指定するとエラーが発生するため、issetもしくはemptyなどを必要とします<br />
-            数に関わらず、配列が全て表示され切るまで表示させる場合はforeachが有効でしょう</p>
-            <p className="font-semibold">foreachで配列を回す</p>
+            <p className="font-semibold">実行結果</p>
             <Syhl
                lang='sh'
                file='swift/for.sh'
+            />
+            <p className="leading-7 mb-3">上記構文をざっくりした解説はコメントアウトにて説明されていますが、<br />
+            すべて同じように回す内容のため、結果も同じとなります<br />
+            foreachは回数を制限せず、配列を回し切るための記述です</p>
+            <p className="font-semibold">foreachで配列を回す</p>
+            <Syhl
+               lang='swift'
+               file='foreach.swift'
+            />
+            <Syhl
+               lang='sh'
+               file='swift/foreach.sh'
             />
             <p className="leading-7 mb-3">数の指定などをしなくても、すべての配列が表示されます<br />
             forとforeachは似ているようで異なっているため、用途に基づいて利用しましょう</p>
@@ -266,25 +269,16 @@ export default function Home() {
             <p className="leading-7 mb-3">配列から配列を作成することで、簡易的なデータ検索が可能です<br />
             配列を回して、その中で該当となるデータのみ格納する配列を新規に作成すると、検索済みデータの配列を作成できます</p>
             <p className="leading-7">実際のコードは以下です</p>
-            <Syhl
-               lang='swift'
-               file='foreach.swift'
-            />
-            <p className="leading-7">新規に検索データの配列を作成する場合はforよりも、<br />
-            繰り返しの処理に向いている、foreachの方が分かりやすく且つ作りやすい構造です<br /><br />
-            繰り返しの処理で言うと、例えばすべてのデータに🐶をつける場合も</p>
-            <Syhl
-               lang='sh'
-               file='swift/foreach.sh'
-            />
-            <p className="leading-7">で可能です<br />
-            phpを深く学ぶまで配列の利点はわかりにくいものですが、<br />
-            実務で利用するにあたり、検索や繰り返しの処理で重要な役割を果たしていることに気づきました</p>
 
             <Syhl
                lang='swift'
                file='search.swift'
             />
+
+            <p className="leading-7 mb-3">で可能です<br />
+            {WrapCode('swift')}を深く学ぶまで配列の利点はわかりにくいものですが、<br />
+            実務で利用するにあたり、検索や繰り返しの処理で重要な役割を果たしていることに気づきました</p>
+            <p className="font-semibold">実行結果</p>
             <Syhl
                lang='sh'
                file='swift/search.sh'
