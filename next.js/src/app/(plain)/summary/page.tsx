@@ -342,11 +342,41 @@ export default function Home() {
                             </td>
                         </tr>
 
+                    </tbody>
+                </table>
+            </div>
+
+         </div>
+
+         <div className="p-5 border-l-2 pe-0 sm:pe-5">
+
+            <div className="relative shadow-md sm:rounded-lg mb-4 grid overflow-hidden w-fit">
+                <table className="whitespace-nowrap block overflow-x-auto text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                    <thead className="text-gray-900 bg-slate-200 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                内容
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                <Image
+                                   className=""
+                                   src={'/Go_Logo_Blue.svg'}
+                                   alt="success"
+                                   width={90}
+                                   height={90}
+                                   priority
+                                 />
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
                         <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white [writing-mode:vertical-lr]">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                 入力: arr = [1,2,3]<br />
                                 出力: [2,4,6]<br />
-                                説明: 1*2=2, 2*2=4, 3*2=6 なので [2,4,6] が答えとなる。
+                                説明: 1*2=2, 2*2=4, 3*2=6 なので<br />[2,4,6] が答えとなる。
                             </th>
                             <td className="px-6 py-4">
                                 <Syhl
@@ -354,19 +384,13 @@ export default function Home() {
                                     file='func_hireroo1.go'
                                 />
                             </td>
-                            <td className="px-6 py-4">
-                                <Syhl
-                                    lang='summary'
-                                    file='func_hireroo1.swift'
-                                />
-                            </td>
                         </tr>
 
                         <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white [writing-mode:vertical-lr]">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                 入力: nums = [2,7,11,15], target = 9<br />
                                 出力: [0,1]<br />
-                                説明: Because nums[0] + nums[1] == 9, we return [0, 1].
+                                説明: 足して9になる数字は0、1番目なので<br />[0, 1] が答えとなる。
                             </th>
                             <td className="px-6 py-4">
                                 <Syhl
@@ -374,16 +398,15 @@ export default function Home() {
                                     file='leetcode1.go'
                                 />
                             </td>
-                            <td className="px-6 py-4">
-
-                            </td>
                         </tr>
 
                         <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white [writing-mode:vertical-lr]">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                 入力: s = abcabcbb<br />
                                 出力: 3<br />
-                                説明: The answer is abc, with the length of 3.
+                                説明: 左から文字列を作って、<br />文字列に含まれる文字が再度出現した場合<br />
+                                そこから再度、文字列を作り直し、<br />文字列に含まれる文字が再度出現した場合<br />
+                                2度目の文字列作成分の文字数3となる。
                             </th>
                             <td className="px-6 py-4">
                                 <Syhl
@@ -391,16 +414,14 @@ export default function Home() {
                                     file='leetcode2.go'
                                 />
                             </td>
-                            <td className="px-6 py-4">
-
-                            </td>
                         </tr>
 
                         <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white [writing-mode:vertical-lr]">
-                                Input: nums1 = [1,3], nums2 = [2]<br />
-                                Output: 2.00000<br />
-                                Explanation: merged array = [1,2,3] and median is 2.
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                入力: nums1 = [1,3], nums2 = [2]<br />
+                                出力: 2.00000<br />
+                                説明: 配列を結合した中央値の数字のため<br />
+                                2.0となる
                             </th>
                             <td className="px-6 py-4">
                                 <Syhl
@@ -408,8 +429,61 @@ export default function Home() {
                                     file='leetcode3.go'
                                 />
                             </td>
-                            <td className="px-6 py-4">
+                        </tr>
 
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                入力: s = "babad"<br />
+                                出力: "bab"<br />
+                                説明: 鏡文字になった時点で返すので"bab"
+                            </th>
+                            <td className="px-6 py-4">
+                                <Syhl
+                                    lang='summary'
+                                    file='leetcode4.go'
+                                />
+                            </td>
+                        </tr>
+
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                入力: x = 123<br />
+                                出力: 321<br />
+                                説明: 逆整数にする<br />
+                                入力: x = -123<br />
+                                出力: -321<br />
+                                入力: x = 120<br />
+                                出力: 21
+                            </th>
+                            <td className="px-6 py-4">
+                                <Syhl
+                                    lang='summary'
+                                    file='leetcode5.go'
+                                />
+                            </td>
+                        </tr>
+
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                配列に含まれる文字列のカウント（難易度: 易しい）
+                            </th>
+                            <td className="px-6 py-4">
+                                <Syhl
+                                    lang='summary'
+                                    file='hireroo2.go'
+                                />
+                            </td>
+                        </tr>
+
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                6桁の数値の最小の和（難易度: 易しい）
+                            </th>
+                            <td className="px-6 py-4">
+                                <Syhl
+                                    lang='summary'
+                                    file='hireroo3.go'
+                                />
                             </td>
                         </tr>
 

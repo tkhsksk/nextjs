@@ -3,20 +3,25 @@ import "fmt"
 import "strings"// 文字検索用
 
 func main() {
-  searched := []string{}
   arr := []string{"hoge", "piyo", "huga"}
 
+  for i, v := range search(arr) {
+    _ = i
+    fmt.Println(v)
+  }
+}
+
+func search(arr [] string) []string {
+  result := make([]string, len(arr))[:0]
+
   for i, v := range arr {
-    _ = i // 以下でiを使わない場合
-    if(strings.Contains(v, "h")){
-      // searched[空] = append(searched[空], arr配列のvalue)
-      searched = append(searched, v)
+    _ = i
+    if strings.Contains(v, "h") {
+      result = append(result, v)
     }
   }
 
-  for i, v := range searched {
-    fmt.Println(i, v)
-  }
+  return result
 }
 
 // go run func_arr.go
