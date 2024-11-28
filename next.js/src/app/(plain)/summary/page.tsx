@@ -433,9 +433,9 @@ export default function Home() {
 
                         <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                             <th scope="row" className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                入力: s = "babad"<br />
-                                出力: "bab"<br />
-                                説明: 鏡文字になった時点で返すので"bab"
+                                入力: s = babad<br />
+                                出力: bab<br />
+                                説明: 鏡文字になった時点で返すのでbab
                             </th>
                             <td className="px-6 py-4">
                                 <Syhl
